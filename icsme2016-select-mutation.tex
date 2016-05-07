@@ -484,9 +484,22 @@ refers to the type of mutant: equivalent, stillborn or normal. However, as previ
 A boolean value, killed, is either true---if the mutant is dead---or false---if the mutant is alive. Finally, the time attribute is an
 integer value representing the time it takes---in milliseconds---to create the mutant.
 
+As previously mentioned, I am comparing uniform random sampling and stratified random sampling.
+The fractional values that I analyzed for both of the selective approaches are:
+$\{\frac{1}{100}, \frac{10}{100}, \frac{20}{100}, \frac{30}{100}, \frac{40}{100}, \frac{50}{100}, \frac{60}{100}, \frac{70}{100}, \frac{80}{100}, \frac{90}{100}\}$.
+I chose to increase by 10\% rather than analyzing each percentage due to the computation expense of the analysis if performed for each percentage.
 
+I ran each possible configuration of fractional value for uniform random sampling and stratified random sampling
+for 30 trials as suggested by Traeger and Zadok to allow for a normal distribution \cite{traeger2008nine}. Additionally,
+I kept the fractional values and number of trials for each configuration of sampling approach consistent throughout
+my analysis.
 
 \section{Analysis of Results}
+The data analyzed in this paper was generated from performing mutation testing on
+34 database schemas using the SQLite database management system. The data
+contain 118860 mutants and takes 67287543 milliseconds to perform mutation
+analysis on the entire set of mutants.
+
 \section{Conclusion and Future Work}
 
 % An example of a floating figure using the graphicx package.
