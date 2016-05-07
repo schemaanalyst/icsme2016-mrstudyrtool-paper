@@ -325,7 +325,7 @@
 \author{\IEEEauthorblockN{Colton J. McCurdy}
 \IEEEauthorblockA{Department of Computer Science \\
 Allegheny College, USA\\
-Email: \texttt{mccurdyc@allegheny.edu}}}
+\texttt{mccurdyc@allegheny.edu}}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -397,11 +397,11 @@ Testing mutations---modified versions of source code containing faults---which i
 referred to as mutation testing, was originally proposed by Richard A. DeMillo et al.
 in the 1970's \cite{demillo1978hints}. Each modified version of a program or schema contains
 exactly one fault. The goal to have each modified, or faulty, version of the source code
-fail when executed against the tests \cite{gopinath2015empirical}. If a test fails that was expected to fail
+fail when executed against the tests \cite{offutt1993experimental}. If a test fails that was expected to fail
 for the given input, then the fault has been exploited and the mutation, also referred to as a mutant,
 was \textit{killed}. A mutant that has been killed is considered to be \textit{dead} and no
 longer needs to remain in the testing process since the faults represented by this type of
-mutant are confirmed as being detectable by the test suite \cite{gopinath2015empirical}.
+mutant are confirmed as being detectable by the test suite \cite{offutt1993experimental}.
 Conversely, if a test passes, then the fault was not exploited and is considered to remain
 \textit{alive} \cite{mcminnvirtual}.
 
@@ -409,7 +409,7 @@ After constructing all of the mutants for a given program, the user then adds th
 to a mutation testing system such as \texttt{MAJOR} \cite{just2011major} or
 \texttt{Defects4J} \cite{just2014defects4j}. After adding the tests to a mutation testing system,
 the user then needs to ensure that the output is correct. If the output is incorrect, then
-a fault has been exploited and the mutant is considered to be killed \cite{gopinath2015empirical}.
+a fault has been exploited and the mutant is considered to be killed \cite{offutt1993experimental}.
 After all test cases have been executed against all of the live mutants, remaining mutants are either
 considered to be \textit{equivalent} or the test cases are insufficient to kill it \cite{gopinath2015empirical}. An equivalent
 mutant always produces the same output as the original program, making it undetectable by any test. A mutant
@@ -417,21 +417,77 @@ is a \textit{normal} mutant if it is not equivalent.
 Finally, a score, referred to as the mutation score for the test data can be calculated.
 
 \subsection{Calculating Mutation Score}
-Mutation score is the ratio of exposed \textit{normal} faults to the total number of \textit{normal} faults \cite{wright2013efficient}.
+Mutation score, displayed in Equation \ref{eq:ms}, is the ratio of killed \textit{normal} faults, denoted $k$ to the total number of \textit{normal} faults \cite{wright2013efficient}.
+The number of normal mutants can be calculated by summing the number of normal mutants that are both killed and alive, denoted $k$ and $a$, repectively.
 Equivalent mutants are excluded because, by definition, they cannot be detected by a unit test \cite{inozemtseva2014coverage}.
-The mutation score is the percentage of 
 
-As previously noted, mutation testing is not able
-to be used in practice due to its computational expense.
+\begin{equation}
+    Mutation \, Score(k,a) = \frac{k}{k+a}
+    \label{eq:ms}
+\end{equation}
+
+Test data with a 100\% mutation score is said to be \textit{mutation adequate} \cite{offutt1993experimental}.
+Mutation adequacy can mean one of two things, the better of the two being the test suite
+or database schema is of high quality. Second, the introduced faults are very easily
+discovered and are not stringent testers of the test suite or schema.
 
 \subsection{The Cost of Mutation Testing}
+As previously noted, mutation testing is not able
+to be used in practice due to its computational expense.
 The primary computational cost is incurred from running the mutated versions
 of the source code or database schema against the test cases or integrity
-constraints \cite{gopinath2015empirical}. Due to the fact that each generated
+constraints \cite{offutt1993experimental}. Due to the fact that each generated
 mutant needs to be run against at least, possibly many, test cases, mutation
-testing requires a large number of computations \cite{gopinath2015empirical}.
+testing requires a large number of computations \cite{offutt1993experimental}.
+There has been a substantial amount of work to find a reduced approach
+for performing mutation testing \cite{gopinath2015empirical, mcminnvirtual, gopinath2015mutation, offutt1993experimental}.
+Offut and Untch categorize the existing mutation testing reduction approaches
+into three categories: do \textit{fewer}, do \textit{smarter} and do \textit{faster} \cite{offutt1993experimental}.
+In this paper, we are only focused on the do fewer categorization,
+specifically, selective mutation testing.
 
 \subsection{Selective Mutation Testing}
+Mathur suggests an approach to reducing the cost of performing mutation testing by
+reducing the modified or mutant versions of the source code \cite{mathur1991performance}.
+Gopinath et al. discuss two existing approaches for performing selective
+mutation analysis \cite{gopinath2015mutation}. The two strategies are
+sampling criteria and operator selection. Sampling criteria is where I am
+currently focused, specifically on unified random sampling and stratified
+random sampling over mutation operators \cite{gopinath2015mutation}.
+
+Unified random sampling is the simplest of the sampling approaches, proposed by Timothy A. Budd,
+where an arbitrary fraction of the full set of mutants is chosen \cite{budd1980mutation}.
+Zhang et al. analyzed the performance of uniform random sampling as a reduction technique
+and found that sampling as few as 5\% of mutants can be very highly correlated with the full mutation
+score \cite{zhang2010operator, zhang2013operator}.
+
+Wong et al. first suggested sampling the same number of mutants from each operator, know as
+stratified random sampling over mutation operators \cite{wong1995reducing}. It is similar
+to uniform random sampling in the way that the same arbitrary fraction is applied. However,
+instead of applying the fraction over all mutants, it is applied across operators. In other
+words, the reduced set contains all possible operators, but only a fraction of the mutants
+with that operator. Stratified random sampling over mutation operators is subtly different
+from uniform random sampling because each operator is still present in the reduced set, where
+in uniform random sampling this is not considered.
+
+At this point, these are the only reduction strategies present in my research, as time
+goes on and I implement more approaches, I will discuss them in further detail.
+
+\section{Method of Approach}
+For the analyzing the existing selective approaches discussed previously, I have created
+a tool, \texttt{selectms}. This tool reads in data, expecting the data to contain
+specific attributes: identifier, dbms, schema, operator, type, killed, time. The identifier attribute
+is a universally unique set of characters describing the combination of database management system (dmbs)
+and schema. Next, the dbms attribute is as the name suggests, a character value representing the database management system under observation.
+The schema and operator attributes, both character values, are the schema and operator under observation. The type attribute, a set of characters,
+refers to the type of mutant: equivalent, stillborn or normal. However, as previously mentioned, we filter out all non-normal mutants.
+A boolean value, killed, is either true---if the mutant is dead---or false---if the mutant is alive. Finally, the time attribute is an
+integer value representing the time it takes---in milliseconds---to create the mutant.
+
+
+
+\section{Analysis of Results}
+\section{Conclusion and Future Work}
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -527,16 +583,10 @@ testing requires a large number of computations \cite{gopinath2015empirical}.
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
 
-\section{Conclusion}
-The conclusion goes here.
 
 % conference papers do not normally have an appendix
 
 % use section* for acknowledgment
-\section*{Acknowledgment}
-
-The authors would like to thank...
-
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
 % adjust value as needed - may need to be readjusted if
