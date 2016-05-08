@@ -116,12 +116,12 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+  \usepackage{graphicx}
   % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
+  \graphicspath{{imgs/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+  \DeclareGraphicsExtensions{.pdf}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -218,7 +218,7 @@
 
 % *** SUBFIGURE PACKAGES ***
 %\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+ \usepackage{subfig}
 %\else
 %  \usepackage[caption=false,font=footnotesize]{subfig}
 %\fi
@@ -260,7 +260,7 @@
 % http://www.ctan.org/pkg/fixltx2e
 
 
-%\usepackage{stfloats}
+\usepackage{stfloats}
 % stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
 % the ability to do double column floats at the bottom of the page as well
 % as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
@@ -365,13 +365,13 @@ Allegheny College, USA\\
 % in the abstract
 \begin{abstract}
     A well known method for measuring test suite or database schema quality is mutation analysis.
-    Due to the computational expense of computation analysis, it is
+    Due to the computational expense of mutation analysis, it is
     rarely used to determine the quality of products in industry. One
     of the trivial approaches for reducing the computational expense of
     mutation analysis is by reducing the number of mutations being analyzed.
-    This is known as a do \textit{fewer} or selective approach. I propose
-    a tool, \textit{selectms}, that is able to compare a couple of the
-    existing selective approaches for mutation analysis.
+    This is known as a do \textit{fewer} or selective approach. I analyze the effectiveness
+    of a tool in \textit{selectms} at performing two existing selective approaches for
+    performing mutation analysis.
 \end{abstract}
 
 % no keywords
@@ -389,14 +389,14 @@ Allegheny College, USA\\
 \subsection{Mutation Testing}
 
 Mutation testing is a well-known approach for determining the quality of test
-suites \cite{gopinath2015empirical}. Additionally, the quality of a database schema
+suites \cite{gopinath2015empirical}. Additionally, as McMinn et al. discovered, the quality of a database schema
 can be determined through the use of mutation testing \cite{mcminn2015effectiveness}. In
-this paper, I am using mutant data from performing mutation analysis on database schemas.
+this paper, I am using mutant data from performing mutation analysis on 34 well-known database schemas.
 
 Testing mutations---modified versions of source code containing faults---which is now
 referred to as mutation testing, was originally proposed by Richard A. DeMillo et al.
 in the 1970's \cite{demillo1978hints}. Each modified version of a program or schema contains
-exactly one fault. The goal to have each modified, or faulty, version of the source code
+exactly one fault. The goal is to have each modified, or faulty, version of the source code
 fail when executed against the tests \cite{offutt1993experimental}. If a test fails that was expected to fail
 for the given input, then the fault has been exploited and the mutation, also referred to as a mutant,
 was \textit{killed}. A mutant that has been killed is considered to be \textit{dead} and no
@@ -411,14 +411,14 @@ to a mutation testing system such as \texttt{MAJOR} \cite{just2011major} or
 the user then needs to ensure that the output is correct. If the output is incorrect, then
 a fault has been exploited and the mutant is considered to be killed \cite{offutt1993experimental}.
 After all test cases have been executed against all of the live mutants, remaining mutants are either
-considered to be \textit{equivalent} or the test cases are insufficient to kill it \cite{gopinath2015empirical}. An equivalent
+considered to be \textit{equivalent} or the test cases are insufficient to kill that type of mutant \cite{gopinath2015empirical}. An equivalent
 mutant always produces the same output as the original program, making it undetectable by any test. A mutant
 is a \textit{normal} mutant if it is not equivalent.
 Finally, a score, referred to as the mutation score for the test data can be calculated.
 
 \subsection{Calculating Mutation Score}
 Mutation score, displayed in Equation \ref{eq:ms}, is the ratio of killed \textit{normal} faults, denoted $k$ to the total number of \textit{normal} faults \cite{wright2013efficient}.
-The number of normal mutants can be calculated by summing the number of normal mutants that are both killed and alive, denoted $k$ and $a$, repectively.
+The total number of normal mutants can be calculated by summing the number of normal mutants that are both killed and alive, denoted $k$ and $a$, repectively.
 Equivalent mutants are excluded because, by definition, they cannot be detected by a unit test \cite{inozemtseva2014coverage}.
 
 \begin{equation}
@@ -437,7 +437,7 @@ to be used in practice due to its computational expense.
 The primary computational cost is incurred from running the mutated versions
 of the source code or database schema against the test cases or integrity
 constraints \cite{offutt1993experimental}. Due to the fact that each generated
-mutant needs to be run against at least, possibly many, test cases, mutation
+mutant needs to be run against at least one, possibly many, test cases, mutation
 testing requires a large number of computations \cite{offutt1993experimental}.
 There has been a substantial amount of work to find a reduced approach
 for performing mutation testing \cite{gopinath2015empirical, mcminnvirtual, gopinath2015mutation, offutt1993experimental}.
@@ -445,6 +445,19 @@ Offut and Untch categorize the existing mutation testing reduction approaches
 into three categories: do \textit{fewer}, do \textit{smarter} and do \textit{faster} \cite{offutt1993experimental}.
 In this paper, we are only focused on the do fewer categorization,
 specifically, selective mutation testing.
+
+\begin{figure*}[!ht]
+\centering
+\subfloat[Uniform random sampling]{\includegraphics[width=2.5in]{inventory_perc_v_ms}
+\label{fig:iv_s}}
+\hfil
+\subfloat[Stratified random sampling over mutation operators]{\includegraphics[width=2.5in]{inventory_op_perc_v_ms}
+\label{fig:iv_o}}
+\caption{Comparing uniform random sampling to stratified random sampling over
+mutation operators for the Inventory schema.}
+\label{fig:comp}
+\end{figure*}
+
 
 \subsection{Selective Mutation Testing}
 Mathur suggests an approach to reducing the cost of performing mutation testing by
@@ -455,33 +468,33 @@ sampling criteria and operator selection. Sampling criteria is where I am
 currently focused, specifically on unified random sampling and stratified
 random sampling over mutation operators \cite{gopinath2015mutation}.
 
-Unified random sampling is the simplest of the sampling approaches, proposed by Timothy A. Budd,
+Uniform random sampling is the simplest of the sampling approaches, proposed by Timothy A. Budd,
 where an arbitrary fraction of the full set of mutants is chosen \cite{budd1980mutation}.
 Zhang et al. analyzed the performance of uniform random sampling as a reduction technique
 and found that sampling as few as 5\% of mutants can be very highly correlated with the full mutation
 score \cite{zhang2010operator, zhang2013operator}.
 
-Wong et al. first suggested sampling the same number of mutants from each operator, know as
+Wong et al. first suggested sampling the same number of mutants from each operator, known as
 stratified random sampling over mutation operators \cite{wong1995reducing}. It is similar
 to uniform random sampling in the way that the same arbitrary fraction is applied. However,
-instead of applying the fraction over all mutants, it is applied across operators. In other
+instead of applying the fraction over all mutants for a schema, the fraction is applied for all operators. In other
 words, the reduced set contains all possible operators, but only a fraction of the mutants
 with that operator. Stratified random sampling over mutation operators is subtly different
 from uniform random sampling because each operator is still present in the reduced set, where
 in uniform random sampling this is not considered.
 
-At this point, these are the only reduction strategies present in my research, as time
-goes on and I implement more approaches, I will discuss them in further detail.
+At this point, these are the only reduction strategies present in my research and available for analyzing
+with my tool, as time goes on and I implement more approaches, I will discuss them in further detail.
 
 \section{Method of Approach}
-For the analyzing the existing selective approaches discussed previously, I have created
+For analyzing the existing selective approaches discussed previously, I have created
 a tool, \texttt{selectms}. This tool reads in data, expecting the data to contain
 specific attributes: identifier, dbms, schema, operator, type, killed, time. The identifier attribute
 is a universally unique set of characters describing the combination of database management system (dmbs)
-and schema. Next, the dbms attribute is as the name suggests, a character value representing the database management system under observation.
+and schema. The dbms attribute is as the name suggests, a character value representing the database management system under observation.
 The schema and operator attributes, both character values, are the schema and operator under observation. The type attribute, a set of characters,
 refers to the type of mutant: equivalent, stillborn or normal. However, as previously mentioned, we filter out all non-normal mutants.
-A boolean value, killed, is either true---if the mutant is dead---or false---if the mutant is alive. Finally, the time attribute is an
+A boolean value, killed, is either true or false, if the mutant is dead or alive, respectively. Finally, the time attribute is an
 integer value representing the time it takes---in milliseconds---to create the mutant.
 
 As previously mentioned, I am comparing uniform random sampling and stratified random sampling.
@@ -494,10 +507,79 @@ for 30 trials as suggested by Traeger and Zadok to allow for a normal distributi
 I kept the fractional values and number of trials for each configuration of sampling approach consistent throughout
 my analysis.
 
+\begin{figure*}[!hb]
+\centering
+\subfloat[Uniform random sampling correlation]{\includegraphics[width=2.5in]{rs_corr}
+\label{fig:iv_c}}
+\hfil
+\subfloat[Stratified random sampling over mutation operators correlation]{\includegraphics[width=2.5in]{op_corr}
+\label{fig:iv_op_c}}
+\caption{The correlation of mutation scores across percentages for the uniform random sampling and stratified random sampling
+across operators approaches, specifically for the Inventory schema.}
+\label{fig:comp_corr}
+\end{figure*}
+
 \section{Analysis of Results}
 The data analyzed in this paper was generated from performing mutation testing on
 34 database schemas using the SQLite database management system. The data
 contain 118860 mutants, which as a whole, take 67287543 milliseconds to analyze using mutation analysis.
+
+Reducing this cost is the primary focus. However, reducing cost by analyzing fewer mutants
+leads to less correlated mutation scores and higher mean absolute and root mean squared errors (displayed
+in Figures \ref{fig:comp_corr} and \ref{fig:comp_error}, respectively). In this paper, I will
+analyze the graphs comparing mutation score, error and correlation (on the y-axis) to percentage (on the x-axis),
+specifically for the Inventory schema.
+
+As previously mentioned, the mutation score associated with a test suite or database schema is a value
+corresponding to the quality of the test suite or schema. By reducing the mutant set by fractional values,
+we are able to receive mutation scores that are very close to the original mutation score (e.g., both uniform random sampling
+and stratified random sampling over operators on only $30\%$ of the original mutants produce mutation scores ranging between 0.70 and 0.80, where the
+original mutation score is 0.75). As displayed
+in Figure \ref{fig:comp} and previously noted by Budd et al. in \cite{budd1980mutation}, even as small
+as $10\%$ of the original set can produce mutation scores that are considered to be highly correlated
+($\tau_b \approx 0.73$ for uniform random sampling and $\tau_b \approx 0.76$ for stratified random sampling over operators).
+The correlation between the mutation scores of both reduced sets from both approaches and the original set for all fractional values---using Kendall's $\tau_b$---can
+observed in Figure \ref{fig:comp_corr}.
+
+Inozemtseva and Holmes adopt the Guildford scale to described correlation values. I will similarly
+describe correlations between sets' mutation score using the same Guildford scale.
+The Guildford scale describes the absolute value of a coefficient as ``low'' when it is less than 0.4,
+``moderate'' when it is between 0.4 and 0.7, ``high'' when ranging from 0.7 to 0.9, and ``very high''
+when it is greater than 0.9 \cite{inozemtseva2014coverage}.
+
+Finally, when observing mean absolute and root mean squared errors displayed in Figure \ref{fig:comp_error},
+I noticed that both approaches experience a similar decrease in error as the reduced sets
+get larger---increase in fractional value. When analyzing the errors experienced for sets between
+$1 - 30\%$ of the original mutant set, both uniform random sampling and stratified random sampling over mutation operators
+encounter a rapid decrease in error, or increase in accuracy.
+
+After performing selective mutation analysis I have observed that all reduced sets from both
+uniform random sampling and stratified random sampling over mutation operators produce sets with mutation scores that are
+considered to be ``highly'' correlated, with the only exception
+being the reduced set produced by random sampling with $1\%$, which produces a reduced set with a mutation score that is considered
+to be weakly correlated to that of the mutation score of the entire set of mutations.
+
+Although we are able to produce
+reduced sets with highly correlated mutation scores, we are not able to produced sets with
+very highly correlated mutation scores using either of the selective approaches begin analyzed.
+
+I chose only to provide the visualizations for the Inventory schema because it effectively displays
+the consequences that selective mutation analysis can have on the mutation score. Additionally,
+there are nine schemas that are mutation adequate, meaning that no matter how small the test data
+are, data for the corresponding schema will \textit{always} produce mutation adequate sets. This is what I consider
+to be an ineffective display of the cause of selective mutation analysis.
+
+
+\begin{figure*}[!hb]
+\centering
+\subfloat[Uniform random sampling errors]{\includegraphics[width=3in]{inventory_error}
+\label{fig:iv_e}}
+\hfil
+\subfloat[Stratified random sampling over mutation operators errors]{\includegraphics[width=3in]{inventory_op_error}
+\label{fig:iv_op_e}}
+\caption{The errors for uniform random sampling and stratified random sampling over operators for the Inventory schema.}
+\label{fig:comp_error}
+\end{figure*}
 
 \section{Conclusion and Future Work}
 
