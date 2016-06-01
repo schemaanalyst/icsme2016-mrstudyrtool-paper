@@ -320,7 +320,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{\textit{msselectr}: Analysing the Selective Approaches for Performing Mutation Analysis}
+\title{\textit{msselectr}: A Comprehensive Tool for Analysing the Selective Mutation Analysis Approaches}
 
 % \author{\IEEEauthorblockN{Colton J. McCurdy}
 % \IEEEauthorblockA{Department of Computer Science \\
@@ -392,6 +392,7 @@ Allegheny College, USA}}
         \item Can easily be modified to analyse data from many domains because of the acceptance of a standardised general input format.
     \end{itemize}
 
+\section{Background}
 \subsection{Mutation Testing}
 
 % Mutation testing is a well-known procedure for determining the quality of test
@@ -500,24 +501,25 @@ refer to the AST2016 paper
 still computationally expensive\\
 able to utilize existing select approaches
 
-
-\section{Comprehensiveness of \textit{msselectr}}
+\section{\textit{msselectr}}
+\subsection{Comprehensiveness of \textit{msselectr}}
 approaches contained in the tool
 
-\section{Released in a Standardised Format}
+\subsection{Released in a Standardised Format}
 \textit{note: do not innapropriately include too much detail}
 talk about why we chose to use R \\
 talk about the importance of free and open-source software \\
 talk about why reproducibility is important
 
-\section{Generalised Input Format}
+\subsection{Generalised Input Format / Extensibility}
 not limited to a single domain
 allows for use in old and new domains with little modification
-    \subsection{application to databases}
+    \subsubsection{application to databases}
     talk about mutation analysis of database schema mutants
-    \subsection{application to programs}
+    \subsubsection{application to programs}
 
-\section{Experimental Setup}
+\section{Implementation}
+\subsection{Design}
 % For analyzing the existing selective approaches discussed previously, I have created
 % a tool, \texttt{selectms}. This tool reads in data, expecting the data to contain
 % specific attributes: identifier, dbms, schema, operator, type, killed, time. The identifier attribute
@@ -528,7 +530,7 @@ allows for use in old and new domains with little modification
 % A boolean value, killed, is either true or false, if the mutant is dead or alive, respectively. Finally, the time attribute is an
 % integer value representing the time it takes---in milliseconds---to create the mutant.
 
-\subsection{$x\%$ random selection with $x$ increasing by 10}
+$x\%$ random selection with $x$ increasing by 10 \\
 % As previously mentioned, I am comparing uniform random sampling and stratified random sampling over mutation operators.
 % The fractional values that I analyzed for both of the selective approaches are:
 % $\{\frac{1}{100}, \frac{10}{100}, \frac{20}{100}, \frac{30}{100}, \frac{40}{100}, \frac{50}{100}, \frac{60}{100}, \frac{70}{100}, \frac{80}{100}, \frac{90}{100}\}$.
@@ -536,7 +538,7 @@ allows for use in old and new domains with little modification
 
 continue discussing why we chose 10\% increments (refer to one paper from annotated bib)
 
-\subsection{30 trials}
+30 trials
 % We ran each possible configuration of fractional value for uniform random sampling and stratified random sampling
 % for 30 trials as suggested by Traeger and Zadok to allow the results to approximate a normal distribution \cite{traeger2008nine}. Additionally,
 % We kept the fractional values and number of trials for each configuration of sampling approach consistent throughout the analysis.
@@ -552,6 +554,7 @@ continue discussing why we chose 10\% increments (refer to one paper from annota
 % across operators approaches, specifically for the Inventory schema.}
 % \label{fig:comp_corr}
 % \end{figure*}
+\subsection{Usage}
 
 \vspace*{-0.25cm}
 \section{Analysis of Results}
@@ -618,6 +621,10 @@ provide results from more than just Inventory schema
 % \caption{The errors for uniform random sampling and stratified random sampling over operators for the Inventory schema.}
 % \label{fig:comp_error}
 % \end{figure*}
+
+\section{Related Work}
+\subsection{Survey of Results}
+\subsection{Related Work}
 
 \section{Conclusion and Future Work}
 
