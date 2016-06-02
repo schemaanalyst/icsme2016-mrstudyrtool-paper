@@ -320,7 +320,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{\textit{msselectr}: A Comprehensive Tool for Analysing Reduction Techniques for Mutation Analysis}
+\title{\textit{mrstudyr}: A Tool for Retrospectively Studying Mutant Reduction Techniques}
 
 % \author{\IEEEauthorblockN{Colton J. McCurdy}
 % \IEEEauthorblockA{Department of Computer Science \\
@@ -328,13 +328,11 @@
 % \texttt{mccurdyc@allegheny.edu}}}
 
 \author{
-\IEEEauthorblockN{Phil McMinn}
-\IEEEauthorblockA{Department of Computer Science \\
-University of Sheffield, UK}
-\and
 \IEEEauthorblockN{Colton J. McCurdy and Gregory M. Kapfhammer}
-\IEEEauthorblockA{Department of Computer Science \\
-Allegheny College, USA}}
+\IEEEauthorblockA{Allegheny College}
+\and
+\IEEEauthorblockN{Phil McMinn}
+\IEEEauthorblockA{University of Sheffield}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -358,9 +356,6 @@ Allegheny College, USA}}
 % Telephone: (800) 555--1212, Fax: (888) 555--1212}
 % \IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
 
-
-
-
 % use for special paper notices
 %\IEEEspecialpapernotice{(Invited Paper)}
 
@@ -369,6 +364,7 @@ Allegheny College, USA}}
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
+\vspace*{-1cm}
 \begin{abstract}
     Abstract will go here. It will be more clear and focus on the contributions of the tool
 \end{abstract}
@@ -385,15 +381,12 @@ Allegheny College, USA}}
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-    Key Contributions:
-    \begin{itemize}
-        \item Comprehensive tool for analysing selective mutation analysis.
-        \item Released free and open source in a standardised format as an R package.
-        \item Can easily be modified to analyse data from many domains because of the acceptance of a standardised general input format.
-    \end{itemize}
+Motivate why a retrospective tool is important. \\
+What does this allow for?\\
+Why retrospective analysis and not just build reduction techniques into a mutation testing tool?\\
 
-\section{Background}
 \subsection{Mutation Testing}
+don't get too detailed. we can assume readers understand mutation testing
 
 % Mutation testing is a well-known procedure for determining the quality of test
 % suites \cite{gopinath2015empirical}. Additionally, as McMinn et al. discovered, the quality of a database schema
@@ -467,7 +460,7 @@ Allegheny College, USA}}
 % \end{figure*}
 
 
-\subsection{Selective Mutation Testing}
+\subsection{Mutant Reduction Techniques}
 % Mathur suggests an approach to reducing the cost of performing mutation testing by
 % reducing the modified or mutant versions of the source code \cite{mathur1991performance}.
 % Gopinath et al. discuss two existing approaches for performing selective
@@ -496,30 +489,39 @@ Allegheny College, USA}}
 % At this point, these are the only reduction strategies present in my research and available for analyzation
 % with my tool. As time goes on and I implement more approaches, I will discuss them in further detail.
 
+\subsection{Importance of Testing Database Schemas}
 \subsection{Analysing Database Schema Mutants}
 refer to the AST2016 paper
 still computationally expensive\\
 able to utilize existing select approaches
 
-\section{\textit{msselectr}}
-\subsection{Comprehensiveness of \textit{msselectr}}
-approaches contained in the tool
+    Key Contributions:
+    \begin{itemize}
+        \item A tool to study mutant reduction techniques in retrospect.
+        \item Released as a free and open-source R package.
+        \item Accepts a generalised input format.
+    \end{itemize}
 
-\subsection{Released in a Standardised Format}
+
+\section{\textit{mrstudyr}}
+\subsection{Retrospective Policy Recommendation}
+what is meant by this subsection title?
+
+\subsection{Released as a Standardised R Package}
 \textit{note: do not innapropriately include too much detail}
-talk about why we chose to use R \\
-talk about the importance of free and open-source software \\
-talk about why reproducibility is important
+talk about why we chose to use R (hitchhiker's guide paper / SBST2016)\\
+talk about the importance of free and open-source software (Regression testing workshop paper)\\
+talk about why reproducibility is important (Regression testing workshop paper)
 
-\subsection{Generalised Input Format / Extensibility}
-not limited to a single domain
+\subsection{Generalised Input Format}
+not limited to a single domain / extensible
 allows for use in old and new domains with little modification
     \subsubsection{application to databases}
     talk about mutation analysis of database schema mutants
     \subsubsection{application to programs}
 
 \section{Implementation}
-\subsection{Design}
+\subsection{Tool Design}
 % For analyzing the existing selective approaches discussed previously, I have created
 % a tool, \texttt{selectms}. This tool reads in data, expecting the data to contain
 % specific attributes: identifier, dbms, schema, operator, type, killed, time. The identifier attribute
@@ -554,13 +556,18 @@ continue discussing why we chose 10\% increments (refer to one paper from annota
 % across operators approaches, specifically for the Inventory schema.}
 % \label{fig:comp_corr}
 % \end{figure*}
-\subsection{Usage}
+\subsection{Tool Usage}
+provide some command-line commands or R function calls
 
 \vspace*{-0.25cm}
-\section{Analysis of Results}
+\section{\textit{mrstudyr} in Action (to be changed)}
 
-include tables about the mutant data (alive, dead, total, type)
-provide results from more than just Inventory schema
+include tables about the mutant data (alive, dead, total, type) \\
+provide results from more than just Inventory schema \\
+Table including characteristics of the schemas \\
+Graph and explaining trends and meaning of everything in graph (QSIC2104)
+
+
 
 % The data analyzed in this paper was generated from performing mutation testing on
 % 34 database schemas using the SQLite database management system. The data
@@ -623,10 +630,15 @@ provide results from more than just Inventory schema
 % \end{figure*}
 
 \section{Related Work}
-\subsection{Survey of Results}
-\subsection{Related Work}
+They ...
+I ...
+They ...
+I ...
 
 \section{Conclusion and Future Work}
+Why mutation testing? \\
+Reiterate why retrospective analysis \\
+Why database schemas? \\
 
 % Determining the quality of a test suite or database schema is salient.
 % By creating higher-quality test suites, in turn, we are able to ensure that the programs
