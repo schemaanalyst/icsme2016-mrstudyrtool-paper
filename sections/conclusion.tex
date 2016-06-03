@@ -1,0 +1,34 @@
+\section{Conclusion and Future Work}
+Why mutation testing? \\
+Reiterate why retrospective analysis \\
+Why database schemas? \\
+
+% Determining the quality of a test suite or database schema is salient.
+% By creating higher-quality test suites, in turn, we are able to ensure that the programs
+% under test are of high quality. Similarly, ensuring that database schemas are tested makes certain
+% that only expected data enter the database. This is important because databases are said to be an organization's single most
+% valuable asset \cite{silberschatz1997database} and if it contains invalid data, this asset is unreliable.
+%
+% Testing the quality of both a program's test suite or a database's schema can be done
+% through the use of mutation testing \cite{gopinath2015empirical, mcminn2015effectiveness}. However,
+% testing all possible mutations of a program or schema is of great computational expense \cite{offutt1993experimental}.
+% Therefore, researches have introduced approaches for reducing the computation cost
+% of mutation testing. These approaches have been categorized by
+% Offut and Untch as: do \textit{fewer}, do \textit{smarter} and do \textit{faster} \cite{offutt1993experimental}.
+%
+% Of similar saliency to reducing cost is ensuring that the selective approaches
+% produce sets that are as effective at detecting faults as the original
+% set of data. In this paper, I analyzed uniform random sampling and stratified random sampling
+% over mutation operators and found agreeing results to those of Gopinath et al. regarding the
+% ability to, in a stable manner, produce reduced sets with high mutation scores \cite{gopinath2015empirical}.
+
+% In addition, similar to Budd et al. in \cite{budd1980mutation}, I found that reduced sets, as small as $10\%$,
+% of the entire set can produce mutation scores that are considered to be highly correlated according
+% to the Guildford scale. Correspondingly, the mean absolute and root mean squared errors for these
+% reduced sets were low, as to be expected with a highly correlated set.
+
+% In future work, I plan to determine whether the reduced sets with highly correlated mutation scores
+% are actually stringent predictors of test suite quality. I am able to determine the quality of
+% a set based on fault coverage using the \texttt{Defects4J} tool which provides fault data from mutation
+% testing \cite{just2014defects4j}.
+
