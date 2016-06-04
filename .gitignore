@@ -3,7 +3,7 @@
 
 # But not these files:
 !.gitignore
-!icsme2016-select-mutation.tex
+!*.tex
 !*.bib
 !*.R
 !*.sty
