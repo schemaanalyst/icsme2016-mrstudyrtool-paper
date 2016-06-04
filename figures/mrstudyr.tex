@@ -1,0 +1,118 @@
+\newcommand{\mx}[1]{\mathbf{\bm{#1}}} % Matrix command
+\newcommand{\vc}[1]{\mathbf{\bm{#1}}} % Vector command
+
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+% Define block styles used later
+
+\tikzstyle{sensor}=[draw, fill=black!10, text width=5em,
+    text centered, minimum height=2.5em,drop shadow]
+\tikzstyle{small}=[draw, fill=black!10, text width=2em,
+    text centered, minimum width=2em, minimum height=2.5em,drop shadow]
+\tikzstyle{smallcir}=[draw, ellipse, fill=black!10, text width=5em,
+    text centered, minimum height=2.5em, drop shadow]
+\tikzstyle{circle}=[draw, ellipse, fill=black!10, text width=8em,
+    text centered, minimum height=2.5em, drop shadow]
+\tikzstyle{func}=[draw, fill=black!20, text width=5em,
+    text centered, minimum height=2.5em,drop shadow]
+\tikzstyle{mr}=[draw, fill=black!20, text width=5em,
+    text centered, minimum height=13em, minimum width = 15em, drop shadow]
+\tikzstyle{ann} = [above, text width=5em, text centered]
+\tikzstyle{wa} = [sensor, text width=10em, fill=black!30,
+    minimum height=6em, rounded corners, drop shadow]
+\tikzstyle{sc} = [sensor, text width=13em, fill=red!30,
+    minimum height=10em, rounded corners, drop shadow]
+
+
+% Define distances for bordering
+\def\blockdist{1.5}
+\def\edgedist{2.5}
+
+\begin{figure}[t]
+  \centering
+% SIMPLE
+\begin{tikzpicture}[thick,scale=0.85, every node/.style={scale=0.85}]
+    \node [mr] at (0, 0) (mr) {};
+    \node [smallcir] at (0, 3.25) (md) {Mutant Data};
+    \node [sensor] at (0, 1.5) (r) {Reduction Approach};
+    \node [sensor] at (0, 0) (rmd) {Reduced Mutant Data};
+    \node [small] at (-1.75, 0) (m1) {$ms'$};
+    \node [small] at (1.75, 0) (m2) {$ms$};
+    \node [func] at (0, -1.5) (calc) {Calculations};
+    \node [circle] at (0, -3.25) (rec) {Policy Recommendation};
+
+    \path [draw, ->] (md.south) -- node [above] {}
+        (r.90);
+    \path [draw, ->] (md.east) -| node [above] {}
+        (m2.90);
+    \path [draw, ->] (r.south) -- node [above] {}
+        (rmd.90);
+    \path [draw, ->] (rmd.west) -- node [above] {}
+        (m1.0);
+    \path [draw, ->] (m1.south) |- node [above] {}
+        (calc.180);
+    \path [draw, ->] (m2.south) |- node [above] {}
+        (calc.0);
+    \path [draw, ->] (calc.south) -- node [above] {}
+        (rec.90);
+
+% VERTICAL
+% \begin{tikzpicture}[thick,scale=0.85, every node/.style={scale=0.85}]
+%     \node [mr] at (0, 0) (mr) {};
+%     % \node [] at (-3, -0.25) (left) {};
+%     % \node [] at (0, 2.3) (text) {\textit{mrstudyr}};
+%     \node [sensor] at (-1.25, 0) (g) {};
+%     \node [sensor] at (1.25, 0) (gg) {};
+%     \node [circle] at (0, 4.5) (md) {Mutant Data};
+%     \node [circle] at (0, 2.75) (df) {Dataframe};
+%     \node [] at (-1.25, 1.75) (a1) {$a_1$};
+%     \node [] at (0, 1.75) (dots) {...};
+%     \node [] at (1.25, 1.75) (a2) {$a_n$};
+%     \node [] at (-1.75, 1) (t1) {$t_1$};
+%     \node [] at (-1.25, 1) (dots2) {...};
+%     \node [] at (-0.75, 1) (t30) {$t_{30}$};
+%     \node [] at (0.75, 1) (tt1) {$t_1$};
+%     \node [] at (1.25, 1) (dots3) {...};
+%     \node [] at (1.75, 1) (tt30) {$t_{30}$};
+%     \node [] at (-1.75, 0) (m1) {$ms_{1}'$};
+%     \node [] at (-0.75, 0) (m2) {$ms_{30}'$};
+%     \node [] at (0.75, 0) (mm1) {$ms_{1}'$};
+%     \node [] at (1.75, 0) (mm2) {$ms_{30}'$};
+%     \node [func] at (-1.75, -1.75) (corr) {Calculate Correlation};
+%     \node [func] at (1.75, -1.75) (err) {Calculate Error};
+%     \node [circle] at (0, -2.8) (df2) {Dataframe};
+%
+%     \path [draw, ->] (md.south) -- node [above] {}
+%         (df.90);
+%     \path [draw, ->] (df.south) -- node [above] {}
+%         (a1.10);
+%     \path [draw, ->] (df.south) -- node [above] {}
+%         (a2.170);
+%     \path [draw, ->] (a1.south) -- node [above] {}
+%         (t1.50);
+%     \path [draw, ->] (a1.south) -- node [above] {}
+%         (t30.130);
+%     \path [draw, ->] (a2.south) -- node [above] {}
+%         (tt1.50);
+%     \path [draw, ->] (a2.south) -- node [above] {}
+%         (tt30.130);
+%     \path [draw, ->] (t1.south) -- node [above] {}
+%         (m1.90);
+%     \path [draw, ->] (t30.south) -- node [above] {}
+%         (m2.90);
+%     \path [draw, ->] (tt1.south) -- node [above] {}
+%         (mm1.90);
+%     \path [draw, ->] (tt30.south) -- node [above] {}
+%         (mm2.90);
+%     \path [draw, ->] (g.south) -| +(0, -0.25) -| node [above] {}
+%         (err.90);
+%     \path [draw, ->] (gg.south) -| +(0, -0.25) -| node [above] {}
+%         (corr.90);
+%
+\end{tikzpicture}
+\caption{\label{fig:mrstudyr}The inputs and outputs of the
+\textit{mrstudyr} tool.}
+\end{figure}
