@@ -69,6 +69,11 @@ columns=flexible,
 breaklines=true
 }
 \usepackage{hhline}
+
+% Textual shortcuts
+\newcommand{\mr}{{\it mrstudyr}\xspace}
+\newcommand{\MR}{\mr}
+\newcommand{\mrstudyr}{\mr}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Some very useful LaTeX packages include:
@@ -290,7 +295,7 @@ breaklines=true
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{\textit{mrstudyr}: Retrospectively Studying the Effectiveness of Mutant Reduction Techniques}
+\title{\mr: Retrospectively Studying the Effectiveness of Mutant Reduction Techniques}
 
 \author{
 \IEEEauthorblockN{Colton J. McCurdy}
@@ -309,14 +314,19 @@ breaklines=true
 % in the abstract
 \vspace*{-1cm}
 \begin{abstract}
-    Mutation Testing is a common method for measuring a test suite's quality.
-    However, due to computational expense and demand for human interaction,
-    Mutation Testing is infeasible in practice. To combat the demands of
-    Mutation Testing various reduction strategies have been established.
-    Although reduction techniques for Mutation Testing exist, a tool for
-    applying the strategies does not. We provide a tool, \textit{mrstudyr},
-    which enables the retrospective comparison of effectiveness for
-    existing Mutation Testing reduction techniques.
+    Mutation testing is a common method for measuring a test suite's quality.
+    However, due to its computational expense and demand for human interaction,
+    mutation testing is often infeasible in practice. To control the demands of
+    mutation testing, various reduction strategies have been proposed.
+    Although reduction techniques for mutation testing have been described
+    in written form, a tool for retrospectively analysing the performance of
+    an approach is not available.
+    Instead of integrating every reduction approach into an existing mutation testing system and
+    individually executing each one, we apply each approach to the data
+    collected from a single execution of the entire mutant set.
+    We provide a tool, \mr, which enables this retrospective
+    comparison of effectiveness for existing mutation testing reduction techniques.
+
 \end{abstract}
 
 % creates the second title. It will be ignored for other modes.
