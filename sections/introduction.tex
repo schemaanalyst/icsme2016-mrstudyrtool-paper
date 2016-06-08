@@ -1,17 +1,62 @@
 \section{Introduction}
-Mutation Testing is a well-known technique for determining the quality
-of a test suite. While Mutation Testing has been researched for over four
-decades, it is still growing in popularity \cite{jia2011analysis}.
-The increase in popularity of Mutation Testing has remained primarily
-in the academic community and is still not commonly used in practice due
-to the unsuitable demands.
+Programmers make mistakes when writing software.
+These mistakes in the source code, often referred to as errors, can be harmful
+and even result in human fatality \cite{vicente2003programming}.
+Running a suite of test cases helps detect many of the errors
+that lead to a crash of a program or that cause a logical failure \cite{wagner2005comparing}.
+However, simply testing a program is not enough. In order for the results
+from a test suite to be substantive, the test suite needs to be of ``high quality''.
+Determining the quality of a test suite illustrates how stringently the given
+program was tested.
 
-Motivate why a retrospective tool is important. \\
-What does this allow for?\\
-Why retrospective analysis and not just build reduction techniques into a mutation testing tool?\\
+Mutation testing is a widely-recognized technique for determining the quality
+of a test suite \cite{gopinath2015mutation}. While there are an immense number
+of potential faults for a program, mutation testing primarily focuses on those
+which are close to the correct version with the expectation that they will
+be representative of all faults \cite{jia2011analysis}.
+Of the software testing methods, mutation testing has been empirically
+shown to be the most effective in detecting faults (PAPERS UNAVAILABLE) \cite{PAPERS UNAVAILABLE}.
 
-\subsection{Mutation Testing}
-don't get too detailed. we can assume readers understand mutation testing
+Although mutation testing is the most effective in detecting faults, it possesses
+major drawbacks in the computational cost and amount of human interaction required, making it
+impractical to use in practice \cite{gopinath2015mutation, wong1995reducing, gopinath2015empirical}.
+The major computational cost of mutation testing comes from executing the large number of mutants generated for a
+program against a test suite \cite{offutt1993experimental}. Executing a smaller, representative
+set of mutants against the test suite has been proposed as a technique to reduce
+the cost of mutation testing \cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}.
+This reduction strategy is categorized by Offut and Untuch as a `do fewer' approach \cite{offutt2001mutation}.
+
+There are a number of mutant reduction techniques that can be categorized in this
+classification of do fewer. Two of these techniques are Mutant Sampling and Selective Mutation \cite{jia2011analysis, wong1995reducing, offutt1993experimental}.
+Mutant Sampling is the simplest reduction strategy, where a fraction of the mutants
+are chosen randomly \cite{wong1995reducing}. Selective Mutation, also called ``constrained mutation'',
+reduces the number of mutants to be analysed by decreasing the operator count \cite{jia2011analysis, offutt1993experimental, mathur1991performance}.
+For each of these approaches, a threshold for the maximum number of mutants is set by an arbitrary \(x\%\).
+
+Work has been done in the realm of mutant reduction techniques to find the smallest $x$ that still produces
+a representative set of mutant \cite{jia2011analysis, mathur1994empirical}. Most of the work
+to minimize representative sets of mutants has been done by integrating an approach into
+mutation testing systems and performing mutation testing on each subset of mutants \cite{demillo1978hints, king1991fortran}.
+
+While this way of testing reduction techniques is accurate, it is both
+expensive to implement and perform due to the number of times mutation testing
+needs to be executed on the reduced sets. Retrospectively studying the data
+collected from a single run of mutation testing has minimal upfront costs and obviates the need
+to understand the complexity of the target environment.
+
+\textit{Should I introduce the tool here or continue to motivate retrospective analysis?}
+
+Relational databases are used as an efficient and reliable way to store large amounts of data in software
+systems from batting and pitching statistics of baseball players \cite{} to the fingerprints and scars
+of criminals \cite{}. Relational databases are unique because of their acceptance of relationships between
+data entries, as well as the strict structure of data, protecting correctness.
+
+The database schema is the artifact responsible for specifying the data to be stored and
+how it should be structured into tables. A series of integrity constraints
+are what make the database schema able to ensure values are unique, present,
+subject to domain-specific conditions and maintain referential integrity \cite{mcminnvirtual}.
+
+a series of integrity constraints.
 
 % Mutation testing is a well-known procedure for determining the quality of test
 % suites \cite{gopinath2015empirical}. Additionally, as McMinn et al. discovered, the quality of a database schema
@@ -56,7 +101,6 @@ don't get too detailed. we can assume readers understand mutation testing
 % or database schema is of high quality or the introduced faults are easily
 % discovered and are not stringent predictors of the test suite or schema's quality.
 
-\subsection{The Cost of Mutation Testing}
 % As previously noted, mutation testing is not able
 % to be used in practice due to its computational expense.
 % The primary computational cost is incurred from running the mutated versions
@@ -84,8 +128,6 @@ don't get too detailed. we can assume readers understand mutation testing
 % \label{fig:comp}
 % \end{figure*}
 
-
-\subsection{Mutant Reduction Techniques}
 % Mathur suggests an approach to reducing the cost of performing mutation testing by
 % reducing the modified or mutant versions of the source code \cite{mathur1991performance}.
 % Gopinath et al. discuss two existing approaches for performing selective
