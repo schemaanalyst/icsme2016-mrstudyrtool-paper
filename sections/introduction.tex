@@ -1,7 +1,6 @@
 \section{Introduction}
-Programmers make mistakes when writing software.
-These mistakes in the source code, often referred to as errors, can be harmful
-and even result in human fatality \cite{vicente2003programming}.
+Programmers make mistakes---often referred to as errors---when writing software
+that can be harmful and even result in human fatality \cite{vicente2003programming}.
 Running a suite of test cases helps detect many of the errors
 that lead to a crash of a program or that cause a logical failure \cite{wagner2005comparing}.
 However, simply testing a program is not enough. In order for the results
@@ -14,8 +13,8 @@ of a test suite \cite{gopinath2015mutation}. While there are an immense number
 of potential faults for a program, mutation testing primarily focuses on those
 which are close to the correct version with the expectation that they will
 be representative of all faults \cite{jia2011analysis}.
-Of the software testing methods, mutation testing has been empirically
-shown to be the most effective in detecting faults (PAPERS UNAVAILABLE) \cite{PAPERS UNAVAILABLE}.
+Of the software testing methods, mutation testing is widely considered the strongest
+test criterion in terms of finding the most faults \cite{ammann2008introduction}.
 
 Although mutation testing is the most effective in detecting faults, it possesses
 major drawbacks in the computational cost and amount of human interaction required, making it
@@ -26,145 +25,68 @@ set of mutants against the test suite has been proposed as a technique to reduce
 the cost of mutation testing \cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}.
 This reduction strategy is categorized by Offut and Untuch as a `do fewer' approach \cite{offutt2001mutation}.
 
-There are a number of mutant reduction techniques that can be categorized in this
-classification of do fewer. Two of these techniques are Mutant Sampling and Selective Mutation \cite{jia2011analysis, wong1995reducing, offutt1993experimental}.
-Mutant Sampling is the simplest reduction strategy, where a fraction of the mutants
-are chosen randomly \cite{wong1995reducing}. Selective Mutation, also called ``constrained mutation'',
+There are a number of mutant reduction techniques that can be categorized as do fewer approaches. Two of these techniques are Mutant Sampling and Selective Mutation \cite{jia2011analysis, wong1995reducing, offutt1993experimental}.
+Mutant Sampling is the simplest reduction strategy. Mutant Sampling is where a subset---containing a fraction of all mutants---is
+chosen randomly \cite{wong1995reducing}. Selective Mutation, also called ``constrained mutation'',
 reduces the number of mutants to be analysed by decreasing the operator count \cite{jia2011analysis, offutt1993experimental, mathur1991performance}.
 For each of these approaches, a threshold for the maximum number of mutants is set by an arbitrary \(x\%\).
 
 Work has been done in the realm of mutant reduction techniques to find the smallest $x$ that still produces
 a representative set of mutant \cite{jia2011analysis, mathur1994empirical}. Most of the work
 to minimize representative sets of mutants has been done by integrating an approach into
-mutation testing systems and performing mutation testing on each subset of mutants \cite{demillo1978hints, king1991fortran}.
+mutation testing systems and performing mutation testing on each subset of mutants \cite{demillo1988extended, king1991fortran}.
 
-While this way of testing reduction techniques is accurate, it is both
+While this way of evaluating reduction techniques is accurate, it is both
 expensive to implement and perform due to the number of times mutation testing
 needs to be executed on the reduced sets. Retrospectively studying the data
-collected from a single run of mutation testing has minimal upfront costs and obviates the need
-to understand the complexity of the target environment.
+collected from a single run of mutation testing is superior to implementing each
+approach into a mutation testing system because it has minimal upfront costs and obviates the need
+to understand the complexities of a target environment.
 
-\textit{Should I introduce the tool here or continue to motivate retrospective analysis?}
+Since studying the data retrospectively removes the need to fathom the complexities of a target environment,
+mutation testing can be extended to new domains (e.g., testing database schemas) \cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}.
+Testing that a relational database's schema has correctly specified integrity constraints is important
+because these constraints ensure that only valid data enters the database. However, little work has
+sought to test the integrity constraints of a relation database's schema.
 
-Relational databases are used as an efficient and reliable way to store large amounts of data in software
-systems from batting and pitching statistics of baseball players \cite{} to the fingerprints and scars
-of criminals \cite{}. Relational databases are unique because of their acceptance of relationships between
-data entries, as well as the strict structure of data, protecting correctness.
+Databases are utilized pervasively for storing everything from batting and pitching statistics of baseball
+players \cite{lahmanbaseball} to fingerprints, scars and tattoos of criminals \cite{ngi}.
+Although enterprise use of non-relational, or ``NoSQL'', databases is becoming more common,
+relational databases endure ubiquitously.
+Relational databases are an efficient and reliable way to store large amounts of data.
+The acceptance of relationships between data entries, as well as strict structural constraints
+upheld by the schema are what make relational databases unique.
 
+Relational databases are unique because of their acceptance of relationships between
+data entries, as well as strict structural constraints upheld by the schema for maintaining the integrity
+of the data.
+
+FORCE NEW PAGE?
 The database schema is the artifact responsible for specifying the data to be stored and
 how it should be structured into tables. A series of integrity constraints
 are what make the database schema able to ensure values are unique, present,
-subject to domain-specific conditions and maintain referential integrity \cite{mcminnvirtual}.
+subject to domain-specific conditions and maintain referential integrity \cite{mcminn2016virtual}.
+Although the database schema is the last line of defence for the data contained
+in a database, there has been little work to ensure that the integrity constraints
+of the schema have been correctly specified \cite{mcminn2015effectiveness}.
 
-a series of integrity constraints.
+The small amount of work testing database schema integrity constraints is not
+because of a sufficient understanding of the topic. The 941,910 questions posted on
+the technical question and answer website, StackExchange, indicate the demand for support
+with regards to database schemas.\footnote{http://goo.gl/eZF1mK} Therefore, ensuring that
+the schemas that are created are also tested is important in upholding the integrity
+of the data contained within the database.
 
-% Mutation testing is a well-known procedure for determining the quality of test
-% suites \cite{gopinath2015empirical}. Additionally, as McMinn et al. discovered, the quality of a database schema
-% can be determined through the use of mutation testing \cite{mcminn2015effectiveness}. In
-% this paper, I am using mutant data from performing mutation analysis on 34 well-known database schemas.
-%
-% Testing mutations---modified versions of source code containing faults---which is now
-% referred to as mutation testing, was originally proposed by Richard A. DeMillo et al.
-% in the 1970's \cite{demillo1978hints}. Each modified version of a program or schema contains
-% exactly one fault. The goal is to have each modified, or faulty, version of the source code
-% fail when executed against the tests \cite{offutt1993experimental}. If a test fails that was expected to fail
-% for the given input, then the fault has been exploited and the mutation, also referred to as a mutant,
-% was \textit{killed}. A mutant that has been killed is considered to be \textit{dead} and no
-% longer needs to remain in the testing process since the faults represented by this type of
-% mutant are confirmed as being detectable by the test suite \cite{offutt1993experimental}.
-% Conversely, if a test passes, then the fault was not exploited and is considered to remain
-% \textit{alive} and are analyzed in further testing \cite{mcminnvirtual}.
-%
-% After constructing all of the mutants for a given program, the user then adds the test cases
-% to a mutation testing system such as \texttt{MAJOR} \cite{just2011major} or
-% \texttt{Defects4J} \cite{just2014defects4j}. After adding the tests to a mutation testing system,
-% the user then needs to ensure that the output is correct. If the output is incorrect, then
-% a fault has been exploited and the mutant is considered to be killed \cite{offutt1993experimental}.
-% After all test cases have been executed against all of the live mutants, remaining mutants are either
-% considered to be \textit{equivalent} or the test cases are insufficient to kill that type of mutant \cite{gopinath2015empirical}. An equivalent
-% mutant always produces the same output as the original program, making it undetectable by any test. On the contrary, a mutant
-% is considered to be \textit{normal} if it is not equivalent.
-% Finally, a score representing the quality of a test suite or database schema---referred to as the mutation score for the test data---can be calculated.
+Mutation testing is versatile and can be used for detecting errors made by programmers in many domains.
+A domain that mutation testing has been more frequently utilized in recently is testing database
+schemas \cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}. However,
+again, due to its computation expense, it is not widely adopted in industry. Since we
+are able to use mutation testing, we can take advantage of the many
+existing reduction approaches \cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}.
 
-% \subsection{Calculating Mutation Score}
-% Mutation score, displayed in Equation \ref{eq:ms}, is the ratio of killed \textit{normal} faults, denoted $k$ to the total number of \textit{normal} faults \cite{wright2013efficient}.
-% The total number of normal mutants can be calculated by summing the number of normal mutants that are both killed and alive, denoted $k$ and $a$, repectively.
-% Equivalent mutants are excluded because, by definition, they cannot be detected by a unit test \cite{inozemtseva2014coverage}.
-%
-% \begin{equation}
-%     Mutation \, Score(k,a) = \frac{k}{k+a}
-%     \label{eq:ms}
-% \end{equation}
-%
-% Test data with a 100\% mutation score is said to be \textit{mutation adequate} \cite{offutt1993experimental}.
-% Mutation adequacy can mean one of two things: the test suite
-% or database schema is of high quality or the introduced faults are easily
-% discovered and are not stringent predictors of the test suite or schema's quality.
-
-% As previously noted, mutation testing is not able
-% to be used in practice due to its computational expense.
-% The primary computational cost is incurred from running the mutated versions
-% of the source code or database schema against the test cases or integrity
-% constraints \cite{offutt1993experimental}. Due to the fact that each generated
-% mutant needs to be run against at least one, possibly many, test cases, mutation
-% testing requires a large number of computations \cite{offutt1993experimental}.
-%
-% There has been a substantial amount of work to find a reduced approach
-% for performing mutation testing \cite{gopinath2015empirical, mcminnvirtual, gopinath2015mutation, offutt1993experimental}.
-% Offut and Untch categorize the existing mutation testing reduction approaches
-% into three categories: do \textit{fewer}, do \textit{smarter} and do \textit{faster} \cite{offutt1993experimental}.
-% In this paper, I am only focused on the do fewer categorization,
-% specifically, selective mutation testing.
-
-% \begin{figure*}[!ht]
-% \centering
-% \subfloat[Uniform random sampling]{\includegraphics[width=2.5in]{inventory_perc_v_ms}
-% \label{fig:iv_s}}
-% \hfil
-% \subfloat[Stratified random sampling over mutation operators]{\includegraphics[width=2.5in]{inventory_op_perc_v_ms}
-% \label{fig:iv_o}}
-% \caption{Comparing uniform random sampling to stratified random sampling over
-% mutation operators for the Inventory schema.}
-% \label{fig:comp}
-% \end{figure*}
-
-% Mathur suggests an approach to reducing the cost of performing mutation testing by
-% reducing the modified or mutant versions of the source code \cite{mathur1991performance}.
-% Gopinath et al. discuss two existing approaches for performing selective
-% mutation analysis. The two strategies are
-% sampling criteria and operator selection \cite{gopinath2015mutation}. Sampling criteria is where I am
-% currently focused, specifically on unified random sampling and stratified
-% random sampling over mutation operators.
-%
-% Uniform random sampling is the most trivial sampling approach, proposed by Timothy A. Budd,
-% where an arbitrary fraction of the full set of mutants is chosen \cite{budd1980mutation}.
-% Zhang et al. analyzed the performance of uniform random sampling as a reduction technique
-% and found that sampling as few as 5\% of mutants can be very highly correlated with the full mutation
-% score \cite{zhang2010operator, zhang2013operator}.
-%
-% Wong et al. first suggested sampling the same fraction of mutants from each operator, known as
-% stratified random sampling over mutation operators \cite{wong1995reducing}. It is similar
-% to uniform random sampling in the way that the same arbitrary fraction is applied. However,
-% instead of applying the fraction over all mutants for a schema, the fraction is applied for all operators. In other
-% words, the reduced set contains all possible operators, but only a fraction of the mutants
-% produced by that operator. Stratified random sampling over mutation operators is subtly different
-% from uniform random sampling because each operator is still present in the reduced set, where
-% in uniform random sampling this is not considered. For example, an operator that generates few
-% mutants compared to an operator that generates many mutants is less likely to have mutants represented
-% in the reduced set.
-%
-% At this point, these are the only reduction strategies present in my research and available for analyzation
-% with my tool. As time goes on and I implement more approaches, I will discuss them in further detail.
-
-\subsection{Importance of Testing Database Schemas}
-\subsection{Analysing Database Schema Mutants}
-refer to the AST2016 paper
-still computationally expensive\\
-able to utilize existing select approaches
-
-    Key Contributions:
+    In summary, the key contributions of this work are as follows:
     \begin{itemize}
         \item A tool to study mutant reduction techniques in retrospect.
-        \item Released as a free and open-source R package.
-        \item Accepts a generalised input format.
+        \item A tool that accepts a generalised input format.
+        \item A tool released as a free and open-source R package.
     \end{itemize}
