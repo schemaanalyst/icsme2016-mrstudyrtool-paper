@@ -26,7 +26,7 @@ the cost of mutation testing \cite{jia2011analysis, wong1995reducing, offutt1993
 This reduction strategy is categorized by Offut and Untuch as a `do fewer' approach \cite{offutt2001mutation}.
 
 There are a number of mutant reduction techniques that can be categorized as do fewer approaches. Two of these techniques are Mutant Sampling and Selective Mutation \cite{jia2011analysis, wong1995reducing, offutt1993experimental}.
-Mutant Sampling is the simplest reduction strategy. Mutant Sampling is where a subset---containing a fraction of all mutants---is
+Mutant Sampling is the simplest reduction strategy, where a subset---containing a fraction of all mutants---is
 chosen randomly \cite{wong1995reducing}. Selective Mutation, also called ``constrained mutation'',
 reduces the number of mutants to be analysed by decreasing the operator count \cite{jia2011analysis, offutt1993experimental, mathur1991performance}.
 For each of these approaches, a threshold for the maximum number of mutants is set by an arbitrary \(x\%\).
@@ -46,8 +46,8 @@ to understand the complexities of a target environment.
 Since studying the data retrospectively removes the need to fathom the complexities of a target environment,
 mutation testing can be extended to new domains (e.g., testing database schemas) \cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}.
 Testing that a relational database's schema has correctly specified integrity constraints is important
-because these constraints ensure that only valid data enters the database. However, little work has
-sought to test the integrity constraints of a relation database's schema.
+because these restrictions ensure that only valid data enters the database. However, little work has
+sought to test these integrity constraints \cite{mcminn2016virtual}.
 
 Databases are utilized pervasively for storing everything from batting and pitching statistics of baseball
 players \cite{lahmanbaseball} to fingerprints, scars and tattoos of criminals \cite{ngi}.
@@ -57,23 +57,18 @@ Relational databases are an efficient and reliable way to store large amounts of
 The acceptance of relationships between data entries, as well as strict structural constraints
 upheld by the schema are what make relational databases unique.
 
-Relational databases are unique because of their acceptance of relationships between
-data entries, as well as strict structural constraints upheld by the schema for maintaining the integrity
-of the data.
-
-FORCE NEW PAGE?
-The database schema is the artifact responsible for specifying the data to be stored and
+The database's schema is the artifact responsible for specifying the data to be stored and
 how it should be structured into tables. A series of integrity constraints
-are what make the database schema able to ensure values are unique, present,
+are what make the database's schema able to ensure values are unique, present,
 subject to domain-specific conditions and maintain referential integrity \cite{mcminn2016virtual}.
-Although the database schema is the last line of defence for the data contained
+Although the database's schema is the last line of defence for the data contained
 in a database, there has been little work to ensure that the integrity constraints
 of the schema have been correctly specified \cite{mcminn2015effectiveness}.
 
-The small amount of work testing database schema integrity constraints is not
+The small amount of work testing the integrity constraints of a database's schema is not
 because of a sufficient understanding of the topic. The 941,910 questions posted on
 the technical question and answer website, StackExchange, indicate the demand for support
-with regards to database schemas.\footnote{http://goo.gl/eZF1mK} Therefore, ensuring that
+of database schemas.\footnote{http://goo.gl/eZF1mK} Therefore, ensuring that
 the schemas that are created are also tested is important in upholding the integrity
 of the data contained within the database.
 
@@ -82,7 +77,26 @@ A domain that mutation testing has been more frequently utilized in recently is 
 schemas \cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}. However,
 again, due to its computation expense, it is not widely adopted in industry. Since we
 are able to use mutation testing, we can take advantage of the many
-existing reduction approaches \cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}.
+existing reduction approaches \cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}
+as well as this new notion of retrospective analysis.
+
+Retrospective analysis is substantially cheaper than applying an
+individual reduction strategy to mutation testing and then evaluating that
+approach. This is the case because the expense of mutation testing in
+retrospective analysis is incurred only once, rather than for
+every reduction technique. Analysing the effectiveness of an approach in a reflective fashion
+is possible because we collect all of the data necessary from
+the single execution of mutation testing. We introduce the
+first and only tool that analyses reduction techniques retrospectively
+in \mr.
+
+\mr is a tool for evaluating the effectiveness of mutation analysis reduction techniques
+in retrospect. Using data in a generalised format from a single execution of mutation testing, \mr
+employs each reduction strategy and performs calculations to determine the
+effectiveness. By accepting a generalised input format, \mr is capable of
+retrospectively analysing mutant reduction techniques from various domains.
+Additionally, \mr is modifiable, well-documented and has been released on
+GitHub under and open-source license.
 
     In summary, the key contributions of this work are as follows:
     \begin{itemize}
