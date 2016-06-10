@@ -1,0 +1,42 @@
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+% Define block styles used later
+
+\tikzstyle{sensor}=[text width=5em,
+    text centered, minimum height=2.5em]
+\tikzstyle{darksensor}=[draw, fill=black!10, text width=6em,
+    text centered, minimum height=2.5em,drop shadow]
+
+% Define distances for bordering
+\def\blockdist{1.5}
+\def\edgedist{2.5}
+
+\begin{figure}[t]
+  \centering
+\begin{tikzpicture}[thick,scale=0.85, every node/.style={scale=0.85}]
+    \node [] at (0, 5) (map) {\textbf{Mutation Analysis Process}};
+    \draw (-4, 4.75) -- (4, 4.75);
+    \node [sensor] at (0, 4) (m1) {Generate Mutants};
+    \node [sensor] at (0, 2.5) (m2) {Execute Generated Mutants};
+    \node [sensor] at (3.25, 3.25) (t1) {Mutation Testing};
+    \node [sensor] at (3.25, 1) (t2) {Retrospective Analysis};
+    \draw (2, 4.4) -- (2, 1.9);
+    \draw (1.7, 4.4) -- (2, 4.4);
+    \draw (1.7, 1.9) -- (2, 1.9);
+    \node [darksensor] at (0, 1) (m3) {Retrospective Analysis};
+    \draw (2, 1.7) -- (2, 0.25);
+    \draw (1.7, 1.7) -- (2, 1.7);
+    \draw (1.7, 0.25) -- (2, 0.25);
+
+    \path [draw, ->] (m1.south) -- node [above] {}
+        (m2.90);
+    \path [draw, ->] (m2.south) -- node [above] {}
+        (m3.90);
+    % \path [draw] (m1.east) -| +(0.3,0) |-node [above] {}
+    %     (m2.0);
+\end{tikzpicture}
+\caption{\label{fig:process}The phases of the mutation analysis process.}
+\end{figure}
