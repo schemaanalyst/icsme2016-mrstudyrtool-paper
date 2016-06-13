@@ -1,4 +1,34 @@
+\input{figures/mrstudyr}
+
 \section{\textit{mrstudyr}: Mutant Reduction Studier}
+
+Performing the entire mutation analysis process, displayed in Figure \ref{fig:process},
+is both expensive in terms of time and computational requirements. Figure
+\ref{fig:process} shows that the mutation testing phase of the mutation analysis
+process consists of generating and executing the mutants. The primary
+expense of the mutation analysis process is incurred in the mutation testing phase
+due to the large number of mutants generated---even for programs with few lines of code \cite{offutt2001mutation}.
+
+The next phase in the mutation analysis process is retrospective analysis. In this
+phase, mutants are found to either be dead or alive. Where a mutant is considered
+``dead''---or to have been killed---if when executing the modified version of the source
+code the output differed from the original version. Conversely, a mutant remains alive
+if the output from the modified version of the source code does not differ from the
+original version. More importantly, in this phase of the mutation analysis process,
+we are able to evaluate the effectiveness of various reduction techniques.
+
+By retrospectively analysing each reduction technique's effectiveness, we are
+able to avoid the cost of performing mutation testing more than once. To alleviate
+the additional executions, data needs to be collected
+from the first run. The data is then used as input to the \mr tool, displayed
+in Figure \ref{fig:mrstudyr}.
+
+The data, at the very least, needs to include the status of
+a mutant after testing (e.g., dead or alive), the type of mutant (e.g., normal, duplicate, equivalent, or stillborn)
+and the operator used. The data collected from mutation testing can include much
+more detail. An example of additional data that may be collected are the database
+management system or schema under test and the cost of generating each mutant.
+
 \subsection{Retrospective Policy Recommendation}
 what is meant by this subsection title?
 
@@ -7,6 +37,7 @@ what is meant by this subsection title?
 talk about why we chose to use R (hitchhiker's guide paper / SBST2016)\\
 talk about the importance of free and open-source software (Regression testing workshop paper)\\
 talk about why reproducibility is important (Regression testing workshop paper)
+
 
 \subsection{Generalised Input Format}
 not limited to a single domain / extensible
