@@ -22,7 +22,7 @@ able to avoid the cost of performing mutation testing more than once. To allevia
 the additional executions, data needs to be collected
 from the first run. Displayed in Figure \ref{fig:mrstudyr},
 the \mr tool uses the data collected from mutation testing to conduct further analyses
-regarding the effectiveness of reduction techniques.
+regarding the effectiveness of a reduction technique.
 
 The data, at the very least, needs to include the status of
 a mutant after testing (e.g., dead or alive), the type of mutant (e.g., normal, duplicate, equivalent, or stillborn)
@@ -30,12 +30,28 @@ and the operator used. In addition to the minimum requirements, the data can inc
 more detail about the mutants. An example of additional data that may be collected are the database
 management system or schema under test and the cost of generating each mutant.
 
-Talk about what is the data used for? \\
-refer back to Figure \\
-Talk about process shown in Figure
+As indicated previously, the \mr tool requires the status of a mutant after testing to be included
+in the data provided.
+Based on the number of dead and alive mutants after mutation testing,
+the \mr tool calculates and associates a mutation score with a set of mutants.
+The mutation score of a mutant set is a value representative of how well
+a test suite is at identifying and killing mutants. The \mr tool calculates the
+mutation scores for the non-reduced set of mutants and then later for each reduced set
+to determine how well a reduced set represents the original set in terms of ability to kill mutants.
+
+In order to calculate the effectiveness of a reduction technique, the technique
+must first be exercised on the data collected from mutation testing. The \mr tool
+performs the reduction techniques and returns the new, reduced mutant data,
+displayed in Figure \ref{fig:mrstudyr}. The effectiveness---how well a reduced set is able to represent
+the non-reduced set---of a reduction technique is then evaluated
+based on four metrics: mutation score, the correlation of the reduced and non-reduced sets' mutation scores
+and the mean absolute and root mean squared error.
+
+DO I FURTHER DISCUSS THESE METRICS HERE?? \\
+I think so.
 
 \subsection{Released as a Standardised R Package}
-\textit{note: do not innapropriately include too much detail}
+\textit{note: do not inappropriately include too much detail}
 talk about why we chose to use R (hitchhiker's guide paper / SBST2016)\\
 talk about the importance of free and open-source software (Regression testing workshop paper)\\
 talk about why reproducibility is important (Regression testing workshop paper)
