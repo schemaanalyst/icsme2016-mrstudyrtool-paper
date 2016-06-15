@@ -3,8 +3,8 @@
 \section{\textit{mrstudyr}: Mutant Reduction Studier}
 
 Performing the entire mutation analysis process, displayed in Figure \ref{fig:process},
-is both expensive in terms of time and computational requirements. Figure
-\ref{fig:process} shows that the mutation testing phase of the mutation analysis
+is both expensive in terms of time and computational requirements. The mutation testing
+phase, displayed in Figure \ref{fig:process}, of the mutation analysis
 process consists of generating and executing the mutants. The primary
 expense of the mutation analysis process is incurred in the mutation testing phase
 due to the large number of mutants generated---even for programs with few lines of code \cite{offutt2001mutation}.
@@ -20,17 +20,19 @@ we are able to evaluate the effectiveness of various reduction techniques.
 By retrospectively analysing each reduction technique's effectiveness, we are
 able to avoid the cost of performing mutation testing more than once. To alleviate
 the additional executions, data needs to be collected
-from the first run. The data is then used as input to the \mr tool, displayed
-in Figure \ref{fig:mrstudyr}.
+from the first run. Displayed in Figure \ref{fig:mrstudyr},
+the \mr tool uses the data collected from mutation testing to conduct further analyses
+regarding the effectiveness of reduction techniques.
 
 The data, at the very least, needs to include the status of
 a mutant after testing (e.g., dead or alive), the type of mutant (e.g., normal, duplicate, equivalent, or stillborn)
-and the operator used. The data collected from mutation testing can include much
-more detail. An example of additional data that may be collected are the database
+and the operator used. In addition to the minimum requirements, the data can include much
+more detail about the mutants. An example of additional data that may be collected are the database
 management system or schema under test and the cost of generating each mutant.
 
-\subsection{Retrospective Policy Recommendation}
-what is meant by this subsection title?
+Talk about what is the data used for? \\
+refer back to Figure \\
+Talk about process shown in Figure
 
 \subsection{Released as a Standardised R Package}
 \textit{note: do not innapropriately include too much detail}
