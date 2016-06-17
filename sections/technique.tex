@@ -46,7 +46,7 @@ performs the reduction techniques and returns the new, reduced mutant data,
 displayed in Figure \ref{fig:mrstudyr}. The effectiveness---how well a reduced set is able to represent
 the non-reduced set---of a reduction technique is then evaluated
 based on five metrics: mutation score, the correlation of the reduced and non-reduced sets' mutation scores,
-the size of the reduction (a percentage) and the mean absolute and root mean squared error.
+the scale of creation-cost reduction and the mean absolute and root mean squared error.
 
 These five evaluation metrics help determine how representative each reduced
 set is of the non-reduced set of mutants. Mutation score is calculated
@@ -62,20 +62,23 @@ Guildford scale to describe correlation values between sets, with the absolute v
 of a coefficient being described as ``low'', ``moderate'', ``high'' or ``very high'' when
 it is less than 0.4, between 0.4 and 0.7, ranging from 0.7 to 0.9 or 0.9 and above, respectively \cite{inozemtseva2014coverage}.
 
-Next, a percentage representing the magnitude of diminution in the cost of creating the mutants between the non-reduced
-and reduced sets is calculated. This percentage is calculated by subtracting
-the cost of creating the reduced set from the cost of the non-reduced set, then
-dividing that value by the cost of creating the non-reduced set. This helps
-determine whether performing a reduction technique is worth it---even if the
+Next, a value representing the magnitude of diminution in the cost of creating the mutants between the non-reduced
+and reduced set is calculated. This value is calculated by subtracting
+the cost of creating the reduced set from the cost of creating all mutants. Then
+dividing that value by the cost of creating all mutants. This helps
+determine whether it is worth performing a reduction technique---even if the
 reduced set has a very highly correlated mutation score with the non-reduced set.
 
 Finally, we chose to calculate both mean absolute (MAE) and root mean squared errors (RMSE) giving equal weight to
-all errors and extra weight to larger errors, respectively. This allowed
-us to see the deviation between the mutation scores of the reduced and
+all errors and extra weight to larger errors, respectively. This provides
+us with the ability to see the deviation between the mutation score of the reduced and
 non-reduced set for a given reduction technique. By using both MAE and RMSE,
-we are able to calculate the deviation in mutation scores for the reduced and
-non-reduced sets, but those scores deviating greatly from the non-reduced
-set's mutation score were exposed.
+we are able to calculate the error for the mutation score of the reduced sets
+where MAE provides a high-level error RMSE emphasises large errors.
+
+As noted with the ``Kendall'' R package and is also true for the ``Metric'' R Package, which
+encompasses both MAE and RMSE calculations, they are freely available and easily adopted being
+that they are R packages.
 
 \subsection{Released as a Standardised R Package}
 \textit{note: do not inappropriately include too much detail}
