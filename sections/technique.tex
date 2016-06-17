@@ -26,7 +26,7 @@ regarding the effectiveness of a reduction technique.
 
 The data, at the very least, needs to include the status of
 a mutant after testing (e.g., dead or alive), the type of mutant (e.g., normal, duplicate, equivalent, or stillborn)
-and the operator used. In addition to the minimum requirements, the data can include much
+and the mutation operators used. In addition to the minimum requirements, the data can include much
 more detail about the mutants. An example of additional data that may be collected are the database
 management system or schema under test and the cost of generating each mutant.
 
@@ -34,21 +34,48 @@ As indicated previously, the \mr tool requires the status of a mutant after test
 in the data provided.
 Based on the number of dead and alive mutants after mutation testing,
 the \mr tool calculates and associates a mutation score with a set of mutants.
-The mutation score of a mutant set is a value representative of how well
-a test suite is at identifying and killing mutants. The \mr tool calculates the
-mutation scores for the non-reduced set of mutants and then later for each reduced set
-to determine how well a reduced set represents the original set in terms of ability to kill mutants.
+The mutation score associated with a mutant set is a value representative of how well
+the test suite is at identifying and killing mutants in that set. The \mr tool first calculates the
+mutation score for the non-reduced set of mutants and then later for each reduced set. The mutation
+score for the non-reduced set of mutants is used as a baseline for determining
+how well each reduction technique performs.
 
 In order to calculate the effectiveness of a reduction technique, the technique
 must first be exercised on the data collected from mutation testing. The \mr tool
 performs the reduction techniques and returns the new, reduced mutant data,
 displayed in Figure \ref{fig:mrstudyr}. The effectiveness---how well a reduced set is able to represent
 the non-reduced set---of a reduction technique is then evaluated
-based on four metrics: mutation score, the correlation of the reduced and non-reduced sets' mutation scores
-and the mean absolute and root mean squared error.
+based on five metrics: mutation score, the correlation of the reduced and non-reduced sets' mutation scores,
+the size of the reduction (a percentage) and the mean absolute and root mean squared error.
 
-DO I FURTHER DISCUSS THESE METRICS HERE?? \\
-I think so.
+These five evaluation metrics help determine how representative each reduced
+set is of the non-reduced set of mutants. Mutation score is calculated
+by dividing the number of killed mutants over the total number of normal---not
+equivalent, duplicate or stillborn---mutants. Then, as provided by the ``Kendal'' R package,
+we use Kendall's $\tau_b$ correlation coefficient---because of its tie-awareness---to
+determine the correlation value between mutation scores of the non-reduced and reduced sets \cite{mcleod2005kendall}.
+
+Kendall's $\tau_b$ returns a measurement of correlation between -1 and 1, meaning that
+there is a strong negative or positive correlation between two sets, respectively. A value
+of 0 means that there is no correlation between the sets. Additionally, we adopt the
+Guildford scale to describe correlation values between sets, with the absolute value
+of a coefficient being described as ``low'', ``moderate'', ``high'' or ``very high'' when
+it is less than 0.4, between 0.4 and 0.7, ranging from 0.7 to 0.9 or 0.9 and above, respectively \cite{inozemtseva2014coverage}.
+
+Next, a percentage representing the magnitude of diminution in the cost of creating the mutants between the non-reduced
+and reduced sets is calculated. This percentage is calculated by subtracting
+the cost of creating the reduced set from the cost of the non-reduced set, then
+dividing that value by the cost of creating the non-reduced set. This helps
+determine whether performing a reduction technique is worth it---even if the
+reduced set has a very highly correlated mutation score with the non-reduced set.
+
+Finally, we chose to calculate both mean absolute (MAE) and root mean squared errors (RMSE) giving equal weight to
+all errors and extra weight to larger errors, respectively. This allowed
+us to see the deviation between the mutation scores of the reduced and
+non-reduced set for a given reduction technique. By using both MAE and RMSE,
+we are able to calculate the deviation in mutation scores for the reduced and
+non-reduced sets, but those scores deviating greatly from the non-reduced
+set's mutation score were exposed.
 
 \subsection{Released as a Standardised R Package}
 \textit{note: do not inappropriately include too much detail}
