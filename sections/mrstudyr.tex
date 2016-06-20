@@ -1,0 +1,105 @@
+\input{figures/mrstudyr}
+
+\section{\textit{mrstudyr}: Mutant Reduction Studier}
+
+Performing the entire mutation analysis process, displayed in Figure \ref{fig:process},
+is both computationally expensive and time consuming. The mutation testing
+phase, displayed in Figure \ref{fig:process}, of the mutation analysis
+process consists of generating and executing mutated versions of source code. The primary
+expense of the mutation analysis process is incurred in the mutation testing phase
+due to the large number of generated mutants---even for programs with few lines of code \cite{offutt2001mutation}.
+
+The next phase in the mutation analysis process is retrospective analysis. In this
+phase, mutants are identified as dead or alive. Where a mutant is considered
+``dead''---or to have been killed---if when executing the modified version of the source
+code the output differed from the original version. Conversely, a mutant remains alive
+if the output from the modified version of the source code does not differ from the
+original version. More importantly, in this phase of the mutation analysis process,
+we are able to evaluate the effectiveness of various reduction techniques.
+
+By retrospectively analysing each reduction technique's effectiveness, we are
+able to avoid the cost of performing mutation testing more than once. To alleviate
+the additional executions, data from the mutation testing phase needs to be collected.
+Displayed in Figure \ref{fig:mrstudyr},
+the \mr tool uses the data collected from mutation testing to conduct further analyses
+regarding the effectiveness of a reduction technique.
+
+The data, at the very least, must  include the status of
+a mutant after testing (e.g., dead or alive), the type of mutant (e.g., normal, duplicate, equivalent, or stillborn)
+and the mutation operator used for each mutant. In addition to the minimum requirements, the data can include
+more detail about each mutant. For example additional data that may be collected when performing mutation testing
+on a database are the database
+management system or schema under test and the cost of generating each mutant.
+
+As indicated previously, the status of a mutant after testing must be provided
+in the input data to the \mr tool.
+Based on the number of dead and alive mutants after mutation testing,
+the \mr tool calculates and associates a mutation score with a set of mutants.
+The mutation score associated with a mutant set is a value representative of how well
+the test suite is at identifying and killing the mutants included in that set.
+The \mr tool first calculates the
+mutation score for the non-reduced set of mutants and then later for each reduced set. The mutation
+score for the non-reduced mutant set is used as a baseline for determining
+each reduced set's performance.
+
+In order to calculate the effectiveness of a reduction technique, the technique
+must first be exercised on the data collected from mutation testing. The \mr tool
+performs each reduction technique returning a new, reduced mutant set,
+displayed in Figure \ref{fig:mrstudyr}. The effectiveness of a reduction technique is then evaluated
+based on five metrics: mutation score, the correlation of the reduced and non-reduced sets' mutation scores,
+the scale of creation-cost reduction and the mean absolute and root mean squared error.
+
+These five evaluation metrics help determine how representative each reduced
+set is of the non-reduced set of mutants. Mutation score is calculated
+by dividing the number of killed mutants over the total number of normal---not
+equivalent, duplicate or stillborn---mutants. Then, as provided by the ``Kendal'' R package,
+we use Kendall's $\tau_b$ correlation coefficient---because of its tie-awareness---to
+determine the correlation value between mutation scores of the non-reduced and reduced sets \cite{mcleod2005kendall}.
+
+Kendall's $\tau_b$ returns a measurement of correlation between -1 and 1, representing
+a strong negative or positive correlation between two sets, respectively. A return value
+of 0 means that there is no correlation between the sets. Additionally, we adopt the
+Guildford scale to describe correlation values between sets, with the absolute value
+of a coefficient being described as ``low'', ``moderate'', ``high'' or ``very high'' when
+it is less than 0.4, between 0.4 and 0.7, ranging from 0.7 to 0.9 or 0.9 and above, respectively \cite{inozemtseva2014coverage}.
+
+Next, a value representing the magnitude of diminution in the cost of
+creating the mutants between the entire set
+and reduced set is calculated. This value is calculated by subtracting
+the cost of creating the reduced set from the cost of creating all mutants. Then
+dividing that value by the cost of creating all mutants. This helps
+determine whether it is worth performing a reduction technique---even if the
+reduced set has a very highly correlated mutation score with the non-reduced set.
+
+Finally, we chose to calculate both mean absolute (MAE) and root mean
+squared errors (RMSE) giving equal weight to
+all errors and extra weight to larger errors, respectively. This provides
+us with the ability to see the deviation between the mutation score of the reduced and
+non-reduced set for a given reduction technique. By using both MAE and RMSE,
+we are able to calculate the error in the mutation score for each reduced set
+at a high-level with MAE and with an emphasis where large deviations occur by using RMSE.
+
+The R programming language for statistical data analysis was specifically designed to
+be a full statistical language for conducting empirical studies. Following its predecessor, the S programming
+language, R is a powerful means for data analysts to express computations \cite{ihaka1996r}.
+Additionally, in R, the fundamental way to share code is via a package.
+
+Both the ``Kendall'' package and the ``Metric'' package---which includes
+the MAE and RMSE calculation---are freely available and easily adopted because
+they have been released as standardised R packages.
+
+An R package includes code, data, documentation, tests and are easy to distribute \cite{wickham2015r}.
+For example, installing the \mr tool requires a mere three commands in the R console---assuming R installed on the host machine.
+First, \texttt{install.packages("devtools")}, then \texttt{library(devtools)} to install and load the \texttt{devtools}\footnote{https://goo.gl/Je5EO2} package, respectively.
+The \texttt{devtools} package provides a framework for easily creating a package and maintaining it throughout the development process.
+Finally, to obtain the \mr\footnote{https://github.com/mccurdyc/mrstudyr} tool, use the \texttt{devtools} package to install it
+from the popular Git repository hosting service, GitHub\footnote{https://github.com/}, using the following command \texttt{devtools::install\_github("mccurdyc/mrstudyr")}.
+In addition to being easy to install, the \mr tool accepts a generalised input format making
+it extensible to various domains.
+
+Accepting a generalised input format allows the \mr tool to be used to retrospectively analyse mutation testing
+data from familiar and also emerging domains, such as databases. Although mutation
+testing can be utilized in various domains, similar data can be collected from any
+domain (e.g., mutation operators, mutant statuses, type of mutant). While more data
+can optionally be collected from mutation testing, the additional data is more
+dependent on the domain under observation.
