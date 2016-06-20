@@ -1,0 +1,38 @@
+\subsection{Effectiveness Calculations with \mr}
+
+In order to calculate the effectiveness of a reduction technique, the technique
+must first be exercised on the data collected from mutation testing. The \mr tool
+performs each reduction technique returning a new, reduced mutant set,
+displayed in Figure \ref{fig:mrstudyr}. The effectiveness of a reduction technique is then evaluated
+based on five metrics: mutation score, the correlation of the reduced and non-reduced sets' mutation scores,
+the scale of creation-cost reduction and the mean absolute and root mean squared error.
+
+These five evaluation metrics help determine how representative each reduced
+set is of the non-reduced set of mutants. Mutation score is calculated
+by dividing the number of killed mutants over the total number of normal---not
+equivalent, duplicate or stillborn---mutants. Then, as provided by the ``Kendal'' R package,
+we use Kendall's $\tau_b$ correlation coefficient---because of its tie-awareness---to
+determine the correlation value between mutation scores of the non-reduced and reduced sets \cite{mcleod2005kendall}.
+
+Kendall's $\tau_b$ returns a measurement of correlation between -1 and 1, representing
+a strong negative or positive correlation between two sets, respectively. A return value
+of 0 means that there is no correlation between the sets. Additionally, we adopt the
+Guildford scale to describe correlation values between sets, with the absolute value
+of a coefficient being described as ``low'', ``moderate'', ``high'' or ``very high'' when
+it is less than 0.4, between 0.4 and 0.7, ranging from 0.7 to 0.9 or 0.9 and above, respectively \cite{inozemtseva2014coverage}.
+
+Next, a value representing the magnitude of diminution in the cost of
+creating the mutants between the entire set
+and reduced set is calculated. This value is calculated by subtracting
+the cost of creating the reduced set from the cost of creating all mutants. Then
+dividing that value by the cost of creating all mutants. This helps
+determine whether it is worth performing a reduction technique---even if the
+reduced set has a very highly correlated mutation score with the non-reduced set.
+
+Finally, we chose to calculate both mean absolute (MAE) and root mean
+squared errors (RMSE) giving equal weight to
+all errors and extra weight to larger errors, respectively. This provides
+us with the ability to see the deviation between the mutation score of the reduced and
+non-reduced set for a given reduction technique. By using both MAE and RMSE,
+we are able to calculate the error in the mutation score for each reduced set
+at a high-level with MAE and with an emphasis where large deviations occur by using RMSE.

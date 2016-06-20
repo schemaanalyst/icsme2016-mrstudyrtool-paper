@@ -1,0 +1,25 @@
+\subsection{Implementation}
+
+The R programming language for statistical data analysis was specifically designed to
+be a full statistical language for conducting empirical studies. Following its predecessor, the S programming
+language, R is a powerful means for data analysts to express computations \cite{ihaka1996r}.
+Additionally, in R, the fundamental way to share code is via a package.
+
+An R package includes code, data, documentation, tests and are easy to distribute \cite{wickham2015r}.
+Since the \mr tool has been released as and R package, installing the tool requires three simple
+commands in the R console. First, \texttt{install.packages("devtools")}, then \texttt{library(devtools)}
+to install and load the \texttt{devtools}\footnote{https://goo.gl/Je5EO2} package, respectively.
+The \texttt{devtools} package is necessary because it provides a framework for easily creating a package
+and maintaining it throughout the development process. Finally, to obtain the
+\mr\footnote{https://github.com/mccurdyc/mrstudyr} tool, use the \texttt{devtools} package to install it
+from the popular Git repository hosting service, GitHub\footnote{https://github.com/},
+using the following command \texttt{devtools::install\_github("mccurdyc/mrstudyr")}. In addition
+to being easy to install, the \mr tool accepts a generalised input format making
+it extensible to various domains.
+
+Accepting a generalised input format allows the \mr tool to be used to retrospectively analyse mutation testing
+data from familiar and also emerging domains, such as databases. Although mutation
+testing can be utilized in various domains, similar data can be collected from any
+domain (e.g., mutation operators, mutant statuses, type of mutant). While more data
+can optionally be collected from mutation testing, the additional data is more
+dependent on the domain under observation.

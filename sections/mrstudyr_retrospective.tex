@@ -1,0 +1,16 @@
+\subsection{Retrospective Analysis with \mr}
+
+The next phase in the mutation analysis process is retrospective analysis. In this
+phase, mutants are identified as dead or alive. Where a mutant is considered
+``dead''---or to have been killed---if when executing the modified version of the source
+code the output differed from the original version. Conversely, a mutant remains alive
+if the output from the modified version of the source code does not differ from the
+original version. More importantly, in this phase of the mutation analysis process,
+we are able to evaluate the effectiveness of various reduction techniques.
+
+By retrospectively analysing each reduction technique's effectiveness, we are
+able to avoid the cost of performing mutation testing more than once. To alleviate
+the additional executions, data from the mutation testing phase needs to be collected.
+Displayed in Figure \ref{fig:mrstudyr},
+the \mr tool uses the data collected from mutation testing to conduct further analyses
+regarding the effectiveness of a reduction technique.
