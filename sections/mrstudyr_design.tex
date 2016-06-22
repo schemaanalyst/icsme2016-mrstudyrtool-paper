@@ -1,5 +1,20 @@
 \subsection{Tool Design}
-$x\%$ random selection with $x$ increasing by 10 \\
-continue discussing why we chose 10\% increments (refer to one paper from annotated bib)
-30 trials
+
+The \mr tool was designed for empirically studying the effects of various $x\%$ for
+the two aforementioned reduction techniques in Mutant Sampling and Uniform Sampling Over Mutation Operators.
+Where Wong and Mathur in their studies \cite{mathur1994empirical}, \cite{wong1993mutation} conducted
+an experiment using random sampling with $x$ from $10\%$ to $40\%$ increasing by steps of $5\%$, we
+chose to start $x$ at $10\%$ and increase by intervals $10\%$ up to $90\%$. By increasing by $10\%$ intervals instead of
+by $1\%$ or $5\%$, we are able to reduce the cost of performing the retrospective analysis.
+
+While reducing the costs of performing the retrospective analysis were a primary concern, it does not
+outweigh producing accurate results. Although we conducted our experiments with $x$ increasing by
+$10\%$ intervals, we did not see a significant enough loss in accuracy and in the amount of data collected to make
+it worth running the additional trials for with the smaller intervals (i.e. $1\%$ or $5\%$).
+
+When it came to determining the number of trials necessary for each configuration, we followed
+the recommendations of Traeger et al. and Arcuri, by running 30 trials \cite{traeger2008nine, arcuri2014hitchhiker}.
+The general rule in many fields of science is to at least perform 30 observations to show with high confidence
+that the obtained results are statistically significant and to allow for the results to approximate a normal
+distribution.
 
