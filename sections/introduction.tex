@@ -25,11 +25,16 @@ set of mutants against the test suite has been proposed as a technique to reduce
 the cost of mutation testing \cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}.
 This reduction strategy is categorized by Offut and Untuch as a `do fewer' approach \cite{offutt2001mutation}.
 
-There are a number of mutant reduction techniques that can be categorized as do fewer approaches. Two of these techniques are Mutant Sampling and Selective Mutation \cite{jia2011analysis, wong1995reducing, offutt1993experimental}.
-Mutant Sampling is the simplest reduction strategy, where a subset---containing a fraction of all mutants---is
-chosen randomly \cite{wong1995reducing}. Selective Mutation, also called ``constrained mutation'',
-reduces the number of mutants to be analysed by decreasing the operator count \cite{jia2011analysis, offutt1993experimental, mathur1991performance}.
-For each of these approaches, a threshold for the maximum number of mutants is set by an arbitrary \(x\%\).
+There are a number of mutant reduction techniques that can be categorized as do fewer approaches.
+Mutant Sampling is the simplest reduction strategy within this cateforization, where a subset---containing a fraction of all mutants---is
+chosen randomly ~\cite{wong1995reducing}.
+Due to its simplicity, mutant sampling is considered to be the most cost-effective reduction technique by avoiding implementation complexities ~\cite{gopinath2015mutation}.
+Although it is simple to implement, mutant sampling has still been empirically shown to outperform selective mutation---another well-known reduction technique ~\cite{zhang2010operator}.
+
+Two sub-techniques withing mutant sampling are uniform random sampling and sampling over operators.
+For each of these sub-techniques, a threshold for the maximum number of mutants is set by an arbitrary \(x\%\).
+This $x\%$ is either applied to the entire set of mutants or each set of mutants subsumed under an operator for uniform random sampling or
+sampling over operators, respectively ~\cite{gopinath2015empirical, gopinath2015mutation}.
 
 Work has been done in the realm of mutant reduction techniques to find the smallest $x$ that still produces
 a representative set of mutant \cite{jia2011analysis, mathur1994empirical}. Most of the work
@@ -50,7 +55,7 @@ because these restrictions ensure that only valid data enters the database. Howe
 sought to test these integrity constraints \cite{mcminn2016virtual}.
 
 Databases are utilized pervasively for storing everything from batting and pitching statistics of baseball
-players \cite{lahmanbaseball} to fingerprints, scars and tattoos of criminals \cite{ngi}.
+players \cite{lahmanbaseball} to fingerprints and scars of criminals \cite{ngi}.
 Although enterprise use of non-relational, or ``NoSQL'', databases is becoming more common,
 relational databases endure ubiquitously.
 Relational databases are an efficient and reliable way to store large amounts of data.
