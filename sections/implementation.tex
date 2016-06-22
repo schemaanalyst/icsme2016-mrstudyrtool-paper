@@ -6,15 +6,16 @@ language, R is a powerful means for data analysts to express computations \cite{
 Additionally, in R, the fundamental way to share code is via a package.
 
 An R package includes code, data, documentation, tests and are easy to distribute \cite{wickham2015r}.
-Since the \mr tool has been released as and R package, three commands in the R console
-is all that are need to install the tool.
+Since the \mr tool has been released as an R package, four commands in the R console
+is all that is needed to install the tool.
 First, \texttt{install.packages("devtools")}, then \texttt{library(devtools)}
 to install and load the \texttt{devtools}\cite{devtools} package, respectively.
 The \texttt{devtools} package is necessary because it provides a framework for installing
 and maintaining the tool. Finally, to obtain the
-\mr\hspace*{-1em}\cite{mrstudyr} tool, use the \texttt{devtools} package to install it
+\mr\cite{mrstudyr} tool itself, use the \texttt{devtools} package to install it
 from the popular Git repository hosting service, GitHub\cite{github},
-using the following command: {\small\texttt{devtools::install\_github("mccurdyc/mrstudyr")}}.
+using the following command: {\small\texttt{devtools::install\_github("mccurdyc/mrstudyr")}}
+and then load it using \texttt{library(mrstudyr)}.
 In addition to being easy to install, the \mr tool accepts a generalised input format making
 it extensible to various domains.
 
