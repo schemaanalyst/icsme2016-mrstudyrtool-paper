@@ -1,13 +1,15 @@
 \begin{abstract}
     Mutation testing is a well-known method for measuring a test suite's quality.
-    However, due to its computational expense and demand for human interaction,
+    However, due to its computational expense and intrinsic difficulties (e.g.,
+    detecting equivalent mutants, checking the original program's output with each test case),
     mutation testing is often infeasible in practice. To control the demands of
-    mutation testing, various reduction strategies have been proposed.
+    mutation testing, various reduction strategies have been proposed
+    (e.g., Mutant Sampling, Selective Mutation).
     Although reduction techniques for mutation testing have been described
     in written form, a tool for retrospectively analysing the performance of
-    an approach is not available.
+    the approaches is not available.
     Instead of integrating every reduction approach into an existing mutation testing system and
-    individually executing each one, we apply each approach to the data
+    individually executing each one, we evaluate an approach on the data
     collected from a single execution of the entire mutant set.
     We provide a tool, \mr, which enables this retrospective
     comparison of effectiveness for existing mutation testing reduction techniques.
