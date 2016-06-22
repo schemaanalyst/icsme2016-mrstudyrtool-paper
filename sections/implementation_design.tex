@@ -1,5 +1,13 @@
 \subsection{Tool Design}
 
+The \mr tool accepts a generalised input format which enables it to be used to retrospectively analyse mutation testing
+data from programs and also emerging domains, such as databases. Although what is being tested in domains may differ,
+similar data can be collected (e.g., mutation operators, mutant killed statuses, type of mutant). While more data
+can optionally be collected from mutation testing, the additional data is more
+dependent on the domain under observation. Additional sample data included in Table \ref{tbl:study-data} are
+the unique identifier for the configuration of DBMS and schema (Indentifier),
+the database management system under test (DBMS), the database schema (Schema) and the creation time of a mutant (Time).
+
 The \mr tool was designed to empirically study the effectiveness of
 various reduction techniques. The two reduction techniques mentioned earlier---uniform random sampling
 and uniform random sampling over operators---require an arbitrary percentage, $x$, to be chosen as the maximum threshold
@@ -23,4 +31,5 @@ The general rule in many fields of science is to at least perform 30 observation
 that the obtained results are statistically significant and to allow for the results to approximate a normal
 distribution.
 
-\input{tables/schemas}
+% \input{tables/schemas}
+
