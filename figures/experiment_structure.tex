@@ -1,0 +1,54 @@
+\begin{figure}
+\centering
+
+\scalebox{\algorithmfigurescalefactor}{
+\begin{tabular}{|l|}
+\hline
+
+\begin{tabular}{l}
+\vspace{-2ex} \\
+
+{\bf function} analyse\_\textit{redudction\_technique\_name}($data$) \\
+
+\atab {\bf where} \\
+\atab \atab \tinybullet $data$ is data collected from performing mutation testing \\
+
+\atab {\it // Iterate over all schemas:} \\
+\atab {\bf for} $s \in $ list($schemas$) \smallvspace \\
+
+\hspace{1em} \atab {\it // Iterate over the chosen $x$ values:} \\
+\hspace{1em} \atab {\bf for} $i \in $ list($x\_values$) \smallvspace \\
+
+\hspace{3em} \atab {\it // For 30 trials:} \\
+\hspace{3em} \atab {\bf for} $j \in $ 1:30 \smallvspace \\
+
+\hspace{4em} \atab {\it // Perform reduction technique on data:} \\
+\hspace{4em} \atab {select\_k\_percent \it optionally (\_per\_operator)} \smallvspace \\
+
+\hspace{4em} \atab {\it // Perform effectiveness calculations:} \\
+\hspace{4em} \atab {analyse\_mutation\_score}\smallvspace \\
+\hspace{4em} \atab {analyse\_correlation}\smallvspace \\
+\hspace{4em} \atab {analyse\_percents\_error}\smallvspace \\
+
+\hspace{4em} \atab {\it // Append rows to a dataframe:} \\
+\hspace{4em} \atab {\bf let} $df \leftarrow$ dataframe\smallvspace \\
+
+\atab {\bf return} $df$ \smallvspace \\
+
+{\bf end function} \\
+\vspace{-0.5em} \\
+
+\end{tabular} \\
+
+\hline
+\end{tabular}}
+
+% NOTE: I have reduced the length of the main caption and then expanded the subcaption. This is now in line with what is
+% in the captions for the graphs, a style which I adapted from the code that CJW originally wrote.
+
+
+\caption{\label{fig:experiment-structure} High-level experiment function structure.}
+
+\vspace{-.75em}
+\end{figure}
+
