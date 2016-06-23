@@ -1,46 +1,5 @@
 \documentclass[conference]{IEEEtran}
 
-% Packages that Colton added:
-\usepackage{tikz}
-\usetikzlibrary{shapes,arrows,shadows,positioning,calc}
-\usepackage{listings}
-\usepackage{xspace}
-\usepackage{balance}
-\usepackage{adjustbox}
-\usepackage{array}
-\usepackage{booktabs}
-\usepackage{hhline}
-\usepackage{multirow}
-
-
-\lstset{
-basicstyle=\small\ttfamily,
-columns=flexible,
-breaklines=true
-}
-\usepackage{hhline}
-
-% Textual shortcuts
-\newcommand{\mr}{{\it mrstudyr}\xspace}
-\newcommand{\MR}{\mr}
-\newcommand{\mrstudyr}{\mr}
-
-% commands
-%% Rotated table column type
-\newcolumntype{R}[2]{%
-    >{\adjustbox{minipage=6em,angle=#1,lap=\width-(#2)}\bgroup}%
-    l%
-    <{\egroup}%
-}
-\newcommand*\rot{\multicolumn{1}{R{60}{1.5em}}}
-
-%% To help ensure consistent float scaling
-\def \algorithmfigurescalefactor {0.7}
-\def \tablescalefactor {0.85}
-\def \inlinescalefactor {0.82}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % *** GRAPHICS RELATED PACKAGES ***
 \ifCLASSINFOpdf
   \usepackage{graphicx}

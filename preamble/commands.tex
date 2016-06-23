@@ -1,0 +1,77 @@
+%!TEX root=../icsme2016-mrstudyr.tex
+
+\newcommand{\mannwhitney}{Mann--Whitney {\it U} test\xspace}
+\newcommand{\wilcoxon}{Wilcoxon rank-sum test\xspace}
+\newcommand{\pvalue}{{\it p}-value\xspace}
+\newcommand{\bfpvalue}{\textbf{\textit{p}-value}\xspace}
+\newcommand{\atwelve}{\^{A}\textsubscript{12}\xspace}
+\newcommand{\bfatwelve}{\textbf{\textit{\^{A}}}$\mathbf{_{12}}$\xspace}
+\newcommand{\taub}{{\large$\tau_{b}$}}
+
+\newcommand{\etal}{et al.\xspace}
+
+% Textual shortcuts
+\newcommand{\mr}{{\it mrstudyr}\xspace}
+\newcommand{\MR}{\mr}
+\newcommand{\mrstudyr}{\mr}
+
+% Floats
+\newcommand{\Figure}[1]{Figure~\ref{#1}\xspace}
+\newcommand{\Section}[1]{Section~\ref{#1}\xspace}
+\newcommand{\Table}[1]{Table~\ref{#1}\xspace}
+
+%% To help ensure consistent float scaling
+\def \algorithmfigurescalefactor {0.7}
+\def \tablescalefactor {0.85}
+\def \inlinescalefactor {0.82}
+
+%% Rotated table column type
+\newcolumntype{R}[2]{%
+    >{\adjustbox{minipage=6em,angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand*\rot{\multicolumn{1}{R{60}{1.5em}}}
+
+%% Highlight command for coloured highlight in listings
+\newcommand{\reducedstrut}{\vrule width 0pt height \ht\strutbox depth \dp\strutbox\relax}
+\newcommand{\highlight}[1]{%
+  \begingroup
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{red!20}{\reducedstrut#1\/}%
+  \endgroup
+}
+
+% Equations
+\newcommand{\relnull}{\sql{NULL}}
+\newcommand{\eqnull}{= \relnull}
+\newcommand{\existsinrel}[2]{\exists \inrel{#1}{#2}}
+\newcommand{\forallinrel}[2]{\forall \inrel{#1}{#2}}
+\newcommand{\inrel}[2]{#1 \in \: #2}
+\newcommand{\neqnull}{\neq \relnull}
+\newcommand{\select}[2]{#1 (#2)}
+\newcommand{\selecteqnull}[2]{\select{#1}{#2} \eqnull}
+\newcommand{\selectneqnull}[2]{\select{#1}{#2} \neqnull}
+\newcommand{\selectneq}[3]{\select{#1}{#3} \: \neq \: \select{#2}{#3}}
+\newcommand{\selecteq}[3]{\select{#1}{#3} \: = \: \select{#2}{#3}}
+\newcommand{\selecteqexp}[4]{\select{#1}{#3} \: = \: \select{#2}{#4}}
+\newcommand{\smallwedge}{\: \wedge \:}
+\newcommand{\smallvee}{\: \vee \:}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+% Algorithms in figures
+\newcommand{\tinybullet}{$\vcenter{\hbox{\tiny$\bullet$}} \;$}
+\newcommand{\atab}{\hspace{3ex}}
+\newcommand{\wheretab}{\hspace{2ex}}
+\newcommand{\exptab}{\hspace{2.5ex}}
+\newcommand{\smallvspace}{\vspace{0.5ex}}
+\newcommand{\closeblock}{\vspace{1ex}}
+\newcommand{\closemajorblock}{\vspace{2ex}}
+
+% Comments
+\newcommand{\rem}[1]{}
+
+% RQs
+\newcommand{\conclusion}[2]{\vspace{1mm} \noindent {\bf Conclusion for #1:} #2}
