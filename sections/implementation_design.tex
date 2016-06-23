@@ -9,14 +9,17 @@ is included in Table \ref{tbl:study-data} where the additional data are
 the unique identifier for the configuration of DBMS and schema (Indentifier),
 the database management system under test (DBMS), the database schema (Schema) and the creation time of a mutant (Time).
 
+Additionally, in our experiments, we chose to analyse a select number of schemas, shown in Table \ref{tbl:study-schemas}.
+We chose these nine schemas because they range in triviality. For example, the MozillaPermissions schema contains
+a single constraint, where as the JWhoisServer has a total of 50 constraints. This allowed us to evaluate the effectiveness
+of the \mr tool for schemas of varying complexities.
+
 The \mr tool was designed to empirically study the effectiveness of
 various reduction techniques in retrospect. The two reduction techniques mentioned earlier which are often considered
 to be the most utilized are uniform random sampling
 and sampling over operators which both require an arbitrary percentage, $x$, to be chosen as the maximum threshold
 for the number of mutants to be analysed from a set. The structure of the experiment function for the two
 reduction techniques is displayed in Figure \ref{fig:experiment-structure}.
-
-The data
 
 Where Wong and Mathur in their studies \cite{mathur1994empirical}, \cite{wong1993mutation} conducted
 experiments using mutant sampling with $x$ from $10\%$ to $40\%$ increasing by steps of $5\%$, we
@@ -30,4 +33,3 @@ the recommendations of Traeger et al. and Arcuri, by running 30 trials for each 
 The general rule in many fields of science is to at least perform at least 30 observations to show with high confidence
 that the obtained results are statistically significant and to allow for the results to approximate a normal
 distribution.
-
