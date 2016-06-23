@@ -1,35 +1,33 @@
 \subsection{Tool Design}
 
 The \mr tool accepts a generalised input format which enables it to be used to retrospectively analyse mutation testing
-data from programs and also emerging domains, such as databases. Although what is being tested in domains may differ,
+data from programs and also emerging domains, such as databases. Although the domain under test may differ,
 similar data can be collected (e.g., mutation operators, mutant killed statuses, type of mutant). While more data
 can optionally be collected from mutation testing, the additional data is more
-dependent on the domain under observation. Additional sample data included in Table \ref{tbl:study-data} are
+dependent on the domain. Sample data collected from performing mutation testing on database schemas
+is included in Table \ref{tbl:study-data} where the additional data are
 the unique identifier for the configuration of DBMS and schema (Indentifier),
 the database management system under test (DBMS), the database schema (Schema) and the creation time of a mutant (Time).
 
 The \mr tool was designed to empirically study the effectiveness of
-various reduction techniques. The two reduction techniques mentioned earlier---uniform random sampling
-and uniform random sampling over operators---require an arbitrary percentage, $x$, to be chosen as the maximum threshold
-for the number of mutants to be analysed.
+various reduction techniques in retrospect. The two reduction techniques mentioned earlier which are often considered
+to be the most utilized are uniform random sampling
+and sampling over operators which both require an arbitrary percentage, $x$, to be chosen as the maximum threshold
+for the number of mutants to be analysed from a set. The structure of the experiment function for the two
+reduction techniques is displayed in Figure \ref{fig:experiment-structure}.
+
+The data
 
 Where Wong and Mathur in their studies \cite{mathur1994empirical}, \cite{wong1993mutation} conducted
-an experiment using random sampling with $x$ from $10\%$ to $40\%$ increasing by steps of $5\%$, we
-chose to start $x$ at $10\%$ and increase by intervals of $10\%$ up to $90\%$. By lowering
+experiments using mutant sampling with $x$ from $10\%$ to $40\%$ increasing by steps of $5\%$, we
+chose to analyse $x$ at $1\%$ and then increase by $10\%$ intervals up to $90\%$. By lowering
 the granularity of the experiment to $10\%$ intervals instead of
 $1\%$ or $5\%$, we are able to reduce the cost of performing the retrospective analysis while observing
 similar trends.
 
-While reducing the costs of performing the retrospective analysis were a primary concern, it does not
-outweigh producing accurate results. Although we conducted our experiments with $x$ increasing by
-$10\%$ intervals, we did not see a significant enough loss in accuracy and in the amount of data collected to make
-it worth running the additional trials with the smaller intervals (i.e. $1\%$ or $5\%$).
-
-When it came to determining the number of trials necessary, we followed
+When determining the number of trials necessary, we followed
 the recommendations of Traeger et al. and Arcuri, by running 30 trials for each configuration of a reduction approach \cite{traeger2008nine, arcuri2014hitchhiker}.
-The general rule in many fields of science is to at least perform 30 observations to show with high confidence
+The general rule in many fields of science is to at least perform at least 30 observations to show with high confidence
 that the obtained results are statistically significant and to allow for the results to approximate a normal
 distribution.
-
-% \input{tables/schemas}
 
