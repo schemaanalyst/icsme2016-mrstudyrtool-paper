@@ -1,4 +1,17 @@
 \subsection{Tool Usage}
 
-provide some command-line commands or R function calls
+Releasing an R tool via a package makes installing and loading the tool
+a matter of four commands, but this does not guarantee that the usability
+of the tool itself will be as easy. The \mr tool was designed to be simplistic,
+yet perform stringent empirical analyses on mutant reduction techniques. Before
+analysing the reduction techniques, the data collected from the mutation testing
+phase must be read into the \mr tool, this can be done by typing \small{\texttt{read\_data("filename")}}
+into the R console after installing and loading \mr. This function expects the data
+to be located in the \texttt{inst/extdata} directory and stored as a comma-separated values
+file (CSV).
 
+Then, immediately following reading in the data, analysis begins. Currently, the two most common
+sub-techniques of mutant sampling are performed using the following:
+\texttt{analyse\_random\_sampling($data$)} and \texttt{analyse\_across\_operators($data$)},
+for performing random sampling and random sampling across operators for the provided data, respectively.
+These functions will return
