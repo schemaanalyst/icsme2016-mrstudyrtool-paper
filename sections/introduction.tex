@@ -40,23 +40,22 @@ Offutt and Untch as a ``do fewer'' approach~\cite{offutt2001mutation}.
 There are several mutant reduction techniques in the ``do fewer'' category, with mutant sampling being a simple method
 that randomly selects a subset of all mutants~\cite{wong1995reducing}. In addition to being conceptually
 simple~\cite{gopinath2015mutation}, mutant sampling has been experimentally shown to outperform other more sophisticated
-methods~\cite{zhang2010operator}.
+methods~\cite{zhang2010operator}.  Two sub-techniques within mutant sampling are called uniform random sampling and
+sampling over operators~\cite{gopinath2015mutation, gopinath2015empirical}.  For both of these sub-techniques, a
+threshold for the maximum percentage of selected mutants is set to $x$, which is then either applied to the entire set
+of mutants or to each set of mutants produced by an operator~\cite{gopinath2015mutation, gopinath2015empirical}.
 
-
-Two sub-techniques within mutant sampling are uniform random sampling and sampling over
-operators~\cite{gopinath2015mutation, gopinath2015empirical}.  For each sub-technique, a threshold for the maximum
-number of mutants is set by an arbitrary $x$---the percentage of all mutants.  This $x$ is either applied to the entire
-set of mutants or each set of mutants subsumed under an operator for uniform random sampling or sampling over operators,
-respectively~\cite{gopinath2015mutation, gopinath2015empirical}.
-
-Work has been done to find the smallest $x$ that still produces
-a representative set of mutants~\cite{jia2011analysis, mathur1994empirical}. Prior work
-attempting to find a representative set has been done by integrating a reduction technique into
-a mutation testing system and to then perform mutation testing~\cite{demillo1988extended, king1991fortran}.
+Work has been done to find the smallest $x$ that still produces a representative set of mutants~\cite{jia2011analysis,
+mathur1994empirical}. Prior work attempting to find a representative set has been done by integrating a reduction
+technique into a mutation testing system and to then perform mutation testing~\cite{demillo1988extended,
+king1991fortran}.
 
 While this way of evaluating reduction techniques is accurate, it is both
 expensive to implement and perform due to the number of times mutation testing
-needs to be executed. Retrospectively studying the data
+needs to be executed.
+
+
+Retrospectively studying the data
 collected from a single execution of mutation testing is superior
 because of its minimal upfront costs and the implementation complexities of
 a target environment are obviated.
