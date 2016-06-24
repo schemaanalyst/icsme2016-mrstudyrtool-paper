@@ -2,12 +2,14 @@
 
 \section{Introduction}
 
-Programmers introduce errors into their source code when writing software that can be harmful and even result in human
-fatality~\cite{vicente2003programming}.  Running a number of test cases, often referred to as a test suite, helps detect
-many of the errors that result in a crash or that cause a logical failure in a program~\cite{wagner2005comparing}.
-However, simply testing a program is not enough. In order for the results from a test suite to be substantive, the test
-suite needs to be of ``high quality''.  Determining the quality of a test suite illustrates how stringently the given
-program was tested.
+% Determining the quality of a test suite illustrates how stringently the
+% given program was tested.
+
+Software developers may introduce errors into a program's source code that could result in a human
+fatality~\cite{vicente2003programming}. Running a set of test cases, often called a test suite, often aids in detecting
+the faults that cause a program to function incorrectly~\cite{wagner2005comparing}. Yet, simply testing a program is not
+sufficient. In order for testing to establish a high confidence in the correctness of the program under test, the test
+suite needs to be of ``high quality''.
 
 Mutation testing is a widely-recognized technique for determining the quality of a test
 suite~\cite{gopinath2015mutation}. While there are an immense number of potential faults for a program, mutation testing
