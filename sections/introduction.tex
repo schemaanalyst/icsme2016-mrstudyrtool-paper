@@ -107,14 +107,14 @@ This paper advocates for a new way to empirically study mutant reduction methods
 researchers to understand a complex mutation testing system, this paper advances the idea of retrospectively studying
 mutant reducers.  After using a tool like PIT to collect data about which operators ran and what mutants they produced,
 a retrospective analysis applies strategies like uniform random sampling to the mutant data, thereby quickly
-facilitating an understanding of the reduction method's trade-offs. Since retrospective analysis still requires tool
-support, this paper presents \mr, a tool for evaluating the effectiveness of mutation analysis reduction techniques in
-retrospect. Accepting data in a generalised format from a single run of a mutation testing system, \mr~applies each
-reduction strategy and calculates their efficiency and effectiveness.
+facilitating an understanding of the reduction method's trade-offs.
 
-By accepting a generalised input format, \mr~is capable of retrospectively analysing mutant reduction techniques for
-various domains.  Additionally, \mr~is modifiable, well-documented and has been released on GitHub under and open-source
-license. 
+Since retrospective analysis still requires tool support, this paper presents \mr, a tool for evaluating the
+effectiveness of mutation analysis reduction techniques in retrospect. Accepting data in a generalised format from a
+single run of a mutation testing system, \mr~applies each reduction strategy and calculates their efficiency and
+effectiveness.  By accepting a generalised input format, \mr~is capable of retrospectively analysing mutant reduction
+techniques for various domains.  Additionally, \mr~is modifiable, well-documented and has been released on GitHub under
+and open-source license.
 
 Since studying the data retrospectively removes the need to fathom the complexities of a target environment, mutation
 testing can be extended to new domains (e.g., testing database schemas)~\cite{mcminn2016virtual,
