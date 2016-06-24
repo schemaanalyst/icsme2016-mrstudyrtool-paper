@@ -147,6 +147,16 @@ database. Even though there are 941,910 questions about databases on StackExchan
 website~\cite{stackexchange}, little prior work has focused on testing these integrity
 constraints~\cite{mcminn2016virtual}.
 
+% A domain that mutation testing has become more prominent in recently is testing database
+% schemas~\cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}. However, due to its computation expense,
+% it is not widely adopted in industry to test database schemas.  Although mutation testing is used in a variety of
+% domains, the reduction techniques can still be utilized, including retrospective analysis~\cite{jia2011analysis,
+%   wong1995reducing, offutt1993experimental, offutt2001mutation}.
+
+Since it is important to assess the quality of tests for relational database schemas, recent work has presented and
+evaluated database-aware mutation analysis techniques ~\cite{mcminn2016virtual, mcminn2015effectiveness,
+wright2013efficient}.  Although the presented method is general, this paper illustrates the retrospective study of
+mutant reducers and the use of \mr~in the domain of mutation analysis for database schemas.
 
 
 
@@ -156,12 +166,6 @@ constraints~\cite{mcminn2016virtual}.
 % of database schemas~\cite{stackexchange}. Therefore, ensuring that
 
 
-Due to its versatility, mutation testing can be used to detect errors made by programmers in many domains.  A domain
-that mutation testing has become more prominent in recently is testing database schemas~\cite{mcminn2016virtual,
-mcminn2015effectiveness, wright2013efficient}. However, due to its computation expense, it is not widely adopted in
-industry to test database schemas.  Although mutation testing is used in a variety of domains, the reduction techniques
-can still be utilized, including retrospective analysis~\cite{jia2011analysis, wong1995reducing, offutt1993experimental,
-offutt2001mutation}.
 
 The key contributions of this work are:
 
