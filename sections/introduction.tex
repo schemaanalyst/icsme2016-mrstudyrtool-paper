@@ -81,16 +81,34 @@ of mutants or to each set of mutants produced by an operator~\cite{gopinath2015m
 % SUM:                           818          11313           8180          45785
 % -------------------------------------------------------------------------------
 
+% Discuss the challenges associated with these types of analyses, drawing on the code example of PIT
 
 Prior work has found the smallest value of $x$ that still produces a representative set of
-mutants~\cite{jia2011analysis, mathur1994empirical}. However, these efforts always required the experimenters to
-integrate a reduction technique into an existing mutation testing system and to then perform a mutation testing
-experiment~\cite{demillo1988extended, king1991fortran}.
+mutants~\cite{jia2011analysis, mathur1994empirical}. Yet, these efforts normally required the experimenters to integrate
+a reduction technique into an existing mutation testing system before performing a mutation testing
+experiment~\cite{demillo1988extended, king1991fortran}. Since mutation testing tools are often complex --- according to
+the ``Count Lines of Code'' tool the  well-known PIT mutation testing system contains over 43,000 lines of non-commented
+Java code and thousands of lines of build and configuration files --- this approach to studying mutant reduction methods
+has a high upfront cost. That is, researchers must grasp the complexities of a mutation testing tool before they can
+experimentally evaluate new reduction techniques.
 
-Retrospectively studying the data
-collected from a single execution of mutation testing is superior
-because of its minimal upfront costs and the implementation complexities of
-a target environment are obviated.
+% Retrospectively studying the data collected from a single execution of mutation testing is superior because of its
+% minimal upfront costs and the implementation complexities of a target environment are obviated.
+
+This paper presents
+
+Retrospective analysis is more cost-effective than applying a mutant reduction technique and then evaluating it.  This
+is the case because the expense of mutation testing in retrospective analysis is incurred only once, rather than for
+every reduction technique. Analysing the effectiveness of an approach retrospectively is possible because the necessary
+data can be collected from a prior analysis of all mutants.  This paper introduces \mr, the first and only tool that
+analyses reduction techniques retrospectively.
+
+\mr~is a tool for evaluating the effectiveness of mutation analysis reduction techniques in retrospect. Using data in a
+generalised format from a single execution of mutation testing, \mr~employs each reduction strategy and performs
+calculations to determine the efficiency and effectiveness. By accepting a generalised input format, \mr~is capable of
+retrospectively analysing mutant reduction techniques for various domains.  Additionally, \mr~is modifiable,
+well-documented and has been released on GitHub under and open-source license. The key contributions of this work are:
+
 
 Since studying the data retrospectively removes the need to fathom the complexities of a target environment, mutation
 testing can be extended to new domains (e.g., testing database schemas)~\cite{mcminn2016virtual,
@@ -124,18 +142,6 @@ mcminn2015effectiveness, wright2013efficient}. However, due to its computation e
 industry to test database schemas.  Although mutation testing is used in a variety of domains, the reduction techniques
 can still be utilized, including retrospective analysis~\cite{jia2011analysis, wong1995reducing, offutt1993experimental,
 offutt2001mutation}.
-
-Retrospective analysis is more cost-effective than applying a mutant reduction technique and then evaluating it.  This
-is the case because the expense of mutation testing in retrospective analysis is incurred only once, rather than for
-every reduction technique. Analysing the effectiveness of an approach retrospectively is possible because the necessary
-data can be collected from a prior analysis of all mutants.  This paper introduces \mr, the first and only tool that
-analyses reduction techniques retrospectively.
-
-\mr~is a tool for evaluating the effectiveness of mutation analysis reduction techniques in retrospect. Using data in a
-generalised format from a single execution of mutation testing, \mr~employs each reduction strategy and performs
-calculations to determine the efficiency and effectiveness. By accepting a generalised input format, \mr~is capable of
-retrospectively analysing mutant reduction techniques for various domains.  Additionally, \mr~is modifiable,
-well-documented and has been released on GitHub under and open-source license. The key contributions of this work are:
 
 % may need to fix these up a bit
     \begin{itemize}
