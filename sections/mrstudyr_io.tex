@@ -1,16 +1,15 @@
 \subsection{Inputs and Output of \mr}
-Displayed in Figure \ref{fig:mrstudyr}, \mr uses the data collected
-from mutation testing to conduct further analyses
-regarding the efficiency and effectiveness of a reduction technique.
 
-The data provided to the \mr tool must minimally include mutant statuses (e.g., dead or alive),
+Displayed in Figure~\ref{fig:mrstudyr}, \mr uses the data
+from mutation testing to conduct further analyses of reduction techniques.
+
+The data provided to \mr must minimally include mutant statuses (e.g., dead or alive),
 mutant types (e.g., normal, duplicate, equivalent, or stillborn)
-and operators. Moreover, the data can include futher detail about each mutant.
-For example, when testing database schemas, the additional data may consist of
-the database management system, schema and generation cost of each mutant.
+and operators. Moreover, data may include further detail about each mutant (e.g.,
+when testing databases; the database management system, schema and generation cost of each mutant).
 
 Based on the number of dead and alive mutants after mutation testing,
-the \mr tool calculates and associates a mutation score with a set of mutants.
-A test suite's mutation score represents its ability to discover faults.
-\mr calculates the mutation score for the entire set of mutants to be
-used as a baseline for determining each reduced sets' effectiveness.
+\mr calculates and associates a mutation score with a mutant set.
+A mutant set's mutation score represents its ability to discover faults.
+The mutation score for all mutants if calculated by \mr as a baseline
+for determining each reduced sets' effectiveness.
