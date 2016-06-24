@@ -1,38 +1,34 @@
+\vspace{-1em}
 \subsection{Calculating Effectiveness with \mr}
 
-In order to calculate the effectiveness of a reduction technique, the technique
-must first be exercised on the data collected from mutation testing. The \mr tool
-performs each reduction technique returning a new, reduced mutant set,
-displayed in Figure \ref{fig:mrstudyr}. The effectiveness of a reduction technique is then evaluated
-based on five metrics: mutation score, the correlation of the reduced and non-reduced sets' mutation scores,
-the scale of creation-cost reduction and the mean absolute and root mean squared error.
+\mr performs each reduction technique returning reduced mutant data,
+displayed in Figure~\ref{fig:mrstudyr}. The effectiveness of a reduction technique is then evaluated
+based on five metrics: mutation score, correlation, the creation-cost reduction percentage
+and the mean absolute and root mean squared errors.
 
-These five evaluation metrics help determine how representative each reduced
-set is of the non-reduced set of mutants. Mutation score is calculated
-by dividing the number of killed mutants over the total number of normal---not
-equivalent, duplicate or stillborn---mutants. Then, as provided by the ``Kendal'' R package,
-we use Kendall's $\tau_b$ correlation coefficient---because of its tie-awareness---to
-determine the correlation value between mutation scores of the non-reduced and reduced sets \cite{mcleod2005kendall}.
+These five evaluation metrics help determine how effective a reduced set is at
+representing all mutants. \mr calculates mutation score
+by dividing the number of killed mutants by the total number of normal---not
+equivalent, duplicate or stillborn---mutants. Then, provided by the ``Kendal'' R package,
+\mr calculates Kendall's \taub~coefficient---because of its tie-awareness---to
+determine the correlation between mutation scores of all mutants and each reduced set~\cite{mcleod2005kendall}.
 
-Kendall's $\tau_b$ returns a measurement of correlation between -1 and 1, representing
-a strong negative or positive correlation between two sets, respectively. A return value
-of 0 means that there is no correlation between the sets. Additionally, we adopt the
-Guildford scale to describe correlation values between sets, with the absolute value
+Kendall's \taub~is a measurement of correlation between -1 and 1, representing
+a strong negative or positive correlation, respectively. A measurement
+of 0 means that there is no correlation. Additionally, we adopt the
+Guildford scale to describe correlation measurements, with the absolute value
 of a coefficient being described as ``low'', ``moderate'', ``high'' or ``very high'' when
 it is less than 0.4, between 0.4 and 0.7, ranging from 0.7 to 0.9 or 0.9 and above, respectively \cite{inozemtseva2014coverage}.
 
-Next, a value representing the magnitude of diminution in the cost of
-creating the mutants between the entire set
-and reduced set is calculated. This value is calculated by subtracting
-the cost of creating the reduced set from the cost of creating all mutants. Then
-dividing that value by the cost of creating all mutants. This helps
-determine whether it is worth performing a reduction technique---even if the
-reduced set has a very highly correlated mutation score with the non-reduced set.
+% Is there a better way to re-word calculating a percentage than provided here?
+Next, a percentage representing the reduction magnitude in creation cost for all mutants
+and each reduced set is calculated. \mr calculates this by subtracting
+the cost of creating the reduced set from the cost of creating all mutants, then
+divides that by the cost of creating all mutants. This helps
+determine whether performing a reduction technique is cost-effective.
 
-Finally, we chose to calculate both mean absolute (MAE) and root mean
-squared errors (RMSE) giving equal weight to
-all errors and extra weight to larger errors, respectively. This provides
-us with the ability to see the deviation between the mutation score of the reduced and
-non-reduced set for a given reduction technique. By using both MAE and RMSE,
-we are able to calculate the error in the mutation score for each reduced set
-at a high-level with MAE and with an emphasis where large deviations occur by using RMSE.
+Finally, \mr calculates both mean absolute (MAE) and root mean
+squared errors (RMSE). MAE gives an equal weight to all errors allowing for
+a high-level understanding, while RMSE emphasises large deviations in mutation scores.
+These errors exploit the deviation between the mutation score of all mutants and
+the reduced set.
