@@ -131,6 +131,12 @@ Additionally, \mr~is extensible, well-documented, and has been released on GitHu
 % Therefore, ensuring that the schemas that are created are
 % also tested is important in upholding the integrity of the data contained within the database.
 
+% The database's schema is the artefact responsible for specifying the data to be stored and how it should be structured
+% into tables. A series of integrity constraints is what make the database's schema able to ensure values are unique,
+% present, subject to domain-specific conditions and maintain referential integrity~\cite{mcminn2016virtual}.  Although
+% the schema is the last line of defence for the data contained within a database, little work has sought to test the
+% correctness of the integrity constraints~\cite{mcminn2015effectiveness}.
+
 % Using the tool allows you to study mutant reduction in new domains, so go ahead and introduce databases
 
 As studying the mutant data retrospectively removes the need to comprehend the complexities of a target environment,
@@ -144,11 +150,6 @@ constraints~\cite{mcminn2016virtual}.
 
 
 
-The database's schema is the artefact responsible for specifying the data to be stored and how it should be structured
-into tables. A series of integrity constraints is what make the database's schema able to ensure values are unique,
-present, subject to domain-specific conditions and maintain referential integrity~\cite{mcminn2016virtual}.  Although
-the schema is the last line of defence for the data contained within a database, little work has sought to test the
-correctness of the integrity constraints~\cite{mcminn2015effectiveness}.
 
 \input{figures/process}
 
