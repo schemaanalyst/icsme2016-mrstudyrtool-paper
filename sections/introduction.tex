@@ -31,11 +31,13 @@ of mutants against the test suite has previously been proposed as a technique to
 testing~\cite{jia2011analysis, wong1995reducing, offutt1993experimental}; this reduction strategy is categorized by
 Offutt and Untch as a ``do fewer'' approach~\cite{offutt2001mutation}.
 
-There are a number of mutant reduction techniques in the categorization of do fewer.  Mutant sampling is the simplest
-technique within this categorization, where a subset---containing a fraction of all mutants---is chosen
-randomly~\cite{wong1995reducing}.  Due to its simplicity, mutant sampling is considered to be the most cost-effective
-reduction technique by avoiding implementation complexities~\cite{gopinath2015mutation}.  Although it is simple to
-implement, mutant sampling has still been empirically shown to outperform other techniques~\cite{zhang2010operator}.
+% Introduce the technique call random mutant sampling
+
+There are several mutant reduction techniques in the ``do fewer'' category, with mutant sampling being a simple method
+that randomly selects a subset of all mutants~\cite{wong1995reducing}.  Due to its simplicity, mutant sampling is
+considered to be the most cost-effective reduction technique by avoiding implementation
+complexities~\cite{gopinath2015mutation}.  Although it is simple to implement, mutant sampling has still been
+empirically shown to outperform other techniques~\cite{zhang2010operator}.
 
 Two sub-techniques within mutant sampling are uniform random sampling and sampling over
 operators~\cite{gopinath2015mutation, gopinath2015empirical}.  For each sub-technique, a threshold for the maximum
