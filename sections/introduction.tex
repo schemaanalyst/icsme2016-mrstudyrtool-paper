@@ -153,25 +153,23 @@ constraints~\cite{mcminn2016virtual}.
 % domains, the reduction techniques can still be utilized, including retrospective analysis~\cite{jia2011analysis,
 %   wong1995reducing, offutt1993experimental, offutt2001mutation}.
 
-Since it is important to assess the quality of tests for relational database schemas, recent work has presented and
-evaluated database-aware mutation analysis techniques ~\cite{mcminn2016virtual, mcminn2015effectiveness,
-wright2013efficient}.  Although the presented method is general, this paper illustrates the retrospective study of
-mutant reducers and the use of \mr~in the domain of mutation analysis for database schemas.
-
-
-
-
-\input{figures/process}
+% GMK NOTE: I have ultimately added in the reference instead of the footnote
 
 % of database schemas~\cite{stackexchange}. Therefore, ensuring that
 
+Since it is important to assess the quality of tests for relational database schemas, recent work has proposed and
+evaluated database-aware mutation analysis techniques~\cite{mcminn2016virtual, mcminn2015effectiveness,
+wright2013efficient}. Although the presented method is general, this paper illustrates the retrospective study of
+mutant reducers and the use of \mr~in the area of mutation analysis for database schemas. In addition to describing the
+implementation of \mr~and overviewing results from applying it to the retrospective study of mutation analysis in the
+domain of database schemas, this paper inaugurates the public release of this testing tool. In summary, the key
+contributions of this paper are:
 
-
-The key contributions of this work are:
-
-% may need to fix these up a bit
     \begin{itemize}
         \item A tool to study mutant reduction techniques in retrospect.
         \item A tool that accepts a generalised input format.
         \item A tool released as a free and open-source R package.
     \end{itemize}
+
+\input{figures/process}
+
