@@ -45,73 +45,63 @@ sampling over operators~\cite{gopinath2015mutation, gopinath2015empirical}.  For
 threshold for the maximum percentage of selected mutants is set to $x$, which is then either applied to the entire set
 of mutants or to each set of mutants produced by an operator~\cite{gopinath2015mutation, gopinath2015empirical}.
 
+% While this way of evaluating reduction techniques is accurate, it is both expensive to implement and perform due to the
+% number of times mutation testing needs to be executed.
+
 Work has been done to find the smallest $x$ that still produces a representative set of mutants~\cite{jia2011analysis,
 mathur1994empirical}. Prior work attempting to find a representative set has been done by integrating a reduction
 technique into a mutation testing system and to then perform mutation testing~\cite{demillo1988extended,
 king1991fortran}.
-
-While this way of evaluating reduction techniques is accurate, it is both
-expensive to implement and perform due to the number of times mutation testing
-needs to be executed.
-
 
 Retrospectively studying the data
 collected from a single execution of mutation testing is superior
 because of its minimal upfront costs and the implementation complexities of
 a target environment are obviated.
 
-Since studying the data retrospectively removes the need to fathom the complexities of a target environment,
-mutation testing can be extended to new domains (e.g., testing database schemas)~\cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}.
-Testing that a relational database's schema has correctly specified integrity constraints is important
-because these restrictions ensure that only valid data enters the database. However, little work has
-sought to test these integrity constraints~\cite{mcminn2016virtual}.
+Since studying the data retrospectively removes the need to fathom the complexities of a target environment, mutation
+testing can be extended to new domains (e.g., testing database schemas)~\cite{mcminn2016virtual,
+mcminn2015effectiveness, wright2013efficient}.  Testing that a relational database's schema has correctly specified
+integrity constraints is important because these restrictions ensure that only valid data enters the database. However,
+little work has sought to test these integrity constraints~\cite{mcminn2016virtual}.
 
 Databases are utilized pervasively for storing everything from batting and pitching statistics of baseball
-players~\cite{lahmanbaseball} to fingerprints and scars of criminals~\cite{ngi}.
-Relational databases are an efficient and reliable way to store large amounts of data.
-The acceptance of relationships between data entries, as well as strict structural constraints
-upheld by the schema are what make relational databases unique.
+players~\cite{lahmanbaseball} to fingerprints and scars of criminals~\cite{ngi}.  Relational databases are an efficient
+and reliable way to store large amounts of data.  The acceptance of relationships between data entries, as well as
+strict structural constraints upheld by the schema are what make relational databases unique.
 
-The database's schema is the artefact responsible for specifying the data to be stored and
-how it should be structured into tables. A series of integrity constraints
-is what make the database's schema able to ensure values are unique, present,
-subject to domain-specific conditions and maintain referential integrity~\cite{mcminn2016virtual}.
-Although the schema is the last line of defence for the data contained
-within a database, little work has sought to test the correctness of the integrity constraints~\cite{mcminn2015effectiveness}.
+The database's schema is the artefact responsible for specifying the data to be stored and how it should be structured
+into tables. A series of integrity constraints is what make the database's schema able to ensure values are unique,
+present, subject to domain-specific conditions and maintain referential integrity~\cite{mcminn2016virtual}.  Although
+the schema is the last line of defence for the data contained within a database, little work has sought to test the
+correctness of the integrity constraints~\cite{mcminn2015effectiveness}.
 
 \input{figures/process}
 
 % of database schemas~\cite{stackexchange}. Therefore, ensuring that
 
-The little work testing the integrity constraints of a schema is not
-because of a sufficient understanding of the topic. The 941,910 questions posted on
-the technical question and answer website, StackExchange, indicate the demand for support
-of database schemas~\footnote{http://goo.gl/eZF1mK}. Therefore, ensuring that
-the schemas that are created are also tested is important in upholding the integrity
-of the data contained within the database.
+The little work testing the integrity constraints of a schema is not because of a sufficient understanding of the topic.
+The 941,910 questions posted on the technical question and answer website, StackExchange, indicate the demand for
+support of database schemas~\footnote{http://goo.gl/eZF1mK}. Therefore, ensuring that the schemas that are created are
+also tested is important in upholding the integrity of the data contained within the database.
 
-Due to its versatility, mutation testing can be used to detect errors made by programmers in many domains.
-A domain that mutation testing has become more prominent in recently is testing database
-schemas~\cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}. However,
-due to its computation expense, it is not widely adopted in industry to test database schemas.
-Although mutation testing is used in a variety of domains, the reduction techniques can still
-be utilized, including retrospective analysis~\cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}.
+Due to its versatility, mutation testing can be used to detect errors made by programmers in many domains.  A domain
+that mutation testing has become more prominent in recently is testing database schemas~\cite{mcminn2016virtual,
+mcminn2015effectiveness, wright2013efficient}. However, due to its computation expense, it is not widely adopted in
+industry to test database schemas.  Although mutation testing is used in a variety of domains, the reduction techniques
+can still be utilized, including retrospective analysis~\cite{jia2011analysis, wong1995reducing, offutt1993experimental,
+offutt2001mutation}.
 
-Retrospective analysis is more cost-effective than applying a
-mutant reduction technique and then evaluating it.
-This is the case because the expense of mutation testing in
-retrospective analysis is incurred only once, rather than for
-every reduction technique. Analysing the effectiveness of an approach retrospectively
-is possible because the necessary data can be collected from a prior analysis of all mutants.
-This paper introduces \mr, the first and only tool that analyses reduction techniques retrospectively.
+Retrospective analysis is more cost-effective than applying a mutant reduction technique and then evaluating it.  This
+is the case because the expense of mutation testing in retrospective analysis is incurred only once, rather than for
+every reduction technique. Analysing the effectiveness of an approach retrospectively is possible because the necessary
+data can be collected from a prior analysis of all mutants.  This paper introduces \mr, the first and only tool that
+analyses reduction techniques retrospectively.
 
-\mr is a tool for evaluating the effectiveness of mutation analysis reduction techniques
-in retrospect. Using data in a generalised format from a single execution of mutation testing, \mr
-employs each reduction strategy and performs calculations to determine the efficiency and
-effectiveness. By accepting a generalised input format, \mr is capable of
-retrospectively analysing mutant reduction techniques for various domains.
-Additionally, \mr is modifiable, well-documented and has been released on
-GitHub under and open-source license. The key contributions of this work are:
+\mr~is a tool for evaluating the effectiveness of mutation analysis reduction techniques in retrospect. Using data in a
+generalised format from a single execution of mutation testing, \mr~employs each reduction strategy and performs
+calculations to determine the efficiency and effectiveness. By accepting a generalised input format, \mr~is capable of
+retrospectively analysing mutant reduction techniques for various domains.  Additionally, \mr~is modifiable,
+well-documented and has been released on GitHub under and open-source license. The key contributions of this work are:
 
 % may need to fix these up a bit
     \begin{itemize}
