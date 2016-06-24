@@ -6,16 +6,16 @@
 % given program was tested.
 
 Software developers may introduce errors into a program's source code that could result in a human
-fatality~\cite{vicente2003programming}. Running a set of test cases, often called a test suite, often aids in detecting
+fatality~\cite{vicente2003programming}. Running a set of tests, frequently called a test suite, often aids in detecting
 the faults that cause a program to function incorrectly~\cite{wagner2005comparing}. Yet, simply testing a program is not
 sufficient. In order for testing to establish a high confidence in the correctness of the program under test, the test
 suite needs to be of ``high quality''.
 
-Mutation testing is a widely-recognized technique for determining the quality of a test
-suite~\cite{gopinath2015mutation}. While there are an immense number of potential faults for a program, mutation testing
-primarily focuses on those which are close to the correct version, with the expectation that they will be representative
-of all faults~\cite{jia2011analysis}.  Of the software testing methods, mutation testing is widely considered the
-strongest test criterion in terms of finding the most faults~\cite{ammann2008introduction}.
+Mutation testing is a widely-recognized technique for assessing the quality of a test suite~\cite{gopinath2015mutation}.
+While there are many potential faults for a program, mutation testing focuses on those that are ``close'' to the correct
+version, with the expectation that they will be representative of all faults~\cite{jia2011analysis}.  Of the methods for
+evaluating test quality, mutation testing is widely considered the strongest test criterion in terms of its capability
+to necessitate the creation of tests that find many faults~\cite{ammann2008introduction}.
 
 Although mutation testing is the most effective in detecting faults, it possesses major drawbacks in the computational
 cost and amount of human interaction required, making it often impractical to use~\cite{gopinath2015mutation,
