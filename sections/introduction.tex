@@ -45,13 +45,47 @@ sampling over operators~\cite{gopinath2015mutation, gopinath2015empirical}.  For
 threshold for the maximum percentage of selected mutants is set to $x$, which is then either applied to the entire set
 of mutants or to each set of mutants produced by an operator~\cite{gopinath2015mutation, gopinath2015empirical}.
 
+% GMK NOTE: Cut this sentence as it is not precisely the point that we want to main in this paper
+
 % While this way of evaluating reduction techniques is accurate, it is both expensive to implement and perform due to the
 % number of times mutation testing needs to be executed.
 
-Work has been done to find the smallest $x$ that still produces a representative set of mutants~\cite{jia2011analysis,
-mathur1994empirical}. Prior work attempting to find a representative set has been done by integrating a reduction
-technique into a mutation testing system and to then perform mutation testing~\cite{demillo1988extended,
-king1991fortran}.
+% GMK NOTE: Here is the source code analysis of the PIT tool using the cloc program (see script in the bin/ directory)
+
+% ./cloc-git https://github.com/hcoles/pitest
+% Cloning into 'temp-linecount-repo'...
+% remote: Counting objects: 1240, done.
+% remote: Compressing objects: 100% (931/931), done.
+% remote: Total 1240 (delta 297), reused 557 (delta 122), pack-reused 0
+% Receiving objects: 100% (1240/1240), 583.98 KiB | 0 bytes/s, done.
+% Resolving deltas: 100% (297/297), done.
+% Checking connectivity... done.
+% ('temp-linecount-repo' will be deleted automatically)
+
+     % 843 text files.
+     % 833 unique files.
+     %  63 files ignored.
+
+% http://cloc.sourceforge.net v 1.60  T=1.79 s (456.9 files/s, 36462.9 lines/s)
+% -------------------------------------------------------------------------------
+% Language                     files          blank        comment           code
+% -------------------------------------------------------------------------------
+% Java                           780          11126           8087          43030
+% Maven                           29            136             23           2287
+% XML                              3             33             69            377
+% CSS                              1              4              0             36
+% Groovy                           2             10              0             32
+% YAML                             1              4              1             21
+% Bourne Shell                     2              0              0              2
+% -------------------------------------------------------------------------------
+% SUM:                           818          11313           8180          45785
+% -------------------------------------------------------------------------------
+
+
+Prior work has found the smallest value of $x$ that still produces a representative set of
+mutants~\cite{jia2011analysis, mathur1994empirical}. However, these efforts always required the experimenters to
+integrate a reduction technique into an existing mutation testing system and to then perform a mutation testing
+experiment~\cite{demillo1988extended, king1991fortran}.
 
 Retrospectively studying the data
 collected from a single execution of mutation testing is superior
