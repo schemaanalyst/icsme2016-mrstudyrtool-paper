@@ -90,25 +90,30 @@ experiment~\cite{demillo1988extended, king1991fortran}. Since mutation testing t
 the ``Count Lines of Code'' tool the  well-known PIT mutation testing system contains over 43,000 lines of non-commented
 Java code and thousands of lines of build and configuration files --- this approach to studying mutant reduction methods
 has a high upfront cost. That is, researchers must grasp the complexities of a mutation testing tool before they can
-experimentally evaluate new reduction techniques.
+experimentally evaluate new techniques for mutant reduction.
 
 % Retrospectively studying the data collected from a single execution of mutation testing is superior because of its
 % minimal upfront costs and the implementation complexities of a target environment are obviated.
 
-This paper presents
+% Retrospective analysis is more cost-effective than applying a mutant reduction technique and then evaluating it.  This
+% is the case because the expense of mutation testing in retrospective analysis is incurred only once, rather than for
+% every reduction technique. Analysing the effectiveness of an approach retrospectively is possible because the necessary
+% data can be collected from a prior analysis of all mutants.  This paper introduces \mr, the first and only tool that
+% analyses reduction techniques retrospectively.
 
-Retrospective analysis is more cost-effective than applying a mutant reduction technique and then evaluating it.  This
-is the case because the expense of mutation testing in retrospective analysis is incurred only once, rather than for
-every reduction technique. Analysing the effectiveness of an approach retrospectively is possible because the necessary
-data can be collected from a prior analysis of all mutants.  This paper introduces \mr, the first and only tool that
-analyses reduction techniques retrospectively.
+% Introduce the idea of retrospectively studying a mutant reduction method
+
+This paper advocates for a new way to empirically study mutant reduction methods. Obviating the need for researchers to
+understand a complex mutation testing system, this paper advances the idea of retrospectively studying mutant reducers.
+After using a tool like PIT to collect comprehensive data about which operators ran and what mutants they produced, a
+retrospective analysis applies strategies like uniform random sampling to the mutant data, thereby quickly facilitating
+an understanding of the reduction method.
 
 \mr~is a tool for evaluating the effectiveness of mutation analysis reduction techniques in retrospect. Using data in a
 generalised format from a single execution of mutation testing, \mr~employs each reduction strategy and performs
 calculations to determine the efficiency and effectiveness. By accepting a generalised input format, \mr~is capable of
 retrospectively analysing mutant reduction techniques for various domains.  Additionally, \mr~is modifiable,
 well-documented and has been released on GitHub under and open-source license. The key contributions of this work are:
-
 
 Since studying the data retrospectively removes the need to fathom the complexities of a target environment, mutation
 testing can be extended to new domains (e.g., testing database schemas)~\cite{mcminn2016virtual,
