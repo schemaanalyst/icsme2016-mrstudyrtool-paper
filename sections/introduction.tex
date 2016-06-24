@@ -117,23 +117,31 @@ testing system, \mr~applies each reduction strategy and calculates their efficie
 generalised input format, \mr~is capable of retrospectively analysing mutant reduction techniques for various domains.
 Additionally, \mr~is extensible, well-documented, and has been released on GitHub under an open-source license.
 
+% GMK NOTE: I have cut all of this content, using some of it in the new streamlined content
+
 % Databases are utilized pervasively for storing everything from batting and pitching statistics of baseball
 % players~\cite{lahmanbaseball} to fingerprints and scars of criminals~\cite{ngi}.  Relational databases are an efficient
 % and reliable way to store large amounts of data.  The acceptance of relationships between data entries, as well as
 % strict structural constraints upheld by the schema are what make relational databases unique.
+
+% The little work testing the integrity constraints of a schema is not because of a sufficient understanding of the topic.
+
+% database schemas~\footnote{http://goo.gl/eZF1mK}.
+
+% Therefore, ensuring that the schemas that are created are
+% also tested is important in upholding the integrity of the data contained within the database.
 
 % Using the tool allows you to study mutant reduction in new domains, so go ahead and introduce databases
 
 As studying the mutant data retrospectively removes the need to comprehend the complexities of a target environment,
 mutation testing can be extended to new domains such as the testing of relational database
 schemas~\cite{mcminn2016virtual, mcminn2015effectiveness, wright2013efficient}. Ensuring that a relational database's
-schema has correctly specified integrity constraints is important because they ensure that only valid data
-enters the database. However, little work has sought to test these integrity constraints~\cite{mcminn2016virtual}.
+schema has correctly specified integrity constraints is important because they ensure that only valid data enters the
+database. Even though there are 941,910 questions about databases on StackExchange, the technical question and answer
+website~\cite{stackexchange}, little prior work has focused on testing these integrity
+constraints~\cite{mcminn2016virtual}.
 
-The little work testing the integrity constraints of a schema is not because of a sufficient understanding of the topic.
-The 941,910 questions posted on the technical question and answer website, StackExchange, indicate the demand for
-support of database schemas~\footnote{http://goo.gl/eZF1mK}. Therefore, ensuring that the schemas that are created are
-also tested is important in upholding the integrity of the data contained within the database.
+
 
 
 The database's schema is the artefact responsible for specifying the data to be stored and how it should be structured
