@@ -5,25 +5,31 @@
 % Determining the quality of a test suite illustrates how stringently the
 % given program was tested.
 
+% Introduce software testing
+
 Software developers may introduce errors into a program's source code that could result in a human
 fatality~\cite{vicente2003programming}. Running a set of tests, frequently called a test suite, often aids in detecting
 the faults that cause a program to function incorrectly~\cite{wagner2005comparing}. Yet, simply testing a program is not
 sufficient. In order for testing to establish a high confidence in the correctness of the program under test, the test
 suite needs to be of ``high quality''.
 
+% Introduce mutation testing and its benefits
+
 Mutation testing is a widely-recognized technique for assessing the quality of a test suite~\cite{gopinath2015mutation}.
 While there are many potential faults for a program, mutation testing focuses on those that are ``close'' to the correct
-version, with the expectation that they will be representative of all faults~\cite{jia2011analysis}.  Of the methods for
+version, with the expectation that they will be representative of all faults~\cite{jia2011analysis}. Of the methods for
 evaluating test quality, mutation testing is widely considered the strongest test criterion in terms of its capability
 to necessitate the creation of tests that find many faults~\cite{ammann2008introduction}.
 
-Although mutation testing is the most effective in detecting faults, it possesses major drawbacks in the computational
-cost and amount of human interaction required, making it often impractical to use~\cite{gopinath2015mutation,
-wong1995reducing, gopinath2015empirical}.  The major computational cost of mutation testing comes from executing the
-large number of mutants generated for a program against a test suite~\cite{offutt1993experimental}. Executing a smaller,
-representative set of mutants against the test suite has been proposed as a technique to reduce the cost of mutation
-testing~\cite{jia2011analysis, wong1995reducing, offutt1993experimental, offutt2001mutation}.  This reduction strategy
-is categorized by Offutt and Untch as a ``do fewer'' approach~\cite{offutt2001mutation}.
+% Talk about the limitations of mutation testing
+
+Although mutation testing effectively requires tests to detect faults, it possesses major drawbacks in its computational
+cost and the amount of human interaction it requires, often making it impractical to use~\cite{gopinath2015mutation,
+wong1995reducing, gopinath2015empirical}.  A major computational cost of mutation testing comes from executing each test
+case in a test suite for the many generated mutants~\cite{offutt1993experimental}. Executing a small, representative set
+of mutants against the test suite has previously been proposed as a technique to reduce the cost of mutation
+testing~\cite{jia2011analysis, wong1995reducing, offutt1993experimental}; this reduction strategy is categorized by
+Offutt and Untch as a ``do fewer'' approach~\cite{offutt2001mutation}.
 
 There are a number of mutant reduction techniques in the categorization of do fewer.  Mutant sampling is the simplest
 technique within this categorization, where a subset---containing a fraction of all mutants---is chosen
