@@ -101,19 +101,20 @@ experimentally evaluate new techniques for mutant reduction.
 % data can be collected from a prior analysis of all mutants.  This paper introduces \mr, the first and only tool that
 % analyses reduction techniques retrospectively.
 
-% Introduce the idea of retrospectively studying a mutant reduction method
+% Introduce the idea of retrospectively studying a mutant reduction method and then introduce the new tool
 
-This paper advocates for a new way to empirically study mutant reduction methods. Obviating the need for researchers to
-understand a complex mutation testing system, this paper advances the idea of retrospectively studying mutant reducers.
-After using a tool like PIT to collect comprehensive data about which operators ran and what mutants they produced, a
-retrospective analysis applies strategies like uniform random sampling to the mutant data, thereby quickly facilitating
-an understanding of the reduction method.
+This paper advocates for a new way to empirically study mutant reduction methods. As a means for obviating the need for
+researchers to understand a complex mutation testing system, this paper advances the idea of retrospectively studying
+mutant reducers.  After using a tool like PIT to collect data about which operators ran and what mutants they produced,
+a retrospective analysis applies strategies like uniform random sampling to the mutant data, thereby quickly
+facilitating an understanding of the reduction method's trade-offs. Since retrospective analysis still requires tool
+support, this paper presents \mr, a tool for evaluating the effectiveness of mutation analysis reduction techniques in
+retrospect. Using data in a generalised format from a single run of a mutation testing system, \mr~applies each
+reduction strategy and performs calculations to determine their efficiency and effectiveness.
 
-\mr~is a tool for evaluating the effectiveness of mutation analysis reduction techniques in retrospect. Using data in a
-generalised format from a single execution of mutation testing, \mr~employs each reduction strategy and performs
-calculations to determine the efficiency and effectiveness. By accepting a generalised input format, \mr~is capable of
-retrospectively analysing mutant reduction techniques for various domains.  Additionally, \mr~is modifiable,
-well-documented and has been released on GitHub under and open-source license. The key contributions of this work are:
+By accepting a generalised input format, \mr~is capable of retrospectively analysing mutant reduction techniques for
+various domains.  Additionally, \mr~is modifiable, well-documented and has been released on GitHub under and open-source
+license. The key contributions of this work are:
 
 Since studying the data retrospectively removes the need to fathom the complexities of a target environment, mutation
 testing can be extended to new domains (e.g., testing database schemas)~\cite{mcminn2016virtual,
