@@ -33,11 +33,15 @@ Offutt and Untch as a ``do fewer'' approach~\cite{offutt2001mutation}.
 
 % Introduce the technique call random mutant sampling
 
+% Due to its simplicity, mutant sampling is considered to be the most cost-effective reduction technique by avoiding
+% implementation complexities~\cite{gopinath2015mutation}.  Although it is simple to implement, mutant sampling has still
+% been empirically shown to outperform other techniques~\cite{zhang2010operator}.
+
 There are several mutant reduction techniques in the ``do fewer'' category, with mutant sampling being a simple method
-that randomly selects a subset of all mutants~\cite{wong1995reducing}.  Due to its simplicity, mutant sampling is
-considered to be the most cost-effective reduction technique by avoiding implementation
-complexities~\cite{gopinath2015mutation}.  Although it is simple to implement, mutant sampling has still been
-empirically shown to outperform other techniques~\cite{zhang2010operator}.
+that randomly selects a subset of all mutants~\cite{wong1995reducing}. In addition to being conceptually
+simple~\cite{gopinath2015mutation}, mutant sampling has been experimentally shown to outperform other more sophisticated
+methods~\cite{zhang2010operator}.
+
 
 Two sub-techniques within mutant sampling are uniform random sampling and sampling over
 operators~\cite{gopinath2015mutation, gopinath2015empirical}.  For each sub-technique, a threshold for the maximum
