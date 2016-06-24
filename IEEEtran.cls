@@ -4836,7 +4836,8 @@ between column types.}%
          \fi
       \fi
    \fi
-\fi\par\addvspace{-.2\baselineskip}\egroup}
+% GMK NOTE: Tweaking this parameter to remove spacing after the authors and before the abstract and main content of the paper
+\fi\par\addvspace{-1\baselineskip}\egroup}
 
 % V1.7 Computer Society "diamond line" which follows index terms for nonconference papers
 % V1.8a full width diamond line for single column use
