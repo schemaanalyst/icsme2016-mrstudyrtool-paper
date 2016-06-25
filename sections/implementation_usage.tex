@@ -2,39 +2,46 @@
 
 Releasing an R tool via a package makes installing and loading the tool
 a matter of a few commands, but this does not guarantee that the usability
-of the tool will be as simple. \mr was designed to be simplistic,
-yet perform stringent empirical analyses on mutant reduction techniques. Before
-analysing the reduction techniques, the data collected from mutation testing
-must be read in, this can be done in the R console by typing {\small\texttt{data <- read\_data("filename")}}.
+of the tool will be as simple. \mr~was designed to be simplistic,
+yet perform stringent empirical analyses on mutant reduction techniques.
+To display the results from \mr~analysing mutant reduction strategies for the
+testing of real-world database schemas, the following commands will be tailored
+toward the data that we collected from performing mutation testing.
+The collected data can be read in via the following: {\small\texttt{data <- read\_data("sqlite-avmdefaults")}}.
 This function expects the data to be located in the \texttt{inst/extdata} folder
 and stored as a comma-separated value file.
 
-Then, immediately following reading in the data, analysis begins. Currently, the two most common
-sub-techniques of mutant sampling are performed using the following:
+Immediately following providing the data to \mr, analysis begins. Currently,
+the two most common sub-techniques of mutant sampling are performed using the following:
 \texttt{analyse\_random\_sampling(data)} and \texttt{analyse\_across\_operators(data)},
-for performing random sampling and random sampling across operators, respectively. \texttt{data} refers to the
-newly assigned variable containing the input data in a dataframe.
-These functions will both return a new dataframe containing the trial, evaluated percentage, reduced
-numerator and denominator counts, original numerator and denominator counts, reduced and original time
-to generate mutants and the reduced and original mutation scores. Example output is provided in the accompanying
-README file on the tool's GitHub page~\cite{tool}. After performing a reduction technique its efficiency and
-effectiveness is evaluated based on five calculation functions.
+for performing random sampling and random sampling across operators, respectively.
+These functions will both return a new dataframe containing the trial, evaluated
+percentage, reduced and original numerator and denominator counts,
+reduced and original time to generate mutants and the reduced and original mutation scores.
+The output from these function is provided in the accompanying README file on the
+tool's GitHub page~\cite{tool}. After performing a reduction technique its efficiency
+and effectiveness is evaluated based on five calculation functions.
 
-The five functions that evaluate the effectiveness of a reduction technique are: mutation score, correlation coefficient, magnitude
-in reduction of creation cost (\%) and error---MAE and RMSE---between the reduced and original mutation scores.
+The five functions that evaluate the efficiency and effectiveness are:
+mutation score, correlation coefficient, magnitude in reduction of creation cost
+(\%) and error---MAE and RMSE---between the reduced and original mutation scores.
 The calculation functions are as follows, in order:
-\begin{itemize}
-\item \texttt{analyse\_mutation\_score(data)}
-\item \texttt{analyse\_correlation(data)}
-\item \texttt{analyse\_reduction(data)}
-\item \texttt{analyse\_percents\_error(data)}
-\end{itemize}
-These functions each return a dataframe including the result of the calculation.
-Sample output from the calculation functions can be found on
-the tool's GitHub page~\cite{tool}. Following efficiency and effectiveness calculations is human examination.
 
-The human examination phase still requires use of \mr for clearly visualising the trends in the data
-collected from the calculation phase. The \mr tool takes advantage of the widely-used graphing package, \texttt{ggplot2}~\cite{ggplot2}.
-All of the visualisation functions provided and their output can be found on the GitHub page~\cite{tool}.
-These visualisations will help human examiners to construct a policy recommendation as to which reduction technique
-should be used for the specific domain and data under observation.
+\begin{itemize}
+    \item {\small\texttt{analyse\_mutation\_score(data)}}
+    \item {\small\texttt{analyse\_correlation(data)}}
+    \item {\small\texttt{analyse\_reduction(data)}}
+    \item {\small\texttt{analyse\_percents\_error(data)}}
+\end{itemize}
+
+These functions each return a dataframe including the result of the calculation.
+Again, the output from the calculation functions can be found on
+the tool's GitHub page~\cite{tool}. Following efficiency and effectiveness calculations
+is human examination, only succeeded by the establishment of a policy recommendation.
+
+The human examination phase still requires use of \mr~for clearly visualising the trends
+in the data collected from the calculation phase. The \mr~tool takes advantage of the
+widely-used graphing package, \texttt{ggplot2}~\cite{ggplot2}. All of the visualisation
+functions provided and their output can be found on the GitHub page~\cite{tool}.
+These visualisations will help human examiners to construct a policy recommendation as
+to which reduction technique should be used for the specific domain and data under observation.
