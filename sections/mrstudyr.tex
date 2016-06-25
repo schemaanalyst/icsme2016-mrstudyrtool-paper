@@ -2,14 +2,43 @@
 
 \section{\textit{mrstudyr}: Mutant Reduction Studier}
 
-Performing the entire mutation analysis process, displayed in Figure~\ref{fig:process},
-is both computationally expensive and time consuming. The mutation testing
-phase of the mutation analysis process consists of generating and executing mutated versions of source code. The primary
-expense of the mutation analysis process is incurred in the mutation testing phase
-due to the large number of generated mutants---even for programs with few lines of code~\cite{offutt2001mutation}.
-
 \input{figures/mrstudyr}
 
-\input{sections/mrstudyr_retrospective}
-\input{sections/mrstudyr_io}
-\input{sections/mrstudyr_calculations}
+The first of its kind, \mr~is a tool for performing the retrospective analysis
+of mutant reduction techniques. Upon collecting generalised data from performing
+mutation testing on all mutants, \mr~is capable of determining efficiency and
+effectiveness of well-known mutant reduction techniques specific to the data.
+
+By accepting a generalised input format, the \mr~tool can be utilized in a variety
+of domains to assess the efficiency and effectiveness of mutant reduction techniques.
+In this paper, we display that \mr~is versatile by conducting a preliminary study
+of mutant reduction techniques on mutant data collected from testing database schemas.
+However, the \mr~tool is not limited to analysing mutant data from programs or databases,
+it can effectively be used in any number domains. Where mutation testing can be performed,
+\mr~is capable of analysing reduction techniques.
+
+The \mr~tool is not limited to the domains where it can be utilized, nor is it restricted
+by the reduction approaches it can perform. In the current state, \mr~is able to perform
+the most common mutant reduction technique, mutant sampling~\cite{gopinath2015mutation, jia2011analysis, gopinath2015empirical}.
+The \mr~tool can be extended to perform specific reduction techniques such as E-Selective
+~\cite{offutt1996experimental} --- where only mutants created by the following Mothra operators
+are chosen: ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical} or complex reduction techniques
+such as mutant clustering, where mutants are chosen based on clustering algorithms~\cite{jia2011analysis}.
+
+In addition to being extensible in both the domains in which it can be utilized and the
+reduction approaches it can perform, \mr~is accompanied with extensive documentation~\cite{tool}.
+The documentation includes the necessary commands to get the reader ``up-and-running''
+with \mr~quickly and obviates the need to read a poorly-formatted command-line manual page.
+The various accepted function calls of the \mr~tool are also provided in the documentation
+accompanied by their respective output. Finally, provided in the documentation is a live
+asciinema~\cite{asciinema} screencast, displaying usage of the tool.
+
+The \mr~tool has been released on the popular Git repository hosting service, GitHub~\cite{github}
+under version 3 of the GNU General Public License~\cite{license}. The GNU General Public License
+allows for commercial, patent and private use, as well as distribution of and modification to the tool
+under the condition that anything derived from it is bound by the same conditions as the originally
+released version~\cite{copyleft}.
+
+% \input{sections/mrstudyr_retrospective}
+% \input{sections/mrstudyr_io}
+% \input{sections/mrstudyr_calculations}
