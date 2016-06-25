@@ -1,34 +1,33 @@
 \subsection{Tool Design}
 
-The \mr tool accepts a generalised input format enabling it to be used to retrospectively analyse mutation testing
-data from programs and also emerging domains, i.e., databases. Although domains under test may differ,
-like data can be collected (e.g., mutant status, mutant type and operator). While more data
-can optionally be collected from mutation testing, the additional data is more
-dependent on the domain. Sample data collected from performing mutation testing on database schemas
-is included in Table~\ref{tbl:study-data}, where the additional data are
-unique identifier for the database management system / schema combination (Identifier),
-DBMS (DBMS), schema (Schema) and mutant creation time (Time).
+The \mr~tool accepts a generalised input format enabling it to be used to retrospectively
+analyse mutation testing data from programs and also emerging domains such as databases.
+Although domains under test may differ, like data can be collected (e.g., mutant status,
+mutant type and operator). While more data can optionally be collected from mutation
+testing, the additional data is more dependent on the domain under test. Data collected
+from performing mutation testing on the nine database schemas is displayed in Table~\ref{tbl:study-data}.
+This is a snippet of the data used in the preliminary study of effectiveness of \mr.
+The additional data are unique identifier for the database management system / schema combination
+(Identifier), DBMS (DBMS), schema (Schema) and mutant creation time (Time).
 
-Additionally, in our experiments, we chose to analyse a select number of schemas, shown in Table~\ref{tbl:study-schemas}.
-We chose these nine schemas because they range in triviality. For example, the MozillaPermissions schema contains
-a single constraint, where as the JWhoisServer schema has a total of 50 constraints. This allowed us to evaluate the effectiveness
-of the \mr tool for schemas of varying complexities.
+We chose these nine schemas because they range in triviality. For example, the MozillaPermissions
+schema contains a single constraint, where as the JWhoisServer schema has a total of 50
+constraints. This allowed us to evaluate the policy recommendations made based on the
+effectiveness of reduction techniques analysed by \mr for schemas of varying complexities.
 
-\mr was designed to empirically study the efficiency and effectiveness of
-various reduction techniques in retrospect. The two reduction techniques mentioned earlier---which are often considered
-to be the most cost-effective---are random sampling and sampling over operators. Both
-of these techniques require an arbitrary percentage, $x$, to be chosen as the maximum threshold
-for the number of mutants to be analysed from a set. The structure of the experiment function for the two
-reduction techniques is displayed in Figure~\ref{fig:experiment-structure}.
+\mr~was designed to empirically study the efficiency and effectiveness of various reduction
+techniques in retrospect. The reduction technique, mutant sampling, requires an arbitrary
+$x$, to be chosen as the maximum fractional threshold for the number of mutants to be analysed
+from a set. The structure of the experiment function for the two
+reduction sub-techniques is displayed in Figure~\ref{fig:experiment-structure}.
 
 Where Wong and Mathur in their studies~\cite{mathur1994empirical, wong1993mutation} conducted
 experiments using mutant sampling with $x$ from $10\%$ to $40\%$ increasing by steps of $5\%$, we
 chose to analyse $x$ at $1\%$ and then increase by $10\%$ intervals up to $90\%$. By lowering
-the granularity of the experiment to $10\%$ intervals instead of
-$1\%$ or $5\%$, we reduce the cost of performing retrospective analysis with \mr, while observing
-similar trends.
+the granularity of the experiment to $10\%$ intervals instead of $1\%$ or $5\%$, we reduce the
+cost of performing retrospective analysis with \mr, while observing similar trends.
 
-Following the recommendations of Traeger et al. and Arcuri, we ran 30 trials for each configuration
-of a reduction approach in \mr~\cite{traeger2008nine, arcuri2014hitchhiker}.
-The general rule in many fields of science is to minimally perform 30 observations to show with high confidence
-that the results are statistically significant and to allow for the results to approximate a normal distribution.
+Following the recommendations of Traeger et al. and Arcuri, \mr~runs 30 trials for each configuration
+of a reduction approach~\cite{traeger2008nine, arcuri2014hitchhiker}. The general rule in many
+fields of science is to minimally perform 30 observations to show with high confidence that the results
+are statistically significant and to allow for the results to approximate a normal distribution.
