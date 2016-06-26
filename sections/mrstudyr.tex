@@ -11,9 +11,12 @@
 When performed with tools such as Major~\cite{Just2011b}, the process of mutation testing, as displayed in
 Figure~\ref{fig:process}, involves the use of operators to generate mutants for a specific program and then the
 execution of tests to determine how they kill the mutants. The outcome of this phase is the higher-is-better mutation
-score, or the ratio of the number of killed mutants to the number of mutants generated~\cite{Just2011a}.
+score, or the ratio of the number of killed mutants to the number of mutants generated~\cite{Just2011a}. In many cases,
+as shown in Figure~\ref{fig:process}, it is necessary to perform various analyses of the mutants. For instance, testers
+may want to see which mutants were not killed so as to determine if they are equivalent (i.e., semantically the same as
+the original program) or, alternatively, prompts for ways to improve the  test suite.
 
-
+This paper presents another mutant analysis: the retrospective study of mutant reduction techniques.
 
 The first of its kind, \mr~is a tool for performing the retrospective analysis of mutant reduction techniques. Upon
 collecting generalised data from performing mutation testing on all mutants, \mr~is capable of determining efficiency
