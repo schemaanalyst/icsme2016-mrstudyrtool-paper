@@ -75,3 +75,16 @@
 
 % RQs
 \newcommand{\conclusion}[2]{\vspace{1mm} \noindent {\bf Conclusion for #1:} #2}
+
+% Caption Paragraphs
+\newcommand{\captionpara}[4]{
+    \vspace{#1em}
+    \makebox[\linewidth][c]{
+        \begin{minipage}{#2\linewidth}
+      \scriptsize
+            #4
+        \end{minipage}
+    }
+    \vspace{#3em}
+}
+
