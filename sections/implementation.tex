@@ -5,17 +5,16 @@ be a full statistical language for conducting empirical studies. Following its p
 R is a powerful means for data analysts to express computations~\cite{ihaka1996r}.
 In R, the fundamental way to share code is via a package.
 
-% This paragraph will need Dr. Kapfhammer's magic to fix (I cannot stand the spacing)
-R packages are easy to distribute and include code, data, documentation and tests~\cite{wickham2015r}.
-Since \mr has been released as an R package, installing the tool requires 
-four commands in the R console.
-First, \texttt{install.packages("devtools")}, then {\small\texttt{library(devtools)}}
-to install and load the {\small\texttt{devtools}}~\cite{devtools} package, respectively.
-The \texttt{devtools} package is necessary because it provides functions for installing
-and maintaining \mr as well as its dependencies. Finally, to install
-\mr~\cite{tool} from the popular Git repository hosting service, GitHub~\cite{github},
-use the following command: {\small\texttt{devtools::install\_github("mccurdyc/mrstudyr")}}.
-Then, finally, load \mr using \texttt{library(mrstudyr)}.
+% TODO: This paragraph will need Dr. Kapfhammer's magic to fix (I cannot stand the spacing)
+
+R packages are easy to distribute and include code, data, documentation and tests~\cite{wickham2015r}.  Since \mr~has
+been released as an R package, installing the tool requires four commands in the R console.  First,
+\texttt{install.packages("devtools")}, then {\small\texttt{library(devtools)}} to install and load the
+{\small\texttt{devtools}}~\cite{devtools} package, respectively.  The \texttt{devtools} package is necessary because it
+provides functions for installing and maintaining \mr~as well as its dependencies.  Finally, to install \mr~\cite{tool}
+from the popular Git repository hosting service, GitHub~\cite{github}, use the following command:
+{\small\texttt{devtools::install\_github("mccurdyc/mrstudyr")}}.  Then, finally, load \mr~using
+\texttt{library(mrstudyr)}.
 
 \input{figures/experiment_structure}
 \input{sections/implementation_design}
