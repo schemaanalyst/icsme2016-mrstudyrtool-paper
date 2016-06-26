@@ -6,7 +6,7 @@
 
 % Performing mutation testing, displayed in Figure~\ref{fig:process}, is often considered to be too expensive to take
 
-% Further explain the idea of retrospective analysis
+% Review the process of mutation testing, starting with the first part at the top of the diagram
 
 When performed with tools such as Major~\cite{Just2011b}, the process of mutation testing, as displayed in
 Figure~\ref{fig:process}, involves the use of operators to generate mutants for a specific program and then the
@@ -14,15 +14,21 @@ execution of tests to determine how they kill the mutants. The outcome of this p
 score, or the ratio of the number of killed mutants to the number of mutants generated~\cite{Just2011a}. In many cases,
 as shown in Figure~\ref{fig:process}, it is necessary to perform various analyses of the mutants. For instance, testers
 may want to see which mutants were not killed so as to determine if they are equivalent (i.e., semantically the same as
-the original program) or, alternatively, prompts for ways to improve the  test suite.
+the original program) or, alternatively, prompts for ways to improve the test suite.
+
+% Start to discuss the idea of retrospective mutant analysis for reduction techniques
 
 This paper presents another type of mutant analysis: the retrospective study of mutant reduction techniques. Leveraging
 data collected during mutation testing (e.g., the name of an operator that produced a mutant, the kill-status of a
-mutant, and the costs for producing and analysing a mutant), this method
+mutant, and the costs of producing and analysing a mutant), this method supports the study of mutant reduction
+techniques. This type of analysis allows testers to ask and answer questions like ``what would the mutation score be if
+only 20\% of the mutants were executed?'' While questions of this nature could be executed through, for instance, either
+a manual analysis or a bespoke program, this paper presents \mr~, a tool that makes it easy to effectively pose and
+answer questions about methods for mutant reduction.
 
-The first of its kind, \mr~is a tool for performing the retrospective analysis of mutant reduction techniques. Upon
-collecting generalised data from performing mutation testing on all mutants, \mr~is capable of determining efficiency
-and effectiveness of well-known mutant reduction techniques specific to the data.
+% The first of its kind, \mr~is a tool for performing the retrospective analysis of mutant reduction techniques. Upon
+% collecting generalised data from performing mutation testing on all mutants, \mr~is capable of determining efficiency
+% and effectiveness of well-known mutant reduction techniques specific to the data.
 
 By accepting a generalised input format, the \mr~tool can be utilized in a variety of domains to assess the efficiency
 and effectiveness of mutant reduction techniques.  In this paper, we display that \mr~is versatile by conducting a
