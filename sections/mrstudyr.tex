@@ -16,7 +16,9 @@ as shown in Figure~\ref{fig:process}, it is necessary to perform various analyse
 may want to see which mutants were not killed so as to determine if they are equivalent (i.e., semantically the same as
 the original program) or, alternatively, prompts for ways to improve the  test suite.
 
-This paper presents another mutant analysis: the retrospective study of mutant reduction techniques.
+This paper presents another mutant analysis: the retrospective study of mutant reduction techniques. Leverage data
+collected during mutation testing (e.g., the name of an operator that produced a mutant, the kill-status of a mutant,
+and timings concerning the costs of producing and analysing the mutant), this method 
 
 The first of its kind, \mr~is a tool for performing the retrospective analysis of mutant reduction techniques. Upon
 collecting generalised data from performing mutation testing on all mutants, \mr~is capable of determining efficiency
