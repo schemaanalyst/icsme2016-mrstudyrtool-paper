@@ -14,17 +14,17 @@ execution of tests to determine how they kill the mutants. The outcome of this p
 score, or the ratio of the number of killed mutants to the number of mutants generated~\cite{Just2011a}. In many cases,
 as shown in Figure~\ref{fig:process}, it is necessary to perform various analyses of the mutants. For instance, testers
 may want to see which mutants were not killed so as to determine if they are equivalent (i.e., semantically the same as
-the original program) or, alternatively, prompts for ways to improve the test suite.
+the original program) or, alternatively, indications of ways to improve the test suite.
 
 % Start to discuss the idea of retrospective mutant analysis for reduction techniques (questions you can answer)
 
 This paper presents another type of mutant analysis: the retrospective study of mutant reduction techniques. Leveraging
 data collected during mutation testing (e.g., the name of an operator that produced a mutant, the kill-status of a
 mutant, and the costs of producing and analysing a mutant), this method supports the study of mutant reduction
-techniques. This type of analysis allows testers to ask and answer questions like ``what would the mutation score be if
-only a random 20\% of the mutants were executed?'' While questions of this nature could be executed through, for
-instance, either a manual analysis or a bespoke program, this paper presents \mr, a tool that makes it easy to
-effectively pose and answer questions about methods for mutant reduction.
+techniques. This type of retrospective analysis allows testers to ask and answer questions like ``what would the
+mutation score be if only a random 20\% of the mutants were executed?'' While questions of this nature could be executed
+through, for instance, either a manual analysis or a bespoke program, this paper presents \mr, a tool that makes it easy
+to effectively pose and answer questions about methods for mutant reduction.
 
 % The first of its kind, \mr~is a tool for performing the retrospective analysis of mutant reduction techniques. Upon
 % collecting generalised data from performing mutation testing on all mutants, \mr~is capable of determining efficiency
@@ -36,8 +36,6 @@ preliminary study of mutant reduction techniques on mutant data collected from t
 \mr~tool is not limited to analysing mutant data from programs or databases, it can effectively be used in any number
 domains. Where mutation testing can be performed, \mr~is capable of analysing reduction techniques.
 
-\input{tables/sample_data}
-\input{tables/schemas}
 
 The \mr~tool is not limited to the domains where it can be utilised, nor is it restricted
 by the reduction approaches it can perform. In the current state, \mr~is able to perform
@@ -60,6 +58,9 @@ under version 3 of the GNU General Public License~\cite{license}. The GNU Genera
 allows for commercial, patent and private use, as well as distribution of and modification to the tool
 under the condition that anything derived from it is bound by the same conditions as the originally
 released version~\cite{copyleft}.
+
+\input{tables/sample_data}
+\input{tables/schemas}
 
 % \input{sections/mrstudyr_retrospective}
 % \input{sections/mrstudyr_io}
