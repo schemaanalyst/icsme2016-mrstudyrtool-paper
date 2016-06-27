@@ -10,7 +10,7 @@
 \begin{tabular}{l}
 \vspace{-2ex} \\
 
-{\bf function} analyse\_\textit{redudction\_technique\_name}($data$) \\
+{\bf function} analyse\_\textit{reduction\_technique\_name}($data$) \\
 
 \atab {\bf where} \\
 \atab \atab \tinybullet $data$ is data collected from performing mutation testing \\
@@ -25,12 +25,7 @@
 \hspace{3em} \atab {\bf for} $j \in $ 1:30 \smallvspace \\
 
 \hspace{4em} \atab {\it // Perform reduction technique on data:} \\
-\hspace{4em} \atab {select\_k\_percent \it optionally (\_per\_operator)} \smallvspace \\
-
-\hspace{4em} \atab {\it // Perform effectiveness calculations:} \\
-\hspace{4em} \atab {analyse\_mutation\_score}\smallvspace \\
-\hspace{4em} \atab {analyse\_correlation}\smallvspace \\
-\hspace{4em} \atab {analyse\_percents\_error}\smallvspace \\
+\hspace{4em} \atab {\bf let} $red \leftarrow$ select\_k\_percent \it optionally (\_per\_operator) \smallvspace \\
 
 \hspace{4em} \atab {\it // Append rows to a dataframe:} \\
 \hspace{4em} \atab {\bf let} $df \leftarrow$ dataframe\smallvspace \\
