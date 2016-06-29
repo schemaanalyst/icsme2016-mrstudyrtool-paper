@@ -44,21 +44,20 @@ to effectively pose and answer questions about methods for mutant reduction.
 % can perform.
 
 % Talk about the reduction methods that are implemented in the tool and then explain how easy it is to add new ones
+% Say that the tool is extensively documented and easy for someone to start using right away
 
 Currently, \mr~can perform a widely-studied mutant reduction technique: mutant sampling~\cite{gopinath2015mutation,
 jia2011analysis, gopinath2015empirical}.  Due to its extensible design, the \mr~tool could be extended to perform
-specific reduction techniques such as E-Selective~\cite{offutt1996experimental}, where only mutants created by the
+specific reduction techniques such as e-selective~\cite{offutt1996experimental}, where only mutants created by the
 following operators are chosen: ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical}. Additionally, reduction methods
-that group mutants with based on clustering algorithms~\cite{jia2011analysis} could also be integrated into \mr.
+that group mutants with based on clustering algorithms~\cite{jia2011analysis} could also be integrated into \mr.  To
+support the integration of new algorithms for mutant reduction, \mr~is accompanied with extensive
+documentation~\cite{tool}.  The tool's main function calls of the \mr~tool are also provided in the documentation
+accompanied by their respective output. Finally, provided in the documentation is a live asciinema~\cite{asciinema}
+screencast, displaying usage of the tool.
 
-% Say that the tool is extensively documented and easy for someone to start using right away
-
-In addition to being extensible in both the domains in which it can be utilized and the reduction approaches it can
-perform, \mr~is accompanied with extensive documentation~\cite{tool}.  The documentation includes the necessary commands
-to get the reader ``up-and-running'' with \mr~quickly and obviates the need to read a poorly-formatted command-line
-manual page.  The various accepted function calls of the \mr~tool are also provided in the documentation accompanied by
-their respective output. Finally, provided in the documentation is a live asciinema~\cite{asciinema} screencast,
-displaying usage of the tool.
+% The documentation includes the necessary commands to get the reader ``up-and-running'' with \mr~quickly and obviates the
+% need to read a poorly-formatted command-line manual page.
 
 \subsection{Input Format}
 
