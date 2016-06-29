@@ -46,14 +46,17 @@ to effectively pose and answer questions about methods for mutant reduction.
 % Talk about the reduction methods that are implemented in the tool and then explain how easy it is to add new ones
 % Say that the tool is extensively documented and easy for someone to start using right away
 
+% The tool's documentation explains the inputs, outputs, and behavior of the main functions.
+
+% Finally, \mr's GitHub site includes a screencast demonstrating how to use the tool.
+
 Currently, \mr~can perform a widely-studied mutant reduction technique: mutant sampling~\cite{gopinath2015mutation,
 jia2011analysis, gopinath2015empirical}.  Due to its extensible design, the \mr~tool could be extended to perform
-specific reduction techniques such as e-selective~\cite{offutt1996experimental}, where only mutants created by the
-following operators are chosen: ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical}. Additionally, reduction methods
-that group mutants with based on clustering algorithms~\cite{jia2011analysis} could also be integrated into \mr.  To
-support the integration of new algorithms for mutant reduction, \mr~is accompanied with extensive
-documentation~\cite{tool}.  The tool's documentation explains the inputs, outputs, and behavior of the main functions.
-Finally, \mr's GitHub site includes a screencast demonstrating how to use the tool.
+specific reduction techniques such as e-selective~\cite{offutt1996experimental}, where mutants are only created by the
+following operators: ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical}. Additionally, reduction methods that group
+mutants with clustering algorithms~\cite{jia2011analysis} could also be incorporated into \mr.  To support the
+integration of new algorithms for mutant reduction, \mr~is accompanied with extensive documentation that explains the
+inputs, outputs, and behavior of the main functions~\cite{tool}.
 
 % The documentation includes the necessary commands to get the reader ``up-and-running'' with \mr~quickly and obviates the
 % need to read a poorly-formatted command-line manual page.
