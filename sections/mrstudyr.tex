@@ -37,17 +37,20 @@ to effectively pose and answer questions about methods for mutant reduction.
 % programs or databases, it can effectively be used in any number domains. Where mutation testing can be performed, \mr~is
 % capable of analysing reduction techniques.
 
+% The \mr~tool is not limited to the domains where it can be utilised, nor is it restricted by the reduction approaches it
+% can perform.
+
 % Talk about the input format of the presented tool, stressing that it is general and useful for many domains
 
 By accepting a generalised input format, the \mr~tool can be utilised, in a variety of testing domains, to assess the efficiency
-and effectiveness of mutant reduction techniques.
+and effectiveness of mutant reduction techniques. Table~\ref{tbl:study-data} gives an snippet of a data set analysed in
+the experimental study of this paper.
 
 
 % Talk about the reduction methods that are implemented in the tool and then explain how easy it is to add new ones
 % TODO: Make sure to reference the next section of the paper as it will explain the ways to add methods
 
-The \mr~tool is not limited to the domains where it can be utilised, nor is it restricted by the reduction approaches it
-can perform. In the current state, \mr~is able to perform the most common mutant reduction technique, mutant
+In the current state, \mr~is able to perform the most common mutant reduction technique, mutant
 sampling~\cite{gopinath2015mutation, jia2011analysis, gopinath2015empirical}.  The \mr~tool can be extended to perform
 specific reduction techniques such as E-Selective~\cite{offutt1996experimental} --- where only mutants created by the
 following Mothra operators are chosen: ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical} or complex reduction
