@@ -29,11 +29,13 @@
 % in this paper. Or, going back to the previous comment, we could remove the 'iterate over schemas' from the diagram
 % and say that this is the structure for the campaign of experiments for mutant sampling with mrstudyr (I will do this!)
 
-Figure~\ref{fig:experiment-structure} gives the structure for the campaign of experiments that \mr~conducts to evaluate
-the efficiency and effectiveness of mutant reduction techniques. Since the presented tool currently focuses on mutant
-sampling, the algorithm requires as input an arbitrary $x$, to be chosen as the maximum fractional threshold for the
-number of mutants to be analysed from a set.  Following the recommendations of Traeger~\etal~and Arcuri and Briand,
-\mr~runs 30 trials for each configuration of a reduction approach~\cite{traeger2008nine, arcuri2014hitchhiker}, thereby
+% CJM: This paragraph will need major revisions now with the updated experiment structure diagram
+Figure~\ref{fig:experiment-structure} gives the structure for the campaign of experiments that \mr~conducts to collect
+the reduced mutant data from performing various reduction techniques. The ``analyse'' algorithm expects the mutant data from performing
+mutation testing on all mutants. Since the presented tool currently focuses on mutant
+sampling, the \textit{reduction technique} algorithm requires as input an arbitrary $x$, to be chosen as the maximum fractional threshold for the
+number of mutants to be analysed from a set. Following the recommendations of Traeger~\etal~and Arcuri and Briand,
+for the preliminary results presented in this paper, the maximum threshold for the number of trials that \mr~runs for each configuration of a reduction approach is set to 30~\cite{traeger2008nine, arcuri2014hitchhiker}, thereby
 controlling for the randomness inherent in a reduction method's behavior and execution time.
 
 \subsection{Implementation as an R Package}
