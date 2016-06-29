@@ -44,13 +44,12 @@ to effectively pose and answer questions about methods for mutant reduction.
 % can perform.
 
 % Talk about the reduction methods that are implemented in the tool and then explain how easy it is to add new ones
-% TODO: Make sure to reference the next section of the paper as it will explain the ways to add methods
 
-In the current state, \mr~is able to perform the most common mutant reduction technique, mutant
-sampling~\cite{gopinath2015mutation, jia2011analysis, gopinath2015empirical}.  The \mr~tool can be extended to perform
-specific reduction techniques such as E-Selective~\cite{offutt1996experimental} --- where only mutants created by the
-following Mothra operators are chosen: ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical} or complex reduction
-techniques such as mutant clustering, where mutants are chosen based on clustering algorithms~\cite{jia2011analysis}.
+Currently, \mr~can perform the most common mutant reduction technique, mutant sampling~\cite{gopinath2015mutation,
+jia2011analysis, gopinath2015empirical}.  The \mr~tool can be extended to perform specific reduction techniques such as
+E-Selective~\cite{offutt1996experimental} mutation, where only mutants created by the following operators are chosen:
+ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical}. Additionally, reduction techniques that group mutants are
+chosen based on clustering algorithms~\cite{jia2011analysis} could also be integrated into \mr.
 
 % Say that the tool is extensively documented and easy for someone to start using right away
 
