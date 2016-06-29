@@ -45,11 +45,11 @@ to effectively pose and answer questions about methods for mutant reduction.
 
 % Talk about the reduction methods that are implemented in the tool and then explain how easy it is to add new ones
 
-Currently, \mr~can perform the most common mutant reduction technique, mutant sampling~\cite{gopinath2015mutation,
-jia2011analysis, gopinath2015empirical}.  The \mr~tool can be extended to perform specific reduction techniques such as
-E-Selective~\cite{offutt1996experimental} mutation, where only mutants created by the following operators are chosen:
-ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical}. Additionally, reduction techniques that group mutants are
-chosen based on clustering algorithms~\cite{jia2011analysis} could also be integrated into \mr.
+Currently, \mr~can perform a widely-studied mutant reduction technique: mutant sampling~\cite{gopinath2015mutation,
+jia2011analysis, gopinath2015empirical}.  Due to its extensible design, the \mr~tool could be extended to perform
+specific reduction techniques such as E-Selective~\cite{offutt1996experimental}, where only mutants created by the
+following operators are chosen: ABS, UOI, LCR, AOR and ROR~\cite{gopinath2015empirical}. Additionally, reduction methods
+that group mutants with based on clustering algorithms~\cite{jia2011analysis} could also be integrated into \mr.
 
 % Say that the tool is extensively documented and easy for someone to start using right away
 
@@ -59,6 +59,8 @@ to get the reader ``up-and-running'' with \mr~quickly and obviates the need to r
 manual page.  The various accepted function calls of the \mr~tool are also provided in the documentation accompanied by
 their respective output. Finally, provided in the documentation is a live asciinema~\cite{asciinema} screencast,
 displaying usage of the tool.
+
+\subsection{Input Format}
 
 % Talk about the input format of the presented tool, stressing that it is general and useful for many domains
 
