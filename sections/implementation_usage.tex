@@ -31,20 +31,20 @@ comma-separated value file.
 % Sample output from the \texttt{analyse} function is provided in the accompanying README file on the
 % tool's GitHub page~\cite{tool}.
 
-The reduction techniques, reffered to in Figure~\ref{fig:mrstudyr}, are performed following the provision
-of mutant data collected from mutation testing --- the ``Original Data'' --- to \mr. Using \mr~to perform
-reduction techniques is a single command: \texttt{analyse(data)}. Each reduction technique performed by
-the \texttt{analyse} function in \mr, returns reduced data which is then cumulated into a data set, shown
+``Reduction Techniques'', as referred to in Figure~\ref{fig:mrstudyr}, are performed following the provision
+of mutant data collected from mutation testing on all mutants --- the ``Original Data'' --- to \mr. Using
+\mr~to perform reduction techniques is a single command: \texttt{analyse(data)}. Each reduction technique performed by
+the \texttt{analyse} function returns reduced data which is then cumulated into a data set, this process is shown
 in Figure~\ref{fig:mrstudyr}, containing the data from all of the reduction approaches. This data includes
 the trial, the total number of mutants analysed, the number of killed mutants, the generation time of each
-mutant and the mutation scores for the reduced and original data. After performing the reduction techniques,
+mutant and the mutation scores for the reduced and original data sets. After performing the reduction techniques,
 their efficiency and effectiveness is evaluated based on four calculations on the cumulated reduced data in
-the ``E \& E Analysis'' phase.
+efficiency and effectiveness --- or ``E \& E'' --- analysis.
 
 % CJM: I want to present the evaluation metrics of efficiency and effectiveness, then define them, then finally,
 % how to perform them with mrstudyr.
 The evaluation calculations in E \& E analysis --- and their respective abreviations --- are: mutation score
-(MS), reduction in creation cost (Red.), correlation (Corr.), and error (Err.). The mutation score is calculated
+(MS), reduction in creation cost (Red.), correlation (Corr.), and error (Err.). The mutation score of a set is calculated
 by dividing the number of killed mutants by the total number of mutants~\cite{wong1995reducing}. The reduction
 in creation cost for a set of mutants is the cost of the reduced set subtracted from the cost of the original set,
 divided by the cost of the original set. The original and reduced sets' mutation score correlation is calculated
@@ -52,14 +52,14 @@ using Kendall's~\taub, supported by the ``Kendall'' R package~\cite{mcleod2015ke
 MAE and RMSE --- between the original and reduced sets' mutation score is calculated using the existing ``Metrics''
 R package~\cite{metrics}.
 
-The aforementioned metrics, with the exception of calculating correlation, are calculated by a single function
-in \mr~: \texttt{analyse\_calculations(data)}. Where the input to \texttt{analyse\_calculations} is the cumulated
-reduced data, displayed in Figure~\ref{fig:mrstudyr}, from performing the reduction techniques and returns a data
-set with the values of the respective calculation. To calculate correlation, the \texttt{analyse\_correlation(data)}
-function is used. Where the input data to this function is again the cumulated reduced data and the output is a
-data set containing only the correlation values between the reduced and original mutation scores. The usability of
-\mr~is supported by requiring experimenters to only call two functions to analyse the efficiency and effective of
-reduction techniques.
+The aforementioned metrics, with the exception of calculating correlation, are calculated by a single function in
+\mr~: \texttt{analyse\_calculations(data)}. Where the input to \texttt{analyse\_calculations} is the cumulated reduced
+data from performing the reduction techniques and returns a data set with the values of the respective calculation. To
+calculate correlation, the \texttt{analyse\_correlation(data)} function is used. Where the input data to this function,
+is again, the cumulated reduced data and the output is a data set containing only the correlation values between the
+reduced and original mutation scores. The simplicity and usability of \mr~is upheld by requiring experimenters to call
+only two functions to analyse the efficiency and effective of reduction techniques. This same simplicity is continued
+in the ``Human Examination'' phase displayed in Figure~\ref{fig:mrstudyr}.
 
 % CJM: removed this paragraph because I no longer think that it is needed and to save space for preliminary study
 % Additionally, the \texttt{analyse\_calculations} function can be used to calculate the
@@ -67,11 +67,10 @@ reduction techniques.
 % limited to a single reduction method. As input, the \texttt{analyse\_calculations} function
 % expects the dataframe returned from performing a reduction approach.
 
-The ``Human Examination'' phase, displayed in Figure~\ref{fig:mrstudyr}, still requires use of \mr~for clearly
-visualising the trends in the data collected from the E \& E analysis. The \mr~tool takes advantage of the work
-of Hadley Wickham with widely-used graphing package \texttt{ggplot2}~\cite{ggplot2}. All of the visualisation
-functions provided by \mr~and their output can be found on the GitHub page~\cite{tool}. These visualisations
-will help human examiners to construct a policy recommendation as to which reduction technique should be used
-for the specific domain and data under observation.
+The human examination phase still requires use of \mr~for clearly visualising the trends in the data collected from
+the E \& E analysis. The \mr~tool takes advantage of the work of Hadley Wickham with the widely-used graphing package
+\texttt{ggplot2}~\cite{ggplot2}. All of the visualisation functions provided by \mr~and their output can be found on
+\mr's GitHub page~\cite{tool}. These visualisations will help human examiners to construct a policy recommendation as
+to which reduction technique should be used for the specific domain and data under observation.
 
-\input{figures/graph}
+\input{tables/schemas}
