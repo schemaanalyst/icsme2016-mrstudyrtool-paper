@@ -46,8 +46,10 @@ By accepting a generalised input format, the \mr~tool can be used in a variety o
 efficiency and effectiveness of mutant reduction techniques. Table~\ref{tbl:study-data} gives an snippet of a data set
 analysed in the experimental study of this paper. Organized so that each row furnishes data about an individual mutant,
 \mr's data is in a ``tidy'' format~\cite{Wickham2014} that primarily focuses on the entity under test, the configuration
-in which mutation testing was performed, and the operator that produced each mutant.
-
+in which mutation testing was performed, and the operator that produced each mutant. Since mutation testing systems can
+produce different types of mutants (e.g., normal, still-born, or equivalent)~\cite{Wright2014}, \mr's input files also
+record the type of the mutant. Additionally, the tool tracks the status of the mutant and one of many different
+execution times (e.g., mutant generation or analysis time); as necessary, it can also be extended to accept more inputs.
 
 % Talk about the reduction methods that are implemented in the tool and then explain how easy it is to add new ones
 % TODO: Make sure to reference the next section of the paper as it will explain the ways to add methods
