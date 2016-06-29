@@ -16,8 +16,21 @@
 % Explain how to conduct a compaign of experiments using the figure with an algorithm's psuedo code
 % TODO: Fix the fact that the last sentence in this paragraph does not take up enough space
 
+% Experiment Structure Diagram: This diagram in its current state is pretty specific to our experiment and testing database
+% schemas. As you will notice, it iterates over a list of schemas. Additionally, it is specific to mutant sampling
+% with the diagram showing that a technique iterates over a list of percentages. We can keep the diagram the way it
+% is or remove it. I think by making it generalised (removing list of schemas, and percentages) it reduces it to the
+% point where it isn't worth showing because it will then consist of iterate through a number of trials, perform a reduction
+% technique, return the data collected from every trial. If it were simplified, I think it would just be easier to
+% describe the technique it writing rather than taking up so much space with a diagram.
+
+% I know in GH we talked about objective-level discussion then increase granularity. With that in mind, this first
+% sentence might be too specific for this section and may need to move to a section specific to the results displayed
+% in this paper. Or, going back to the previous comment, we could remove the 'iterate over schemas' from the diagram
+% and say that this is the structure for the campaign of experiments for mutant sampling with mrstudyr (I will do this!)
+
 Figure~\ref{fig:experiment-structure} gives the structure for the campaign of experiments that \mr~conducts to evaluate
-the efficiency and effectiveness of mutant reduction techniques. Since the presented tool currently focuses on mutant
+the efficiency and effectiveness of mutant sampling techniques. Since the presented tool currently focuses on mutant
 sampling, the algorithm requires as input an arbitrary $x$, to be chosen as the maximum fractional threshold for the
 number of mutants to be analysed from a set.  Following the recommendations of Traeger~\etal~and Arcuri and Briand,
 \mr~runs 30 trials for each configuration of a reduction approach~\cite{traeger2008nine, arcuri2014hitchhiker}, thereby
