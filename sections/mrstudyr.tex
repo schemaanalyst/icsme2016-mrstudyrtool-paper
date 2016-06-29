@@ -1,6 +1,9 @@
 %!TEX root=../icsme2016-mrstudyr.tex
 
-\section{\textit{mrstudyr}: Mutant Reduction Studier}
+% \section{\textit{mrstudyr}: Mutant Reduction Studier}
+\section{Implementation and Use of the \mr~Tool}
+
+\subsection{Objectives}
 
 \input{figures/mrstudyr}
 
@@ -49,7 +52,7 @@ analysed in the experimental study of this paper. Organized so that each row fur
 in which mutation testing was performed, and the operator that produced each mutant. Since mutation testing systems can
 produce different types of mutants (e.g., normal, still-born, or equivalent)~\cite{Wright2014}, \mr's input files also
 record the type of the mutant. Additionally, the tool tracks the status of the mutant and one of many different
-execution times (e.g., mutant generation or analysis time); as necessary, it can also be extended to accept more inputs.
+execution times (e.g., mutant generation or analysis time); as necessary, it can also be extended to process more inputs.
 
 % Talk about the reduction methods that are implemented in the tool and then explain how easy it is to add new ones
 % TODO: Make sure to reference the next section of the paper as it will explain the ways to add methods
@@ -79,7 +82,6 @@ asciinema~\cite{asciinema} screencast, displaying usage of the tool.
 % released version~\cite{copyleft}.
 
 \input{tables/sample_data}
-\input{tables/schemas}
 
 % \input{sections/mrstudyr_retrospective}
 % \input{sections/mrstudyr_io}
