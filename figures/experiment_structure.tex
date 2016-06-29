@@ -10,27 +10,48 @@
 \begin{tabular}{l}
 \vspace{-2ex} \\
 
-{\bf function} analyse\_\textit{reduction\_technique\_name}($data$) \\
+{\bf function} analyse ($data$) \\
 
 \atab {\bf where} \\
 \atab \atab \tinybullet $data$ is data collected from performing mutation testing \\
+\atab \atab \tinybullet $s$ is a single schema under analysation \\
+\atab \atab \tinybullet $schemas$ refers to all of the schemas analysed in the empirical study \\
+\atab \atab \tinybullet $p$ is a single percentage being observed \\
+\atab \atab \tinybullet $percentages$ are the chosen $x$ values for mutant sampling \\
+\atab \atab \tinybullet $t$ is the trial indexer \\
+\atab \atab \tinybullet $trials$ is the total number of trials set for each configuration of technique\\
+\atab \atab \tinybullet $red$ is the reduced mutant data returned from a reduction method \\
+\atab \atab \tinybullet $d$ is the data collected from each trials and configuration \\
 
-\atab {\it // Iterate over all schemas:} \\
-\atab {\bf for} $s \in $ list($schemas$) \smallvspace \\
+\atab {\bf for each} $s \in $ list of $schemas$ \smallvspace \\
 
-\hspace{1em} \atab {\it // Iterate over the chosen $x$ values:} \\
-\hspace{1em} \atab {\bf for} $i \in $ list($x\_values$) \smallvspace \\
+% \atab {\bf where} \\
+% \atab \atab \tinybullet $s$ is a single schema under analysation \\
+% \atab \atab \tinybullet $schemas$ refers to all of the schemas analysed in the empirical study \\
 
-\hspace{3em} \atab {\it // For 30 trials:} \\
-\hspace{3em} \atab {\bf for} $j \in $ 1:30 \smallvspace \\
+\hspace{1em} \atab {\bf for each} $p \in $ list of $percentages$ \smallvspace \\
 
-\hspace{4em} \atab {\it // Perform reduction technique on data:} \\
-\hspace{4em} \atab {\bf let} $red \leftarrow$ select\_k\_percent \it optionally (\_per\_operator) \smallvspace \\
+% \atab {\bf where} \\
+% \atab \atab \tinybullet $p$ is a single percentage being observed \\
+% \atab \atab \tinybullet $percentages$ are the chosen $x$ values for mutant sampling \\
 
-\hspace{4em} \atab {\it // Append rows to a dataframe:} \\
-\hspace{4em} \atab {\bf let} $df \leftarrow$ dataframe\smallvspace \\
+\hspace{3em} \atab {\bf for} $t \leq trials$ \smallvspace \\
 
-\atab {\bf return} $df$ \smallvspace \\
+% \atab {\bf where} \\
+% \atab \atab \tinybullet $t$ is the trial indexer \\
+% \atab \atab \tinybullet $trials$ is the total number of trials set for each configuration of technique\\
+
+\hspace{4em} \atab {\bf let} $red \leftarrow reduction\,technique\,(data)$  \smallvspace \\
+
+% \atab {\bf where} \\
+% \atab \atab \tinybullet $red$ is the reduced mutant data returned from a reduction method \\
+
+\hspace{4em} \atab {\bf let} $d\,(red)$ \smallvspace \\
+
+% \atab {\bf where} \\
+% \atab \atab \tinybullet $d$ is the data collected from each trials and configuration \\
+
+\atab {\bf return} $d$ \smallvspace \\
 
 {\bf end function} \\
 \vspace{-0.5em} \\
