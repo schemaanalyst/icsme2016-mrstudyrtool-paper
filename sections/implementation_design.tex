@@ -10,11 +10,6 @@
 % preliminary study of effectiveness of \mr.  The additional data are unique identifier for the database management system
 % / schema combination (Identifier), DBMS (DBMS), schema (Schema) and mutant creation time (Time).
 
-We chose these nine schemas because they range in triviality. For example, the MozillaPermissions schema contains a
-single constraint, where as the JWhoisServer schema has a total of 50 constraints. This allowed us to evaluate the
-policy recommendations made based on the effectiveness of reduction techniques analysed by \mr~for schemas of varying
-complexities.
-
 The structure of the experiment function for the two reduction sub-techniques is displayed in
 Figure~\ref{fig:experiment-structure}. \mr~was designed to empirically study the efficiency and effectiveness of various
 reduction techniques in retrospect. The reduction technique, mutant sampling, requires an arbitrary $x$, to be chosen as
