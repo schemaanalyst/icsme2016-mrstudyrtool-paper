@@ -1,35 +1,57 @@
 \subsection{Tool Usage}
 
-Releasing an R tool via a package makes installing and loading the tool
-a matter of a few commands, but this does not guarantee that the usability
-of the tool will be as simple. \mr~was designed to be simplistic,
-yet perform stringent empirical analyses on mutant reduction techniques.
-To display the results from \mr~analysing mutant reduction strategies for the
-testing of real-world database schemas, the following commands will be tailored
-toward the data that we collected from performing mutation testing.
-The collected data can be read in via the following: {\small\texttt{data <- read\_data("sqlite-avmdefaults.dat")}}.
-This function expects the data to be located in the \texttt{inst/extdata} folder
-and stored as a comma-separated value file.
+% CJM: Moving this figure here to allow reader to follow the process of the mrstudr tool
 
-Immediately following providing the data to \mr, analysis begins. Currently,
-the two most common sub-techniques of mutant sampling are performed using the following:
-\texttt{analyse\_random\_sampling(data)} and \texttt{analyse\_across\_operators(data)},
-for random sampling and sampling across operators, respectively.
-These functions will both return a new dataframe containing the trial, evaluated
-percentage, reduced and original numerator and denominator counts,
-reduced and original time to generate mutants and the reduced and original mutation scores.
-The output from these function is provided in the accompanying README file on the
-tool's GitHub page~\cite{tool}. After performing a reduction technique its efficiency
-and effectiveness is evaluated based on five calculations.
+\input{figures/mrstudyr}
 
-The five metrics that evaluate the efficiency and effectiveness are:
-mutation score, correlation, percent reduction in creation cost and error
---- MAE and RMSE --- between the reduced and original mutation scores.
-The five aforementioned calculations are all contained within a single ``parent'' function.
+% CJM: I think we should move 'data' to the same line as the function call
 
-The parent function, \texttt{analyse\_calculations}, performs all five child
-calculations, returning a single dataframe --- that can be used throughout the human
-examination phase --- rather than five individual dataframes begin generated for
+Releasing an R tool via a package makes installing and loading the tool a matter of a few commands,
+but this does not guarantee tool usability. \mr~was designed to be simplistic, yet perform stringent
+empirical analyses on mutant reduction techniques. To display the results from \mr~analysing mutant
+reduction strategies for the testing of real-world database schemas, the following commands will be
+tailored toward the data that we collected from performing mutation testing. The collected data can
+be read in via the following: {\small\texttt{data <- read\_data("sqlite-avmdefaults.dat")}}. This
+function expects the data to be located in the \texttt{inst/extdata} folder and stored as a
+comma-separated value file.
+
+% CJM: I noticed in section 2.C (Conducting Experiment Campaigns) that it already explains that mrstudyr
+% focuses on mutant sampling. Therefore, I am going to remove the sentences in this section restating
+% this fact. These sentences are commented-out immediately follow this comment.
+
+% Currently, the two most common sub-techniques of mutant sampling are performed using the following:
+% \texttt{analyse\_random\_sampling(data)} and \texttt{analyse\_across\_operators(data)},
+% for random sampling and sampling across operators, respectively.
+
+% CJM: Additionally, the attributes of the data that I describe are specific to mutant sampling. I will
+% remove these attributes.
+
+% CJM: Is including the following statement entirely necessary? I removed it for now.
+
+% Sample output from the \texttt{analyse} function is provided in the accompanying README file on the
+% tool's GitHub page~\cite{tool}.
+
+The reduction techniques, reffered to in Figure~\ref{fig:mrstudyr}, are performed following the provision of mutant data collected from mutation testing ---
+the ``original data'' --- to \mr. Using \mr~to perform  reduction techniques is a single command:
+\texttt{analyse(data)}. Shown in Figure~\ref{fig:mrstudyr},  each reduction technique performed by the \texttt{analyse} function in \mr, returns
+reduced data which is then cumulated into a data set containing the data from all of the reduction approaches.
+This data includes the trial, the total number of mutants analysed, the number of
+killed mutants, the generation time of each mutant and the mutation scores for the reduced and
+original data. After performing the reduction techniques, their efficiency and effectiveness is evaluated based
+on four calculations in the ``E \& E Analysis'' phase displayed in Figure~\ref{fig:mrstudyr}.
+
+% CJM: I want to present the evaluation metrics of efficiency and effectiveness, then define them, then finally,
+% how to perform them with mrstudyr.
+The evaluation metrics in ``E \& E Analysis'' are: mutation score, percent reduction in creation cost,
+correlation, and error. The mutation score is calculated by dividing the number of killed mutants by the total number
+of mutants~\cite{}. Percent reduction in creation cost of a set of mutants is the cost of the reduced set subtracted
+from the cost of the original set, divided by the cost of the original set. The correlation between the original and reduced sets' mutation score is calculated using Kendall's~\taub, supported
+by the ``Kendall'' R package~\cite{mcleod2015kendall}. Finally, the error --- MAE and RMSE --- between the original and reduced sets' mutation score
+is calculated using the existing ``Metrics'' R package~\cite{metrics}.
+
+Three of the four aforementioned metrics are calculated by a single function in \mr, \texttt{analyse\_calculations}.
+The \texttt{analyse\_calculations} function returns data with the values of the respective calculation.
+The rather than five individual dataframes begin generated for
 each calculation. This reduces the number of function calls that experimenters
 need to make while using the \mr~tool to analyse reduction approaches.
 
