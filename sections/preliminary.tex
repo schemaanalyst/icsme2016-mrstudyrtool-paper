@@ -5,16 +5,16 @@
 % GMK NOTE: All of this content is really about the design of the experiments and thus it has to be integrated into this
 % section (currently, this is still rough content).
 
-To display the effectiveness and the domain extensibility of \mr, we chose the nine schemas in Table~\ref{tbl:study-schemas}.
-We chose these schemas because they range in triviality --- the total number of constraints ({\small$\sum$Constraints}).
+To display the effectiveness and the domain extensibility of \mr, we empirically analysed the nine schemas in Table~\ref{tbl:study-schemas}
+with the presented tool. These schemas were chosen due to the range in triviality --- the total number of constraints ({\small$\sum$Constraints}).
 This range in triviality allowed us to evaluate the effectiveness of reduction techniques performed by \mr~for schemas of varying
 complexities.
 
 Similar to Wong and Mathur in their studies~\cite{mathur1994empirical, wong1993mutation} where they conducted experiments using
 mutant sampling with $x$ values ranging from $10\%$ to $40\%$, increasing by steps of $5\%$, we chose to analyse $x$ at $1\%$ and
 then increase by $10\%$ intervals up to $90\%$. By lowering the granularity of the experiment to $10\%$ intervals instead of $1\%$
-or $5\%$, we reduce the cost of performing retrospective analysis with \mr, while observing similar trends.
-
+or $5\%$, \mr~reduces the cost of performing retrospective analysis, while observing similar trends, which are displayed in
+Figure ~\ref{fig:graph}.
 
 % CJM: to find the distance between original and reduced mutation scores
 % this example below is just for an x value of 1 and for random sampling
@@ -52,22 +52,23 @@ or $5\%$, we reduce the cost of performing retrospective analysis with \mr, whil
 % t_filt <- dplyr::filter(t, method == "random_sampling", percentage %in% pers)
 % visualise_mutation_score_across_schemas(t_filt)
 
-Figure~\ref{fig:graph}, a box-and-whisker plot showing the schemas analysed on the horizontal-axis and on the vertical-axis the
-mutation scores of the reduced sets after random sampling at the following $x$ values: 1\%, 10\%, 20\%, 40\% (shown at the top
-of a quadrant in a dark gray box). These $x$ values were chosen in this range because mutation scores start to become more accurate
- --- closer to the mutation score of the original set --- in sets with these maximum fractional thresholds. In the top-left quadrant
-of Figure~\ref{fig:graph}, $x$ is set to 1\%. At 1\% and where RMSE ranges from $0.062$ to $0.204$, boxes are large, indicating that
-there is drastic variability in the mutation scores. Additionally, the mutation scores observed for this reduced set were as far off
-from the original mutation as $0.467$.
+Figure~\ref{fig:graph} is a box-and-whisker plot displaying the analysed schemas from Table~\ref{tbl:study-schemas} on the horizontal-axis
+and on the vertical-axis, the mutation scores of the reduced sets after random sampling at the following $x$ values: 1\%, 10\%, 20\%, 40\%.
+In Figure~\ref{fig:graph}, the $x$ values were chosen in this range because the reduced set's mutation scores at these thresholds
+drastically increase in accuracy --- approach the mutation score of the original set. Moving from top-left to bottom-right, the boxes in
+Figure~\ref{fig:graph} show this increase in accuracy by becoming smaller as the maximum fractional threshold increases.
 
-Continuing to the next observed $x$ value of 10\%, RMSE ranges from $0.013$ to $0.065$, a
-substantial increase in accuracy. At this same  $x$ value, Wong and Mathur observed that the mutation scores of reduced sets were
-within $0.16$ from the mutation score of the original set~\cite{mathur1994empirical, wong1993mutation}. Using \mr~to retrospectively
-perform random sampling with an $x$ value of 10\%, we observed mutation scores of reduced sets to be within $0.13$ from the original
-set's mutation score.
+This increase in accuracy occurs because the mutation scores of reduced sets with smaller fractional thresholds are extremely volatile
+and can vary largely based on one or a few mutants, while the mutation scores of sets with higher fractional thresholds are substantially
+more stable. In the top-left of Figure~\ref{fig:graph}, $x$ is set to 1\%. At 1\% the sets' mutation scores are as volatile as possible,
+being as distant from the original mutation as $0.467$. Additionally, at this maximum fractional threshold, the ``lower-is-better'' metric,
+RMSE, ranges from $0.062$ to $0.204$. Stability is demonstrated in mutation scores of sets with as small as a 10\% maximum fractional
+threshold, with RMSE ranging from $0.013$ to $0.065$. At this same maximum fractional threshold, Wong and Mathur observed that the mutation
+scores of reduced sets were within $0.16$ of the original set's mutation score~\cite{mathur1994empirical, wong1993mutation}. Using \mr~to
+retrospectively perform random sampling with an $x$ value of 10\%, we observed mutation scores of reduced sets to be within $0.13$ of the
+original set's mutation score.
 
-As expected, reduced sets' mutation scores increase in accuracy with for $x$ of 20\% and 40\% with scores within $0.083$ and $0.075$,
-respectively. It is acknowledged that these results, while substantially better than those found by Wong and Mathur
-~\cite{mathur1994empirical, wong1993mutation}, may be specific to database schema mutation testing or even to this data.
-
-
+The trend of becoming more accurate as the maximum fractional threshold increases remains true for $x$ values of 20\% and 40\%. At maximum
+fractional thresholds of 20\% and 40\%, the mutation scores of reduced sets are within $0.083$ and $0.075$ of the original mutation scores,
+respectively. It is acknowledged that the results experienced in the preliminary study of \mr~may be specific to the sample data used or
+database schemas being the domain analysed.
