@@ -39,11 +39,11 @@ in Figure~\ref{fig:mrstudyr}, containing the data from all of the reduction appr
 the trial, the total number of mutants analysed, the number of killed mutants, the generation time of each
 mutant and the mutation scores for the reduced and original data sets. After performing the reduction techniques,
 their efficiency and effectiveness is evaluated based on four calculations on the cumulated reduced data in
-efficiency and effectiveness --- or ``E \& E'' --- analysis.
+the efficiency and effectiveness analysis phase of Figure~\ref{fig:mrstudyr}.
 
 % CJM: I want to present the evaluation metrics of efficiency and effectiveness, then define them, then finally,
 % how to perform them with mrstudyr.
-The evaluation calculations in E \& E analysis --- and their respective abreviations --- are: mutation score
+The evaluation calculations in efficiency and effectiveness analysis --- and their respective abreviations --- are: mutation score
 (MS), reduction in creation cost (Red.), correlation (Corr.), and error (Err.). The mutation score of a set is calculated
 by dividing the number of killed mutants by the total number of mutants~\cite{wong1995reducing}. The reduction
 in creation cost for a set of mutants is the cost of the reduced set subtracted from the cost of the original set,
@@ -68,7 +68,7 @@ in the ``Human Examination'' phase displayed in Figure~\ref{fig:mrstudyr}.
 % expects the dataframe returned from performing a reduction approach.
 
 The human examination phase still requires use of \mr~for clearly visualising the trends in the data collected from
-the E \& E analysis. The \mr~tool takes advantage of the work of Hadley Wickham with the widely-used graphing package
+the efficiency and effectiveness analysis. The \mr~tool takes advantage of the work of Hadley Wickham with the widely-used graphing package
 \texttt{ggplot2}~\cite{ggplot2}. All of the visualisation functions provided by \mr~and their output can be found on
 \mr's GitHub page~\cite{tool}. These visualisations will help human examiners to construct a policy recommendation as
 to which reduction technique should be used for the specific domain and data under observation.
