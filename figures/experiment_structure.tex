@@ -17,7 +17,7 @@
 % \atab \atab \tinybullet $s$ is a single schema under analysation \\
 % \atab \atab \tinybullet $schemas$ refers to all of the schemas analysed in the empirical study \\
 \atab \atab \tinybullet $x$ is the maximum fractional threshold for the number of mutants \\
-\atab \atab \tinybullet $percentages$ is the set of the chosen $x$ values for mutant sampling \\
+\atab \atab \tinybullet $percentages$ is the list of chosen $x$ values for mutant sampling \\
 \atab \atab \tinybullet $t$ is the trial index of the experiment \\
 \atab \atab \tinybullet $trials$ is the total number of trials set for each configuration of technique \\
 \atab \atab \tinybullet $red$ is the reduced mutant data returned from a single reduction method \\
@@ -30,7 +30,11 @@
 % \atab \atab \tinybullet $s$ is a single schema under analysation \\
 % \atab \atab \tinybullet $schemas$ refers to all of the schemas analysed in the empirical study \\
 
-\hspace{1em} \atab {\bf for each} $x \in $ list of $percentages$ \smallvspace \\
+\vspace*{0.25em} \\
+
+\hspace{1em} \atab {\bf initiallise} $d$ \smallvspace \\
+
+\hspace{1em} \atab {\bf for each} $x \in $$percentages$ \smallvspace \\
 
 % \atab {\bf where} \\
 % \atab \atab \tinybullet $p$ is a single percentage being observed \\
@@ -47,7 +51,9 @@
 % \atab {\bf where} \\
 % \atab \atab \tinybullet $red$ is the reduced mutant data returned from a reduction method \\
 
-\hspace{4em} \atab {\bf let} $d\,(red)$ \smallvspace \\
+\hspace{4em} \atab {\bf let} $d \leftarrow$ {\bf append} $red$ \smallvspace \\
+
+\hspace{4em} \atab {\bf increment} $t$ \smallvspace \\
 
 % \atab {\bf where} \\
 % \atab \atab \tinybullet $d$ is the data collected from each trials and configuration \\
