@@ -17,38 +17,56 @@ or $5\%$, we reduce the cost of performing retrospective analysis with \mr, whil
 
 
 % CJM: to find the distance between original and reduced mutation scores
-% this example below is just for an x value of 1
+% this example below is just for an x value of 1 and for random sampling
 
 % d <- read_data("sqlite-avmdefaults.dat")
 % d <- select_empirical_study_schemas(d)
 % d <- select_normal_data(d)
-% a <- analyse(d)
+% t <- analyse(d)
+% t_filt <- dplyr::filter(t, method == "random_sampling", percentage == 1)
+% diff <- abs((t_filt$original_mutation_score - t_filt$reduced_mutation_score))
+% max(diff)
+% [1] 0.4666667
+
+% CJM: to find the min and max RMSE at a given percentage
+% this example below is just for an x value of 1 and for random sampling
+
+% d <- read_data("sqlite-avmdefaults.dat")
+% d <- select_empirical_study_schemas(d)
+% d <- select_normal_data(d)
+% t <- analyse(d)
+% t_filt <- dplyr::filter(t, method == "random_sampling", percentage == 1)
+% c <- analyse_calculations(t_filt)
+% max(c$root_mean_squared_error)
+% [1] 0.20367
+% min(c$root_mean_squared_error)
+% [1] 0.06175125
+
+% CJM: to create the visualisation currently in the paper:
+
+% d <- read_data("sqlite-avmdefaults.dat")
+% d <- select_empirical_study_schemas(d)
+% d <- select_normal_data(d)
+% t <- analyse(d)
 % pers <- c(1, 10, 20, 40)
-% t <- dplyr::filter(a, method == "random_sampling", percentage %in% pers)
-% t_filt <- dplyr::filter(t, percentage == 1)
-% x <- dplyr::distinct(dplyr::select(a, original_mutation_score))
-% c <- analyse_calculations(rs_filt_filt)
-% y <- c$avg_reduced_mutation_score
-% sub <- x - y
-% max(sub) - min(sub)
-%[1] 0.0336039
+% t_filt <- dplyr::filter(t, method == "random_sampling", percentage %in% pers)
+% visualise_mutation_score_across_schemas(t_filt)
 
 Figure~\ref{fig:graph}, a box-and-whisker plot showing the schemas analysed on the horizontal-axis and on the vertical-axis the
 mutation scores of the reduced sets after random sampling at the following $x$ values: 1\%, 10\%, 20\%, 40\% (shown at the top
-of a quadrant in a dark gray box). These $x$ values were chosen in this range because mutation scores start to become more accurate ---
-closer to the mutation score of the original set. In the top-left quadrant of Figure~\ref{fig:graph}, $x$ is set to 1\%. At 1\% and
-where RMSE ranges from $0.042$ to $0.139$, boxes are large, indicating that there is drastic variability in the mutation scores.
-Additionally, in the same quadrant, lower extremes (represented by black dots) are more common and further from the lower quartile (the part
-of the box below the horizontal line). Yet, the mutation scores observed of the reduced sets were
-within $0.034$ of the original mutation scores.
+of a quadrant in a dark gray box). These $x$ values were chosen in this range because mutation scores start to become more accurate
+ --- closer to the mutation score of the original set --- in sets with these maximum fractional thresholds. In the top-left quadrant
+of Figure~\ref{fig:graph}, $x$ is set to 1\%. At 1\% and where RMSE ranges from $0.062$ to $0.204$, boxes are large, indicating that
+there is drastic variability in the mutation scores. Additionally, the mutation scores observed for this reduced set were as far off
+from the original mutation as $0.467$.
 
-Continuing to the next observed $x$ value of 10\%, RMSE ranges from $0.011$ to $0.053$, a
+Continuing to the next observed $x$ value of 10\%, RMSE ranges from $0.013$ to $0.065$, a
 substantial increase in accuracy. At this same  $x$ value, Wong and Mathur observed that the mutation scores of reduced sets were
 within $0.16$ from the mutation score of the original set~\cite{mathur1994empirical, wong1993mutation}. Using \mr~to retrospectively
-perform random sampling with an $x$ value of 10\%, we observed mutation scores of reduced sets to be within $0.024$ from the original
+perform random sampling with an $x$ value of 10\%, we observed mutation scores of reduced sets to be within $0.13$ from the original
 set's mutation score.
 
-As expected, reduced sets' mutation scores increase in accuracy with for $x$ of 20\% and 40\% with scores within $0.005$ and $0.006$,
+As expected, reduced sets' mutation scores increase in accuracy with for $x$ of 20\% and 40\% with scores within $0.083$ and $0.075$,
 respectively. It is acknowledged that these results, while substantially better than those found by Wong and Mathur
 ~\cite{mathur1994empirical, wong1993mutation}, may be specific to database schema mutation testing or even to this data.
 
