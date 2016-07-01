@@ -53,10 +53,10 @@ The evaluation calculations in efficiency and effectiveness analysis --- and the
 % R package~\cite{metrics}.
 
 The aforementioned metrics, with the exception of calculating correlation, are calculated by a single function in
-\mr~: \texttt{analyse\_calculations(data)}. Where the input to \texttt{analyse\_calculations} is the cumulated reduced
+\mr~: \texttt{analyse\_calculations(data)}, where the input to \texttt{analyse\_calculations} is the cumulated reduced
 data from performing the reduction techniques and the output is a  data set with the values of the respective calculation.
 To calculate the correlation between reduced and original mutation scores, the \texttt{analyse\_correlation(data)} function
-is used. Where the input data to this function, is again, the cumulated reduced data and the output is a data set containing
+is used, where the input data to this function, is again, the cumulated reduced data and the output is a data set containing
 only Kendall's \taub~correlation coefficient. The simplicity and usability of \mr~is upheld by requiring experimenters to use
 only two functions to analyse the efficiency and effective of reduction techniques. This same simplicity is continued
 in the ``Human Examination'' phase displayed in Figure~\ref{fig:mrstudyr}.
