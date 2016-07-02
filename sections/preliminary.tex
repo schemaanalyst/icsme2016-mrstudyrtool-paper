@@ -47,23 +47,30 @@ similar trends, displayed in Figure ~\ref{fig:graph}.
 % t_filt <- dplyr::filter(t, method == "random_sampling", percentage %in% pers)
 % visualise_mutation_score_across_schemas(t_filt)
 
-Figure~\ref{fig:graph} is a box-and-whisker plot with the analysed schemas on the horizontal-axis and the mutation scores of the reduced
-sets after random sampling at the following $x$ values: 1\%, 10\%, 20\%, 40\%, on the vertical-axis. The $x$ values in Figure~\ref{fig:graph}
-were chosen in this range because reduced sets' mutation scores at these thresholds drastically increase in accuracy --- approach the mutation
-score of the original set. Moving from top-left to bottom-right, the boxes in Figure~\ref{fig:graph} show this increase in accuracy by becoming
-smaller as the maximum fractional threshold increases.
+Figure~\ref{fig:graph} is a box-and-whisker plot with the analysed schemas on the horizontal-axis and the mutation
+scores of the reduced sets after random sampling at the following $x$ values: 1\%, 10\%, 20\%, 40\%, on the
+vertical-axis. The $x$ values in Figure~\ref{fig:graph} were chosen in this range because reduced sets' mutation scores
+at these thresholds drastically increase in accuracy, thereby approaching the mutation score of the original set. Moving
+from top-left to bottom-right, the boxes in Figure~\ref{fig:graph} show this increase in accuracy by becoming smaller as
+the maximum fractional threshold increases.
 
-This increase in accuracy occurs because the mutation scores of reduced sets with smaller fractional thresholds are extremely volatile and can
-vary largely based on one or few mutants, while the mutation scores of sets with higher fractional thresholds are substantially more stable. In
-the top-left of Figure~\ref{fig:graph}, $x$ is evaluated at 1\%. In this quadrant of Figure~\ref{fig:graph}, sets' mutation scores are as distant
-from the original mutation as $0.467$. Additionally, at this threshold, the ``lower-is-better'' metric, RMSE, ranges from $0.062$ to $0.204$.
-Stability is demonstrated in mutation scores of sets with as small as a 10\% maximum fractional threshold, with RMSE ranging from $0.013$ to $0.065$.
-At this same threshold, Wong and Mathur observed that mutation scores of reduced sets were within $0.16$ of the original set's mutation score
-~\cite{mathur1994empirical, wong1993mutation}. Using \mr~to retrospectively perform random sampling with an $x$ value of 10\%, we observed mutation
-scores of reduced sets to be within $0.13$ of the original set's mutation score.
+This increase in accuracy occurs because the mutation scores of reduced sets with smaller fractional thresholds are
+extremely volatile and can vary largely based on one or few mutants, while the mutation scores of sets with higher
+fractional thresholds are substantially more stable. In the top-left of Figure~\ref{fig:graph}, $x$ is evaluated at 1\%.
+In this quadrant of Figure~\ref{fig:graph}, sets' mutation scores are as distant from the original mutation as $0.467$.
+Additionally, at this threshold, the ``lower-is-better'' metric, RMSE, ranges from $0.062$ to $0.204$.  Stability is
+demonstrated in mutation scores of sets with as small as a 10\% maximum fractional threshold, with RMSE ranging from
+$0.013$ to $0.065$.  At this same threshold, Wong and Mathur observed that mutation scores of reduced sets were within
+$0.16$ of the original set's mutation score ~\cite{mathur1994empirical, wong1993mutation}. Using \mr~to retrospectively
+perform random sampling with an $x$ value of 10\%, we observed mutation scores of reduced sets to be within $0.13$ of
+the original set's mutation score.
 
-The trend of becoming more accurate as the maximum fractional threshold increases remains true for $x$ values of 20\% and 40\%. At the thresholds of
-20\% and 40\%, the mutation scores of reduced sets are within $0.083$ and $0.075$ of the original mutation scores, respectively. It is acknowledged
-that the results experienced in the preliminary study of \mr~may be specific to the sample data used or database schemas being the domain analysed.
+The trend of the mutation score becoming more accurate as the maximum fractional threshold increases remains true for
+$x$ values of 20\% and 40\%. At the thresholds of 20\% and 40\%, the mutation scores of reduced sets are within $0.083$
+and $0.075$ of the original mutation scores, respectively. While it is possible that these results may be specific to
+the domain of schemas, we note that future studies can easily be conducted as \mr~is available for download from
+GitHub~\cite{tool}.
+
+% sample data used or database schemas being the domain analysed.
 
 \input{figures/graph}
