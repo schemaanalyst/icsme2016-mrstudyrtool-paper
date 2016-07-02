@@ -41,8 +41,9 @@ Figure~\ref{fig:mrstudyr}. After performing a reduction technique, it is evaluat
 Analysis'', displayed in Figure~\ref{fig:mrstudyr}.
 % CJM: I want to present the evaluation metrics of efficiency and effectiveness, then define them, then finally,
 % how to perform them with mrstudyr.
-The evaluation calculations in efficiency and effectiveness analysis --- and their respective abbreviations --- are: mutation score
-(MS), creation cost reduction (Red.), correlation (Corr.), and error (Err.).
+The evaluation calculations in efficiency and effectiveness analysis, and their respective abbreviations, are as
+follows: mutation score
+(MS), corresponding cost reduction (Red.), correlation (Corr.), and error (Err.).
 
 % Cut due to space constraints
 % The mutation score of a set is calculated
@@ -53,13 +54,13 @@ The evaluation calculations in efficiency and effectiveness analysis --- and the
 % MAE and RMSE --- between the original and reduced sets' mutation score is calculated using the existing ``Metrics''
 % R package~\cite{metrics}.
 
-The aforementioned metrics, with the exception of correlation, are calculated by a single function in \mr~:
-\texttt{analyse\_calculations(data)}, where the input is the cumulated reduced data and the output is a data set with the
-values of the respective calculation. To calculate correlation between reduced and original mutation scores, the
-\texttt{analyse\_correlation(data)} function is used, where the input to this function, is again, the cumulated reduced data
-and the output is a data set containing only Kendall's \taub~correlation coefficient. The simplicity and usability of \mr~is
-upheld by requiring only the use of two commands to analyse the efficiency and effective of reduction techniques. This same
-simplicity is continued in the ``Human Examination'' phase.
+The aforementioned metrics, with the exception of correlation, are calculated by a single function in \mr,
+\texttt{analyse\_calculations(data)}, where the input is the cumulated reduced data and the output is a data set with
+the values of the respective calculation. To calculate correlation between reduced and original mutation scores, the
+\texttt{analyse\_correlation(data)} function is used, where the input to this function, is again, the cumulated reduced
+data and the output is a data set containing only Kendall's \taub~correlation coefficient~\cite{mcminn2016virtual}. The
+simplicity of \mr~is upheld by only requiring the use of two commands to analyse the efficiency and effectiveness of
+reducers. This same simplicity is continued in the final ``Human Examination'' phase.
 
 % CJM: removed this paragraph because I no longer think that it is needed and to save space for preliminary study
 % Additionally, the \texttt{analyse\_calculations} function can be used to calculate the
