@@ -9,18 +9,20 @@
 \begin{tabular}{|l|}
 \hline
 
+% TODO: Review this algorithm and fix all of the other issues pointed out in the marked version of the paper
+
 \begin{tabular}{l}
 \vspace{-2ex} \\
 
 {\bf function} analyse ($data$) \\
 
 \atab {\bf where} \\
-\atab \atab \tinybullet $data$ is data collected from performing mutation testing on all mutants \\
+\atab \atab \tinybullet $\mbox{{\em data}}$ is data collected from performing mutation testing on all mutants \\
 \atab \atab \tinybullet $x$ is the maximum fractional threshold for the number of mutants \\
-\atab \atab \tinybullet $percentages$ is the list of chosen $x$ values for mutant sampling \\
+\atab \atab \tinybullet {\em percentages} is the list of chosen $x$ values for mutant sampling \\
 \atab \atab \tinybullet $t$ is the trial index of the experiment \\
-\atab \atab \tinybullet $trials$ is the total number of trials set for each configuration of technique \\
-\atab \atab \tinybullet $red$ is the reduced mutant data returned from a single reduction method \\
+\atab \atab \tinybullet {\em trials} is the total number of trials set for each configuration of technique \\
+\atab \atab \tinybullet {\em red} is the reduced mutant data returned from a single reduction method \\
 \atab \atab \tinybullet $d$ is the data from the configuration of a reduction method and $x$ value\\
 
 \vspace*{-.75em} \\
@@ -29,13 +31,13 @@
 
 \hspace{1em} \atab {\bf for each} $x \in \mbox{{\em percentages}}$ \smallvspace \\
 
-\hspace{3em} \atab {\bf for} $t \leq trials$ \smallvspace \\
+\hspace{3em} \atab {\bf for} $t \leq \mbox{{\em trials}}$ \smallvspace \\
 
-\hspace{4em} \atab {\bf let} $red \leftarrow reduction\,technique\,(data,\,p)$  \smallvspace \\
+\hspace{4em} \atab {\bf let} $red \leftarrow \mbox{{\em reduction\,technique}}\,(\mbox{{\em data}},\,p)$ \smallvspace \\
 
-\hspace{4em} \atab {\bf let} $d \leftarrow$ {\bf append} $red$ \smallvspace \\
+\hspace{4em} \atab {\bf let} $d \leftarrow$ {\bf append}($d$, $\mbox{{\em red}}$) \smallvspace \\
 
-\hspace{4em} \atab {\bf increment} $t$ \smallvspace \\
+\hspace{4em} \atab $t \leftarrow t + 1$ \smallvspace \\
 
 \hspace{1em} \atab {\bf return} $d$ \smallvspace \\
 
