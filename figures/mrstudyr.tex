@@ -11,26 +11,29 @@
 % Define block styles used later
 
 \tikzstyle{sensor}=[draw, fill=black!5, text width=15em,
-    text centered, minimum height=2.5em,drop shadow]
+text centered, minimum height=2.5em,drop shadow]
 \tikzstyle{smallsensor}=[draw, fill=black!5, text width=4em,
-    text centered, minimum height=2.5em,drop shadow]
+text centered, minimum height=2.5em,drop shadow]
 \tikzstyle{box}=[draw, text width=8em,
-    text centered, minimum width=17.5em, minimum height=3.5em]
+text centered, minimum width=17.5em, minimum height=3.5em]
 \tikzstyle{calc}=[draw, fill=black!5, text width=2.5em,
-    text centered, rounded corners, minimum height=2.5em,drop shadow]
+text centered, rounded corners, minimum height=2.5em,drop shadow]
 \tikzstyle{circle}=[draw, ellipse, fill=black!5, text width=11em,
-    text centered, minimum height=2.5em, drop shadow]
+text centered, minimum height=2.5em, drop shadow]
 \tikzstyle{mr}=[draw, fill=black!20, text width=5em,
-    text centered, minimum height=17em, minimum width = 18em, drop shadow]
+text centered, minimum height=17em, minimum width = 18em, drop shadow]
 
 % Define distances for bordering
 \def\blockdist{1.5}
 \def\edgedist{2.5}
 
 \begin{figure}[t]
+
+  \vspace{-.75em}
+
   \centering
-% SIMPLE
-\begin{tikzpicture}[thick,scale=0.85, every node/.style={scale=0.85}]
+  % SIMPLE
+  \begin{tikzpicture}[thick,scale=0.85, every node/.style={scale=0.85}]
     \node [mr] at (0, 0) (mr) {};
     \node [circle] at (0, 3.7) (md) {Original Data};
     \node [sensor] at (0, 2.25) (r) {Reduction Techniques};
@@ -45,25 +48,25 @@
     \node [circle] at (0, -5.25) (pr) {Policy Recommendation};
 
     \path [draw, ->] (md.south) -- node [above] {}
-        (r.90);
+      (r.90);
     \path [draw, ->] (r.south) -- node [above] {}
-        (rmd.90);
+      (rmd.90);
     \path [draw, ->] (rmd.south) -- node [above] {}
-        (ra.90);
+      (ra.90);
     \path [draw, ->] (ra.south) --  node [above] {}
-        (box.90);
+      (box.90);
     \path [draw, ->] (box.south) --  node [above] {}
-        (he.90);
+      (he.90);
     \path [draw, ->] (he.south) -- node [above] {}
-        (pr.90);
-\end{tikzpicture}
+      (pr.90);
+  \end{tikzpicture}
 
-\caption{\label{fig:mrstudyr}The inputs and outputs of the \mr~tool.}
+  \caption{\label{fig:mrstudyr}The inputs and outputs of the \mr~tool.}
 
-\captionpara{0.5}{0.9}{0.5}{In this figure, the dark square represents the \mr~tool and its constituent parts, a
-rectangle stands for a process, a rectangle with rounded edges is a calculation performed by \mr, and an ellipse
-symbolises a process output.}
+  \captionpara{0.5}{0.9}{0.5}{In this figure, the dark square represents the \mr~tool and its constituent parts, a
+    rectangle stands for a process, a rectangle with rounded edges is a calculation performed by \mr, and an ellipse
+  symbolises a process output.}
 
-\vspace{-1.8em}
+  \vspace{-1.8em}
 \end{figure}
 
