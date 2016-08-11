@@ -54,6 +54,9 @@ follows: mutation score (MS), cost reduction (Red.), correlation (Corr.), and er
 % MAE and RMSE --- between the original and reduced sets' mutation score is calculated using the existing ``Metrics''
 % R package~\cite{metrics}.
 
+% TODO: Right now, this content does not report on the details about RMSE. See a file that was commented out;
+% mrstudyr_calculations.tex for some inspiration for material to carefully add back into the paper.
+
 While mutation score and cost reduction are calculated in the analysis function, Kendall's \taub~correlation
 coefficient~\cite{mcminn2016virtual} and error are calculated by \texttt{analyse\_calculations()}, where the input is
 the cumulated reduced data from a reduction technique and the output is a new data set with the values of the respective
