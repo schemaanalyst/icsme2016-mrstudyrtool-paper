@@ -36,7 +36,6 @@ suppressPackageStartupMessages(library(knitr))
 ```{r, echo=TRUE}
 sqlite_data <- read_sqlite_avmdefaults()
 schemas <- sqlite_data %>% collect_study_schemas() %>% collect_normal_data() %>% select(schema) %>% unique()
-knitr::kable(schemas, format="latex", booktabs=TRUE)
 ```
 
 ## Perform Reduction Techniques
@@ -47,7 +46,6 @@ First, performing the most common reduction technique, random sampling.
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
 random_sampling_data <- d %>% analyse_random_sampling()
-knitr::kable(head(random_sampling_data), format="latex", booktabs=TRUE)
 ```
 
 Next, applying the concepts of random sampling but, over operators.
@@ -55,8 +53,7 @@ Next, applying the concepts of random sampling but, over operators.
 ```{r, echo=TRUE}
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
-operator_sampling_data <- d %>% analyse_operator_sampling()
-knitr::kable(head(operator_sampling_data), format="latex", booktabs=TRUE)
+operator_sampling_data <- d %>% analyse_across_operators()
 ```
 ## Visualise the Mutation Scores for the Random Sampling Technique
 
@@ -90,15 +87,6 @@ Analysis of the results in this graph:
 - Greater variability in the Person schema is due to the fact that sometimes the mutation score is zero (i.e., all of
   the mutants are killed) and other times it is one (i.e., none of the mutants are killed)
 
-Additional data points to support this analysis:
-
-```{r, echo=TRUE}
-time_constrained_data_tidy_print <- time_constrained_data_tidy %>%
-  filter(schema %in% c("Person")) %>%
-  filter(dbms %in% c("PostgreSQL")) %>%
-  filter(score_type %in% c("Time-Constrained"))
-knitr::kable(time_constrained_data_tidy_print, format="latex", booktabs=TRUE)
-```
 Questions about the results analysis:
 
 - Is there every a case where we want to do statistical analysis or effect size calculations?
