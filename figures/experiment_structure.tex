@@ -10,6 +10,10 @@
 \hline
 
 % TODO: Review this algorithm and fix all of the other issues pointed out in the marked version of the paper
+% --> How do you initialise d?
+% --> How is the variable p incorporated?
+% --> Does this algorithm closely follow the structure of the R code?
+% --> Does this algorithm use consistent terminology for the variable x?
 
 \begin{tabular}{l}
 \vspace{-2ex} \\
@@ -27,7 +31,11 @@
 
 \vspace*{-.75em} \\
 
-\hspace{1em} \atab {\bf initialise} $d$ \smallvspace \\
+% \hspace{1em} \atab {\bf initialise} $d$ \smallvspace \\
+
+\hspace{1em} \atab $d \leftarrow \emptyset$, $t \leftarrow 0$ \smallvspace \\
+
+% \hspace{1em} \atab $t \leftarrow 0$ \smallvspace \\
 
 \hspace{1em} \atab {\bf for each} $x \in \mbox{{\em percentages}}$ \smallvspace \\
 
@@ -49,7 +57,7 @@
 \hline
 \end{tabular}}
 
-\caption{\label{fig:experiment-structure} Experiment function structure for mutant sampling.}
+\caption{\label{fig:experiment-structure} An experiment for studying mutant sampling.}
 
 \vspace{-1em}
 
