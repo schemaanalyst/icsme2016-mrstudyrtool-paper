@@ -45,7 +45,7 @@ First, performing the most common reduction technique, random sampling.
 ```{r, echo=TRUE}
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
-random_sampling_data <- d %>% analyse_random_sampling()
+random_sampling_data <- normal_data %>% analyse_random_sampling()
 ```
 
 Next, applying the concepts of random sampling but, over operators.
@@ -53,7 +53,7 @@ Next, applying the concepts of random sampling but, over operators.
 ```{r, echo=TRUE}
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
-operator_sampling_data <- d %>% analyse_across_operators()
+operator_sampling_data <- normal_data %>% analyse_across_operators()
 ```
 ## Visualise the Mutation Scores for the Random Sampling Technique
 
