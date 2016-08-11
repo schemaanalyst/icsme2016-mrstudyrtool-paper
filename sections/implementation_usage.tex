@@ -7,12 +7,12 @@
 % CJM: I think we should move 'data' to the same line as the function call
 
 Release as an R package makes installing and loading a tool easy, but does not guarantee usability.
-\mr~was designed to be simplistic, yet perform stringent empirical analyses on mutant reduction techniques. To
-display the results from \mr~analysing mutant reduction strategies for the testing of real-world database schemas,
-the following commands will be tailored toward the data from performing mutation testing. The collected data can
-be read in via the following: {\small\texttt{data <- read\_data("sqlite-avmdefaults.dat")}}. This
-function expects the data to be located in the \texttt{inst/extdata} folder and stored as a
-comma-separated value file.
+\mr~was designed to be simple, yet perform stringent empirical analyses on mutant reduction techniques. To
+display the results from \mr~performing mutant reduction strategies for the testing of real-world database schemas,
+the following commands will be tailored toward the data from performing mutation testing.
+
+The common structure of an R package is to have externally-collected data in the \texttt{inst/extdata} folder.
+This is the location where~\mr expects to find the collect mutation data, stored as a comma-separated value file.
 
 % CJM: I noticed in section 2.C (Conducting Experiment Campaigns) that it already explains that mrstudyr
 % focuses on mutant sampling. Therefore, I am going to remove the sentences in this section restating
@@ -32,18 +32,18 @@ comma-separated value file.
 
 % This data includes the trial, total number of mutants analysed, number of killed mutants, mutant set generation time
 % and the mutation scores for the reduced and original sets. After performing the reduction techniques,
-
 ``Reduction Techniques'', as referred to in Figure~\ref{fig:mrstudyr}, are performed following the provision
 of mutant data collected from mutation testing on all mutants --- the ``Original Data'' --- to \mr. Using
-\mr~to perform reduction techniques is a single command: \texttt{analyse(data)}. Each reduction technique performed by
-the \texttt{analyse} function returns reduced data which is then aggregated into a single data set, as shown in
-Figure~\ref{fig:mrstudyr}. After performing a reduction technique, it is evaluated in ``Efficiency and Effectiveness
-Analysis'', again displayed in Figure~\ref{fig:mrstudyr}.
+\mr~to perform analyses and create visualisations is a single command per-technique.
+For random and across-operator sampling, the commands are {\texttt{create\_random\_sampling\_graphs()}} and
+{\texttt{create\_operator\_sampling\_graphs()}}, respectively. Both functions cumulate the analysed reduced data
+over 30 trials into a single data set, as shown by the ``Cumulated Reduced Data'' ellipse in
+Figure~\ref{fig:mrstudyr}. After performing a reduction technique,
+it is evaluated in ``Efficiency and Effectiveness Analysis'', displayed in Figure~\ref{fig:mrstudyr}.
 % CJM: I want to present the evaluation metrics of efficiency and effectiveness, then define them, then finally,
 % how to perform them with mrstudyr.
 The evaluation calculations in efficiency and effectiveness analysis, and their respective abbreviations, are as
-follows: mutation score
-(MS), corresponding cost reduction (Red.), correlation (Corr.), and error (Err.).
+follows: mutation score (MS), cost reduction (Red.), correlation (Corr.), and error (Err.).
 
 % Cut due to space constraints
 % The mutation score of a set is calculated
@@ -54,13 +54,11 @@ follows: mutation score
 % MAE and RMSE --- between the original and reduced sets' mutation score is calculated using the existing ``Metrics''
 % R package~\cite{metrics}.
 
-The aforementioned metrics, with the exception of correlation, are calculated by a single function in \mr,
-\texttt{analyse\_calculations(data)}, where the input is the cumulated reduced data and the output is a data set with
-the values of the respective calculation. To calculate correlation between reduced and original mutation scores, the
-\texttt{analyse\_correlation(data)} function is used, where the input to this function, is again, the cumulated reduced
-data and the output is a data set containing only Kendall's \taub~correlation coefficient~\cite{mcminn2016virtual}. The
-simplicity of \mr~is upheld by only requiring the use of two commands to analyse the efficiency and effectiveness of
-reducers. This same simplicity is continued in the final ``Human Examination'' phase.
+While mutation score and cost reduction are calculated in the analysis function, Kendall's \taub~correlation
+coefficient~\cite{mcminn2016virtual} and error are calculated by \texttt{analyse\_calculations()}, where the input is
+the cumulated reduced data from a reduction technique and the output is a new data set with the values of the respective
+calculation. The simplicity of \mr~is upheld by requiring only two commands to perform and analyse the efficiency and effectiveness
+ of a reduction technique and is continued to the final phase, ``Human Examination''.
 
 % CJM: removed this paragraph because I no longer think that it is needed and to save space for preliminary study
 % Additionally, the \texttt{analyse\_calculations} function can be used to calculate the
@@ -68,9 +66,9 @@ reducers. This same simplicity is continued in the final ``Human Examination'' p
 % limited to a single reduction method. As input, the \texttt{analyse\_calculations} function
 % expects the dataframe returned from performing a reduction approach.
 
-The human examination phase still requires use of \mr~for visualising the trends in the data collected from efficiency
+The human examination phase still requires use of \mr~for visualising the trends in the data collected from the efficiency
 and effectiveness analysis. The \mr~tool takes advantage of Hadley Wickham's widely-used graphing package,
-\texttt{ggplot2}~\cite{ggplot2}. The visualisation functions provided by \mr~and an screencast demonstrating the use of
+\texttt{ggplot2}~\cite{ggplot2}. The visualisation functions provided by \mr~and a screencast demonstrating the use of
 the tool~\cite{asciinema} can be found on \mr's GitHub page~\cite{tool}. The documentation, tutorial, screencast, and
 useful visualisations will help researchers and industrialists construct a policy recommendation regarding which
 reduction technique should be used for the specific domain and data under observation.
