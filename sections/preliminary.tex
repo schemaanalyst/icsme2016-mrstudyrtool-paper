@@ -45,12 +45,14 @@ retrospective analysis, while confirming trends from prior work, as shown in Fig
 % t_filt <- dplyr::filter(t, method == "random_sampling", percentage %in% pers)
 % visualise_mutation_score_across_schemas(t_filt)
 
+% Introduce the boxplot and then give a quick overview of the results
+
 Figure~\ref{fig:graph} is a box-and-whisker plot with the analysed schemas on the horizontal-axis and the mutation
-scores of the reduced sets after random sampling at the following $x$ values: 1\%, 10\%, 20\%, 40\%, on the
-vertical-axis. The $x$ values in Figure~\ref{fig:graph} were chosen in this range because reduced sets' mutation scores
-at these thresholds drastically increase in accuracy, thereby approaching the mutation score of the original set. Moving
-from top-left to bottom-right, the boxes in Figure~\ref{fig:graph} show this increase in accuracy by becoming smaller as
-the maximum fractional threshold increases.
+scores of the reduced sets after random sampling at the $x$ values of 1\%, 10\%, 20\%, and 40\%, on the vertical-axis.
+The $x$ values in Figure~\ref{fig:graph} were chosen in this range because reduced sets' mutation scores at these
+thresholds increase in accuracy, thereby approaching the mutation score of the original set. Moving from top-left to
+bottom-right, the boxes in Figure~\ref{fig:graph} show this increase in accuracy by becoming smaller as the maximum
+fractional threshold increases.
 
 This increase in accuracy occurs because the mutation scores of reduced sets with smaller fractional thresholds are
 extremely volatile and can vary largely based on one or few mutants, while the mutation scores of sets with higher
