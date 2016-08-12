@@ -7,27 +7,34 @@ Table~\ref{tbl:study-schemas} with the presented tool. Similar to the studies of
 \mr~performed mutant sampling with $x$ value increments larger than $1\%$. Specifically, for this experiment, \mr~analysed
 $x$ at $1\%$ and $10\%$, then increased by $10\%$ intervals to a maximum value of $90\%$. By setting the granularity of the
 experiment to $10\%$ intervals, \mr~reduces the cost of performing retrospective analysis, while confirming trends from prior
-work, as shown in Figure~\ref{fig:graph}.
+work, as shown in Figure~\ref{fig:graph}. For each of the sampling techniques analysed by \mr, the mutant reducer is performed
+at each $x$ percentage across all schemas under test for a maximum trial threshold of 30.
 
 % TODO: Right now, this paragraph does not explain the meaning of the symbols in the boxplot
 
 Figure~\ref{fig:graph} is a box-and-whisker plot with the schemas on the horizontal-axis and the mutation scores of the reduced
 sets after random sampling at the $x$ values of 1\%, 10\%, 20\%, and 40\% on the vertical-axis.  These values were chosen as the
-$x$ values because they serve to confirm a previously observed trend of decreasing error between the original and reduced sets'
+$x$ values because they serve to confirm a previously observed trend of decreasing errors between the original and reduced sets'
 mutation score as $x$ increases. Moving from top-left to bottom-right, the boxes in Figure~\ref{fig:graph} show this decrease in
-error by becoming smaller as $x$ increases.
+error by becoming more flat as $x$ increases.
 
 % TODO: if space permits, paragraph explaining Guildford scale
+%  Following Inozemtseva and Holmes, we adopt the
+% Guildford scale to describe the correlation values, with the absolute
+% value of a coefficient being described as “low” when it is less than
+% 0.4, “moderate” when it is between 0.4 and 0.7, “high” when ranging
+% from 0.7 to 0.9, and “very high” when it is greater than 0.9~\cite{inozemtseva2014coverage}.
 
 This decrease in error occurs because the mutation scores of reduced sets with smaller percentages are often very volatile and can
 thus vary largely based on one or few mutants; in contrast, the mutation scores of sets with higher percentages are substantially
 more stable. In the top-left of Figure~\ref{fig:graph}, $x$ is evaluated at 1\%.  In this quadrant of Figure~\ref{fig:graph}, the
-calculated RMSE, $12.090$, is very high with respect to RMSE at higher percentages, while the correlation coefficient, $0.385$, is
-considered to be ``low'' according to Guildford scale~\cite{inozemtseva2014coverage}. In the top-right quadrant, where $x$ is 10\%,
-stability is already demonstrated in the reduced sets' mutation scores. At this percentage, RMSE, $4.082$, is much lower than at 1\%
-and correlation is ``high'' with a coefficient value of $0.654$. This same trend of decreasing RMSE values and increasing correlation
-coefficients remains true for $x$ values of 20\% and 40\%. At 20\% and 40\%, RMSE is $2.485$ and $1.568$ and the correlation coefficient
-``very high'' for both, with values of $0.763$ and $0.852$, respectively. While it is possible that these results may be specific to the
-domain of schemas, we note that future studies can easily be conducted as \mr~is available for download from GitHub~\cite{tool}.
+calculated RMSE, $12.090$, is very high with respect to the same metric at higher percentages, while the correlation coefficient,
+$0.385$, is considered to be ``low'' according to Guildford scale~\cite{inozemtseva2014coverage}. In the top-right quadrant, where
+$x$ is 10\%, stability is already demonstrated in the reduced sets' mutation scores. At this percentage, RMSE, $4.082$, is much lower
+than at 1\% and correlation is ``high'' with a coefficient value of $0.654$. This same trend of decreasing RMSE values and increasing
+correlation coefficients remains true for $x$ values of 20\% and 40\%. At 20\% and 40\%, RMSE is $2.485$ and $1.568$ and the correlation
+coefficients are ``very high'' for both, with values of $0.763$ and $0.852$, respectively. While it is possible that these results may
+be specific to the domain of schemas, we note that future studies can easily be conducted as \mr~is available for download from
+GitHub~\cite{tool}.
 
 \input{figures/graph}
