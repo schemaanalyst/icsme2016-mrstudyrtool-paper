@@ -15,14 +15,15 @@ to \mr.
 
 % Release as an R package makes installing and loading a tool easy, but does not guarantee usability.
 
+% Explain how the first phrases of the presented tool will work, running the technique and accumulating data
+
 The ``Reduction Techniques'', as referenced in Figure~\ref{fig:mrstudyr}, are performed following the provision of
-mutant data, the ``Original Data'', to \mr. Using \mr~to perform analyses and create visualisations is a single command
-per-technique.  For random and over operator sampling, the commands are {\texttt{create\_random\_sampling\_graphs()}}
-and {\texttt{create\_operator\_sampling\_graphs()}}, respectively. Both functions accumulate the analysed reduced data
-over 30 trials into a single data set, as shown by the ``Accumulated Reduced Data'' ellipse in
-Figure~\ref{fig:mrstudyr}. After performing a reduction technique, it is evaluated in ``Efficiency and Effectiveness
-Analysis''. The evaluation calculations in efficiency and effectiveness analysis, and their respective abbreviations,
-are as follows: mutation score (MS), cost reduction (Red.), correlation (Corr.), and error (Err.).
+mutant data, the ``Original Data'', to \mr. Using \mr~to perform analyses and create visualisations requires the call of
+a single function call per-technique; the functions are {\texttt{create\_random\_sampling\_graphs()}} and
+{\texttt{create\_operator\_sampling\_graphs()}}. Both functions accumulate the reduced data over 30 trials into a single
+data set, as shown by the ``Accumulated Reduced Data'' ellipse in Figure~\ref{fig:mrstudyr}.  After performing a
+reduction technique, it is evaluated in the ``Efficiency and Effectiveness Analysis'' phase that results in the output
+of these values: mutation score (MS), cost reduction (Red.), correlation (Corr.), and error (Err.).
 
 % Due to space constraints, did not discuss the difference between RMSE and MAE.
 
