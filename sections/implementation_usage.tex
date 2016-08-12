@@ -25,12 +25,28 @@ data set, as shown by the ``Accumulated Reduced Data'' ellipse in Figure~\ref{fi
 reduction technique, it is evaluated in the ``Efficiency and Effectiveness Analysis'' phase that results in the output
 of these values: mutation score (MS), cost reduction (Red.), correlation (Corr.), and error (Err.).
 
-% Due to space constraints, did not discuss the difference between RMSE and MAE.
+% Quickly explain the three outputs of the next function
 
-While mutation score and cost reduction are calculated in the function performing the analysis, Kendall's
-\taub~correlation coefficient~\cite{mcminn2016virtual} and the chosen errors are calculated by
-\texttt{analyse\_calculations()}, where the input is the accumulated reduced data from a reduction technique
-and the output is a new data set with the values of the respective calculation.  The errors calculated by
+While mutation score and cost reduction are calculated in the function performing the analysis, a correlation
+coefficient and two error metrics are calculated by \texttt{analyse\_calculations()}, where the input is the accumulated
+reduced data from a reduction technique and the output is a new data set with these three effectiveness values.
+
+% Explain the correlation details
+
+The \mr~tool employs a correlation statistic to determine how the mutation score of arising from the reduced set of
+mutants correspond to the score produced by the full mutant set. Kendall's \taub~provides a measurement of correlation
+between -1 and 1, representing a strong negative and strong positive association, respectively, with 0 indicating that
+there is no correlation. Following Inozemtseva and Holmes, we adopt the Guildford scale to describe the correlation
+values, with the absolute value of a coefficient being described as ``low'' when it is less than $0.4$, ``moderate''
+when it is between $0.4$ and $0.7$, ``high'' when ranging from $0.7$ to $0.9$, and ``very high'' when it is greater than
+\mbox{$0.9$~\cite{inozemtseva2014coverage}}.
+
+% Due to the possibility of rank ties, which are not supported by a number of correlation measures, \mr~uses the tie-aware
+% Kendall's \taub~coefficient, as provided by the ``Kendall'' R package \cite{KendallCran}.
+
+% Explain the error details
+
+The errors calculated by
 \mr~are the root mean square error (RMSE) and the mean absolute error (MAE), both ``lower-is-better'' metrics.
 These error calculations were chosen due to their wide adoption to evaluate model performance~\cite{chai2014root}.
 Demonstrating the usability of \mr~is the fact that it requires only two commands to perform the analysis and
