@@ -30,10 +30,10 @@ While mutation score and cost reduction are calculated in the function performin
 \taub~correlation coefficient~\cite{mcminn2016virtual} and the chosen errors are calculated by
 \texttt{analyse\_calculations()}, where the input is the accumulated reduced data from a reduction technique
 and the output is a new data set with the values of the respective calculation.  The errors calculated by
-\mr~are the root mean square error (RMSE) and the mean absolute error (MAE).  These error calculations were
-chosen due to their wide adoption to evaluate model performance~\cite{chai2014root}. Performing the analysis
-and calculating these model evaluation metrics demonstrates the simplicity of \mr~ by requiring only two
-commands. This same theme is continued to the final phase, ``Human Examination''.
+\mr~are the root mean square error (RMSE) and the mean absolute error (MAE), both ``lower-is-better'' metrics.
+These error calculations were chosen due to their wide adoption to evaluate model performance~\cite{chai2014root}.
+Performing the analysis and calculating these model evaluation metrics demonstrates the simplicity of \mr~ by
+requiring only two commands. This same theme is continued to the final phase, ``Human Examination''.
 
 The human examination phase still requires use of \mr~to present the results of the efficiency and
 effectiveness analysis. \mr~takes advantage of Hadley Wickham's widely-used graphing package,
