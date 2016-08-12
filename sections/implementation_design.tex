@@ -44,10 +44,10 @@ controlling for the randomness inherent in both a reduction method's behavior an
 
 The R programming language is commonly used because it facilitates reproducible research~\cite{Kapfhammer2011,
 Kapfhammer2016}. It does so by providing anyone interested with the necessary data and code to recreate the analyses of
-the researcher~\cite{gentleman2012statistical}.  In R, the fundamental way to share code is via a package, which are
-easy to distribute and include data, code, documentation and tests~\cite{wickham2015r}. Since \mr~has been released as
-an R package, installing requires four commands. First, \texttt{install.packages("devtools")}, then
-{\small\texttt{library(devtools)}} to install and load the {\small\texttt{devtools}}~\cite{devtools} package,
+the researcher~\cite{gentleman2012statistical}. In the R language, the established way to share code is via a package,
+which is easy to distribute and often includes data, code, documentation, and test cases~\cite{wickham2015r}. Since
+\mr~has been released as an R package, installing it requires four commands. First, \texttt{install.packages("devtools")},
+then {\small\texttt{library(devtools)}} to install and load the {\small\texttt{devtools}}~\cite{devtools} package,
 respectively. The \texttt{devtools} package is necessary because it facilitates the installation and maintenance of
 \mr~as well as its dependencies. Finally, to install \mr~\cite{tool} from the popular Git repository hosting service,
 GitHub~\cite{github}, use the following command: {\small\texttt{devtools::install\_github("mccurdyc/mrstudyr")}}. Then,
