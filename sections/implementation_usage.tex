@@ -33,25 +33,26 @@ accumulated data from a reduction technique and the output is a new data set wit
 values.
 
 % Explain the correlation details
+% Explain the error details
 
-The \mr~tool employs correlation to determine how the mutation score of arising from the reduced set of mutants
-corresponds to the score produced by the full mutant set. Kendall's \taub~is a measure of correlation between -1 and 1,
-representing a strong negative and strong positive association, respectively, with 0 indicating that there is no
+The \mr~tool employs correlation to determine how the mutation score arising from the reduced set of mutants corresponds
+to the score produced by the full mutant set. Kendall's \taub~is a measure of correlation between -1 and 1, representing
+a strong negative and strong positive association, respectively, with 0 indicating that there is no
 correlation~\cite{mcleod2015kendall}. Following Inozemtseva and Holmes, we adopt the Guildford scale to describe a
 correlation, with the absolute value of a coefficient being described as ``low'' when it is less than $0.4$,
-``moderate'' when it is between $0.4$ and $0.7$, ``high'' between $0.7$ to $0.9$, and ``very high'' when it is
-greater than $0.9$~\cite{inozemtseva2014coverage}.
+``moderate'' when it is between $0.4$ and $0.7$, ``high'' between $0.7$ to $0.9$, and ``very high'' when it is greater
+than $0.9$~\cite{inozemtseva2014coverage}. The errors calculated by \mr~are the widely-used root mean square error
+(RMSE) and mean absolute error (MAE)~\cite{chai2014root}, both ``lower-is-better'' metrics showing the difference
+between the mutation scores for the reduced and full set of mutants.
 
 % Due to the possibility of rank ties, which are not supported by a number of correlation measures, \mr~uses the tie-aware
 % Kendall's \taub~coefficient, as provided by the ``Kendall'' R package \cite{KendallCran}.
 
-% Explain the error details
+% Demonstrating the usability of \mr~is the fact that it requires only two commands to
+% perform the analysis and calculate model evaluation. This same simplicity also remains true for the final phase, ``Human
+% Examination''.
 
-The errors calculated by
-\mr~are the root mean square error (RMSE) and the mean absolute error (MAE), both ``lower-is-better'' metrics.
-These error calculations were chosen due to their wide adoption to evaluate model performance~\cite{chai2014root}.
-Demonstrating the usability of \mr~is the fact that it requires only two commands to perform the analysis and
-calculate model evaluation. This same simplicity also remains true for the final phase, ``Human Examination''.
+% These error metrics were chosen due to their wide adoption to evaluate model performance~\cite{chai2014root}.
 
 The human examination phase still requires use of \mr~to present the results of the efficiency and
 effectiveness analysis. \mr~takes advantage of Hadley Wickham's widely-used graphing package,
