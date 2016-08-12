@@ -2,15 +2,12 @@
 
 \input{figures/mrstudyr}
 
-Release as an R package makes installing and loading a tool easy, but does not guarantee usability.
-\mr~was designed to be simple, yet perform stringent empirical analyses on mutant reduction techniques.
-To display the results from \mr~performing mutant reduction strategies for the testing of real-world
-database schemas, the following commands will be tailored toward the data from performing mutation
-testing.
-
-The common structure of an R package is to have externally-collected data in the \texttt{inst/extdata}
-folder. This is the location where~\mr expects to find the collect mutation data, stored as a
-comma-separated value file.
+Release as an R package makes installing and loading a tool easy, but does not guarantee usability. \mr~was designed to
+be simple, yet perform stringent empirical analyses on mutant reduction techniques. To display the results from
+\mr~performing mutant reduction strategies for the testing of real-world database schemas, the following commands will
+be tailored toward the data from performing mutation testing. The common structure of an R package is to have
+externally-collected data in the \texttt{inst/extdata} folder. This is the location where \mr~expects to find the
+collect mutation data, stored as a comma-separated value file.
 
 ``Reduction Techniques'', as referred to in Figure~\ref{fig:mrstudyr}, are performed following the
 provision of mutant data collected from mutation testing on all mutants --- the ``Original Data'' ---
