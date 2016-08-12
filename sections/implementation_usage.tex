@@ -1,78 +1,45 @@
 \subsection{Tool Usage}
 
-% CJM: Moving this figure here to allow reader to follow the process of the mrstudr tool
-
 \input{figures/mrstudyr}
 
-% CJM: I think we should move 'data' to the same line as the function call
-
 Release as an R package makes installing and loading a tool easy, but does not guarantee usability.
-\mr~was designed to be simple, yet perform stringent empirical analyses on mutant reduction techniques. To
-display the results from \mr~performing mutant reduction strategies for the testing of real-world database schemas,
-the following commands will be tailored toward the data from performing mutation testing.
+\mr~was designed to be simple, yet perform stringent empirical analyses on mutant reduction techniques.
+To display the results from \mr~performing mutant reduction strategies for the testing of real-world
+database schemas, the following commands will be tailored toward the data from performing mutation
+testing.
 
-The common structure of an R package is to have externally-collected data in the \texttt{inst/extdata} folder.
-This is the location where~\mr expects to find the collect mutation data, stored as a comma-separated value file.
+The common structure of an R package is to have externally-collected data in the \texttt{inst/extdata}
+folder. This is the location where~\mr expects to find the collect mutation data, stored as a
+comma-separated value file.
 
-% CJM: I noticed in section 2.C (Conducting Experiment Campaigns) that it already explains that mrstudyr
-% focuses on mutant sampling. Therefore, I am going to remove the sentences in this section restating
-% this fact. These sentences are commented-out immediately follow this comment.
+``Reduction Techniques'', as referred to in Figure~\ref{fig:mrstudyr}, are performed following the
+provision of mutant data collected from mutation testing on all mutants --- the ``Original Data'' ---
+to \mr. Using \mr~to perform analyses and create visualisations is a single command per-technique.
+For random and across-operator sampling, the commands are {\texttt{create\_random\_sampling\_graphs()}}
+and {\texttt{create\_operator\_sampling\_graphs()}}, respectively. Both functions accumulate the analysed
+reduced data over 30 trials into a single data set, as shown by the ``Accumulated Reduced Data'' ellipse
+in Figure~\ref{fig:mrstudyr}. After performing a reduction technique, it is evaluated in ``Efficiency and
+Effectiveness Analysis''. The evaluation calculations in efficiency and effectiveness analysis, and their
+respective abbreviations, are as follows: mutation score (MS), cost reduction (Red.), correlation (Corr.),
+and error (Err.).
 
-% Currently, the two most common sub-techniques of mutant sampling are performed using the following:
-% \texttt{analyse\_random\_sampling(data)} and \texttt{analyse\_across\_operators(data)},
-% for random sampling and sampling across operators, respectively.
+% TODO: fix space at end of paragraph
+% Due to space constraints, did not discuss the difference between RMSE and MAE.
 
-% CJM: Additionally, the attributes of the data that I describe are specific to mutant sampling. I will
-% remove these attributes.
+While mutation score and cost reduction are calculated in the function performing the analysis, Kendall's
+\taub~correlation coefficient~\cite{mcminn2016virtual} and the chosen errors are calculated by
+\texttt{analyse\_calculations()}, where the input is the accumulated reduced data from a reduction technique
+and the output is a new data set with the values of the respective calculation.  The errors calculated by
+\mr~are the root mean square error (RMSE) and the mean absolute error (MAE).  These error calculations were
+chosen due to their wide adoption to evaluate model performance~\cite{chai2014root}. Performing the analysis
+and calculating these model evaluation metrics demonstrates the simplicity of \mr~ by requiring only two
+commands. This same theme is continued to the final phase, ``Human Examination''.
 
-% CJM: Is including the following statement entirely necessary? I removed it for now.
-
-% Sample output from the \texttt{analyse} function is provided in the accompanying README file on the
-% tool's GitHub page~\cite{tool}.
-
-% This data includes the trial, total number of mutants analysed, number of killed mutants, mutant set generation time
-% and the mutation scores for the reduced and original sets. After performing the reduction techniques,
-``Reduction Techniques'', as referred to in Figure~\ref{fig:mrstudyr}, are performed following the provision
-of mutant data collected from mutation testing on all mutants --- the ``Original Data'' --- to \mr. Using
-\mr~to perform analyses and create visualisations is a single command per-technique.
-For random and across-operator sampling, the commands are {\texttt{create\_random\_sampling\_graphs()}} and
-{\texttt{create\_operator\_sampling\_graphs()}}, respectively. Both functions cumulate the analysed reduced data
-over 30 trials into a single data set, as shown by the ``Cumulated Reduced Data'' ellipse in
-Figure~\ref{fig:mrstudyr}. After performing a reduction technique,
-it is evaluated in ``Efficiency and Effectiveness Analysis'', displayed in Figure~\ref{fig:mrstudyr}.
-% CJM: I want to present the evaluation metrics of efficiency and effectiveness, then define them, then finally,
-% how to perform them with mrstudyr.
-The evaluation calculations in efficiency and effectiveness analysis, and their respective abbreviations, are as
-follows: mutation score (MS), cost reduction (Red.), correlation (Corr.), and error (Err.).
-
-% Cut due to space constraints
-% The mutation score of a set is calculated
-% by dividing the number of killed mutants by the total number of mutants~\cite{wong1995reducing}. The reduction
-% in creation cost for a set of mutants is the cost of the reduced set subtracted from the cost of the original set,
-% divided by the cost of the original set. The original and reduced sets' mutation score correlation is calculated
-% using Kendall's~\taub, supported by the ``Kendall'' R package~\cite{mcleod2015kendall}. Finally, the error --- both
-% MAE and RMSE --- between the original and reduced sets' mutation score is calculated using the existing ``Metrics''
-% R package~\cite{metrics}.
-
-% TODO: Right now, this content does not report on the details about RMSE. See a file that was commented out;
-% mrstudyr_calculations.tex for some inspiration for material to carefully add back into the paper.
-
-While mutation score and cost reduction are calculated in the analysis function, Kendall's \taub~correlation
-coefficient~\cite{mcminn2016virtual} and error are calculated by \texttt{analyse\_calculations()}, where the input is
-the cumulated reduced data from a reduction technique and the output is a new data set with the values of the respective
-calculation. The simplicity of \mr~is upheld by requiring only two commands to perform and analyse the efficiency and effectiveness
- of a reduction technique and is continued to the final phase, ``Human Examination''.
-
-% CJM: removed this paragraph because I no longer think that it is needed and to save space for preliminary study
-% Additionally, the \texttt{analyse\_calculations} function can be used to calculate the
-% efficiency and effectiveness for any number of reduction approaches; it is not structurally
-% limited to a single reduction method. As input, the \texttt{analyse\_calculations} function
-% expects the dataframe returned from performing a reduction approach.
-
-The human examination phase still requires use of \mr~to present the results of the efficiency and effectiveness analysis.
-\mr~takes advantage of Hadley Wickham's widely-used graphing package, \texttt{ggplot2}~\cite{ggplot2}, to create comprehensible visualisations,
-which will help researchers and industrialists construct a policy recommendation regarding which reduction technique should be used
-for the data under observation. The documentation, a screencast~\cite{asciinema}, and useful visualisations can be found on \mr's
-GitHub page~\cite{tool}.
+The human examination phase still requires use of \mr~to present the results of the efficiency and
+effectiveness analysis. \mr~takes advantage of Hadley Wickham's widely-used graphing package,
+\texttt{ggplot2}~\cite{ggplot2}, to create comprehensible visualisations, which will help researchers and
+industrialists construct a policy recommendation regarding which reduction technique should be used for the
+data under observation. The documentation, a screencast~\cite{asciinema}, and useful visualisations can be
+found on \mr's GitHub page~\cite{tool}.
 
 \input{tables/schemas}
