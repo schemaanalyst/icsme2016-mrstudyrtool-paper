@@ -30,25 +30,28 @@
 % and say that this is the structure for the campaign of experiments for mutant sampling with mrstudyr (I will do this!)
 
 % CJM: This paragraph will need major revisions now with the updated experiment structure diagram
+
 Figure~\ref{fig:experiment-structure} gives the structure for the campaign of experiments that \mr~conducts to collect
-the reduced mutant data from a single reduction technique. The ``analyse'' algorithm expects the mutant data
-from performing mutation testing on all mutants. Since the presented tool currently focuses on mutant sampling, the
-\textit{reduction technique} algorithm requires as input an arbitrary $x$, to be chosen as the maximum percentage
-for the number of mutants to be analysed from a set. Following the recommendations of Traeger~\etal~and Arcuri and Briand~\cite{traeger2008nine, arcuri2014hitchhiker},
-for the preliminary results presented in this paper, the maximum threshold for the number of trials that \mr~runs for each
-configuration of a reduction approach is set to 30, thereby controlling for the randomness inherent in a reduction method's
-behavior and execution time.
+the reduced mutant data from a single reduction technique. The ``analyse'' algorithm expects the mutant data from
+performing mutation testing on all mutants. Since the presented tool currently focuses on mutant sampling, the
+\textit{reduction technique} algorithm requires as input an arbitrary $x$, to be chosen as the maximum percentage for
+the number of mutants to be analysed from a set. Following the recommendations of Traeger~\etal~and Arcuri and
+Briand~\cite{traeger2008nine, arcuri2014hitchhiker}, for the preliminary results presented in this paper, the maximum
+threshold for the number of trials that \mr~runs for each configuration of a reduction approach is set to 30, thereby
+controlling for the randomness inherent in a reduction method's behavior and execution time.
 
 \subsection{Implementation as an R Package}
 
 % The R programming language for statistical data analysis was specifically designed to conduct empirical studies. Following
-The R programming language is commonly used because it facilitates reproducible research. It does so by providing anyone interested with
-the necessary data and code to recreate the analyses of the researcher~\cite{gentleman2012statistical}.  In R, the fundamental
-way to share code is via a package, which are easy to distribute and include data, code, documentation and tests~\cite{wickham2015r}.
-Since \mr~has been released as an R package, installing requires four commands.  First, \texttt{install.packages("devtools")},
-then {\small\texttt{library(devtools)}} to install and load the {\small\texttt{devtools}}~\cite{devtools} package, respectively.
-The \texttt{devtools} package is necessary because it facilitates the installation and maintenance of \mr~as well as its dependencies.
-Finally, to install \mr~\cite{tool} from the popular Git repository hosting service, GitHub~\cite{github}, use the following command:
+
+The R programming language is commonly used because it facilitates reproducible research. It does so by providing anyone
+interested with the necessary data and code to recreate the analyses of the researcher~\cite{gentleman2012statistical}.
+In R, the fundamental way to share code is via a package, which are easy to distribute and include data, code,
+documentation and tests~\cite{wickham2015r}.  Since \mr~has been released as an R package, installing requires four
+commands.  First, \texttt{install.packages("devtools")}, then {\small\texttt{library(devtools)}} to install and load the
+{\small\texttt{devtools}}~\cite{devtools} package, respectively.  The \texttt{devtools} package is necessary because it
+facilitates the installation and maintenance of \mr~as well as its dependencies.  Finally, to install \mr~\cite{tool}
+from the popular Git repository hosting service, GitHub~\cite{github}, use the following command:
 {\small\texttt{devtools::install\_github("mccurdyc/mrstudyr")}}.  Then, load \mr~using \texttt{library(mrstudyr)}.
 
 \input{figures/experiment_structure}
