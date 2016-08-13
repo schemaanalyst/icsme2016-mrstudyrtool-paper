@@ -19,7 +19,7 @@ to \mr.
 
 The ``Reduction Techniques'', as referenced in Figure~\ref{fig:mrstudyr}, are performed following the provision of
 mutant data, the ``Original Data'', to \mr. Using \mr~to perform analyses and create visualisations requires the call of
-a single function call per-technique; the functions are {\texttt{create\_random\_sampling\_graphs()}} and
+a single function  per reduction technique; the functions are {\texttt{create\_random\_sampling\_graphs()}} and
 {\texttt{create\_operator\_sampling\_graphs()}}. Both functions accumulate the reduced data over 30 trials into a single
 data set, as shown by the ``Accumulated Reduced Data'' ellipse in Figure~\ref{fig:mrstudyr}.  After performing a
 reduction technique, it is evaluated in the ``Efficiency and Effectiveness Analysis'' phase that results in the output
@@ -28,7 +28,7 @@ of these values: mutation score (MS), cost reduction (Red.), correlation (Corr.)
 % Quickly explain the three outputs of the next function
 
 While mutation score and cost reduction are calculated in the function performing the analysis, a correlation
-coefficient and two error metrics are calculated by \texttt{analyse\_calculations()}, where the function's input is the
+coefficient and two error metrics are calculated by \texttt{analyze\_calculations()}, where the function's input is the
 accumulated data from a reduction technique and the output is a new data set with these three effectiveness
 values.
 
