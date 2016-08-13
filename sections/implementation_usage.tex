@@ -6,7 +6,7 @@
 
 We designed the \mr~tool to make it simple to perform a thorough and automated empirical analysis of mutant reduction
 techniques. The common structure of an R package expects that externally-collected data is stored in the
-\texttt{inst/extdata} folder. This is the location where \mr~expects to find the mutation data, stored as a
+\texttt{inst/extdata} folder. This is the location where \mr~looks to find the mutation data, stored as a
 comma-separated value file; in this paper, we ran the \sa~tool~\cite{McMinn2016} to generate the data used as input
 to \mr.
 
@@ -39,9 +39,9 @@ The \mr~tool employs correlation to determine how the mutation score arising fro
 to the score produced by the full mutant set. Kendall's \taub~is a measure of correlation between -1 and 1, representing
 a strong negative and strong positive association, respectively, with 0 indicating that there is no
 correlation~\cite{mcleod2015kendall}. Following Inozemtseva and Holmes, we adopt the Guildford scale to describe a
-correlation, with the absolute value of a coefficient being described as ``low'' when it is less than $0.4$,
-``moderate'' when it is between $0.4$ and $0.7$, ``high'' between $0.7$ to $0.9$, and ``very high'' when it is greater
-than $0.9$~\cite{inozemtseva2014coverage}. The errors calculated by \mr~are the widely-used root mean square error
+correlation, with the absolute value of a coefficient being described as ``low'' when it is less than 0.4,
+``moderate'' when it is between 0.4 and 0.7, ``high'' between 0.7 to 0.9, and ``very high'' when it is greater
+than 0.9~\cite{inozemtseva2014coverage}. The errors calculated by \mr~are the widely-used root mean square error
 (RMSE) and mean absolute error (MAE)~\cite{chai2014root}, both ``lower-is-better'' metrics showing the difference
 between the mutation scores for the reduced and full set of mutants.
 
@@ -59,7 +59,7 @@ between the mutation scores for the reduced and full set of mutants.
 % Explain what happens with these visualisations and how they were produced
 
 In the human examination phase of Figure~\ref{fig:mrstudyr}, \mr~presents the results of the analysis phase by using
-Wickham's graphing package, \texttt{ggplot2}~\cite{ggplot2}, to create comprehensible visualisations, that help a user
+Wickham's graphing package, \texttt{ggplot2}~\cite{ggplot2}, to create easy-to-grasp visualisations that help a user
 to construct a recommendation regarding which reducer should be incorporated into a mutation testing tool. Examples of
 these visualisations, along with a screencast~\cite{asciinema} and more documentation are found on \mr's GitHub
 page~\cite{tool}.
