@@ -23,8 +23,8 @@ repository.
 
 Here is a reference for the paper:
 
-> mrstudyr: Retrospectively studying the effectiveness of mutant reduction techniques
-> Colton J. McCurdy, Phil McMinn, and Gregory M. Kapfhammer
+> mrstudyr: Retrospectively studying the effectiveness of mutant reduction techniques.
+> Colton J. McCurdy, Phil McMinn, and Gregory M. Kapfhammer.
 > 32nd International Conference on Software Maintenance and Evolution (ICSME 2016)
 
 ## Installation Instructions
