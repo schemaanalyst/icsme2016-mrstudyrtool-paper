@@ -11,14 +11,14 @@ output:
 
 This code will install the ineffectivemutants package from GitHub using the `install_github` function.
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, message=FALSE, results='hide'}
 options(scipen=10, width=200)
 devtools::install_github("mccurdyc/mrstudyr")
 ```
 
 > # Comparing the Mutation Scores
 
-## Initialise the System
+## Initialize the System
 
 First, load in the libraries that are used in addition to those with the mrstudyr package (i.e., load all
 of the packages not used by mrstudyr but still used in this RMarkdown file). Note that right now the
@@ -33,61 +33,72 @@ suppressPackageStartupMessages(library(knitr))
 
 ## Show the Schemas for the ICSME 2016 Paper
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, message=FALSE, results='hide'}
 sqlite_data <- read_sqlite_avmdefaults()
-schemas <- sqlite_data %>% collect_study_schemas() %>% collect_normal_data() %>% select(schema) %>% unique()
+schemas <- sqlite_data %>% collect_study_schemas() %>%
+           collect_normal_data() %>% select(schema) %>% unique()
 ```
 
 ## Perform Reduction Techniques
 
 First, performing the most common reduction technique, random sampling.
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, message=FALSE, results='hide'}
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
-random_sampling_data <- normal_data %>% analyse_random_sampling()
+random_sampling_data <- normal_data %>% analyze_random_sampling()
 ```
 
 Next, applying the concepts of random sampling but, over operators.
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, message=FALSE, results='hide'}
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
-operator_sampling_data <- normal_data %>% analyse_across_operators()
+operator_sampling_data <- normal_data %>% analyze_across_operators()
 ```
-## Visualise the Mutation Scores for the Random Sampling Technique
+## Visualize the Mutation Scores for the Random Sampling Technique
 
-Now, plot the graph that shows the mutation score for the random sampling mutant reduction technique for four user-specified percentages.
-In this example, we will create a visualisation containing the percentages
-found in the accompanying paper.
+Now, to plot the graph that shows the mutation score for the random sampling mutant
+reduction technique for four user-specified percentages. In this example, we will
+create a visualisation containing the percentages found in the accompanying paper.
 
-```{r, mutation_score_random, fig.width=5.7, fig.height=3.5, echo=TRUE}
+```{r, echo=TRUE, message=FALSE, results='hide'}
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
 filtered_percents_data <- random_sampling_data %>% collect_chosen_percent_data(c(1, 10, 20, 40))
-visualise_random_sampling_mutation_scores(filtered_percents_data)
 ```
+
+To actually create the visualization, use the following function, giving it the reduced data
+from four percentages.
+
+```{r, mutation_score_random, fig.width=5.7, fig.height=3.5, echo=TRUE}
+visualize_plot_mutation_score(filtered_percents_data)
+```
+
+Analysis of the results in this graph:
+
+- Great variability in mutation scores at percentage: 1
+- Even at percentage: 10, variability in mutation scores is reduced
+- The same trend remains true for percentage: 20 and 40, but a smaller reduction in variability of mutation scores
 
 Now, plot the graph that shows the mutation score for the operator sampling mutant reduction technique.
 
-```{r, mutation_score_operator, fig.width=5.7, fig.height=3.5, echo=TRUE}
+First, select four percentages to compare.
+
+```{r, echo=TRUE, message=FALSE, results='hide'}
 d <- read_sqlite_avmdefaults()
 normal_data <- d %>% collect_study_schemas() %>% collect_normal_data()
 filtered_percents_data <- operator_sampling_data %>% collect_chosen_percent_data(c(1, 10, 20, 40))
-visualise_operator_sampling_mutation_scores(filtered_percents_data)
 ```
+
+Then, plot those four percentages against each other.
+
+```{r, mutation_score_operator, fig.width=5.7, fig.height=3.5, echo=TRUE, message=FALSE, results='hide'}
+visualize_plot_mutation_score(filtered_percents_data)
+```
+
 Analysis of the results in this graph:
 
-- Much more variability for the time-constrained method than the virtual one
-- However, the mutation scores are often roughly similar between the two techniques, especially for the HyperSQL and
-  SQLite DBMSs
-- It is important to note that the time-constrained method yields mutation scores that are higher than those produced by
-  the virtual mutation technique (e.g., CoffeeOrders and Employee schemas). And, note that the virtual method
-  leads to a score that is the same as the standard one. So, time constrained will over estimate the scores sometimes.
-- Greater variability in the Person schema is due to the fact that sometimes the mutation score is zero (i.e., all of
-  the mutants are killed) and other times it is one (i.e., none of the mutants are killed)
-
-Questions about the results analysis:
-
-- Is there every a case where we want to do statistical analysis or effect size calculations?
-- I think that the "transformation" idea from Harman would apply to our analysis of the timing values.
+- Similar to random sampling, there is great variability in mutation scores at percentage: 1
+- At percentage: 10, variability in mutation scores is reduced substantially
+- This trend continues for percentage: 20 and 40, but with a smaller reduction in variability of mutation scores over these percentages
