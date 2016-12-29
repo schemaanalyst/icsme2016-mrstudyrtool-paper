@@ -41,10 +41,10 @@ If you want to compile the paper to a PDF, then you should type the following co
 
 ```shell
 cd icsme2016-mrstudyrtool-paper
-pdflatex icsme2016_tool_paper.tex
-bibtex icsme2016_tool_paper.aux
-pdflatex icsme2016_tool_paper.tex
-pdflatex icsme2016_tool_paper.tex
+pdflatex icsme2016-mrstudyr.tex
+bibtex icsme2016-mrstudyr.aux
+pdflatex icsme2016-mrstudyr.tex
+pdflatex icsme2016-mrstudyr.tex
 ```
 
 Please note that this has been tested on an Ubuntu 16.04 workstation running a
